@@ -1,0 +1,16 @@
+<a href="/categories/<%= category.id %>">
+    <div>
+        <h2><%= category.name %></h2>
+        <p><%= category.description %></p>
+        <div class="">
+            <span class="">
+                <p><%= category.productCount%> products</p>
+                <p>Low stock: <%= category.lowStockCount %>, Critical stock: <%= category.criticalStockCount %></p>
+            </span>
+            <span class="">
+                <a href="/categories/<%= category.id %>/edit">Edit</a>
+                <a href="/categories/<%= category.id %>/delete">Delete</a>
+            </span>
+        </div>
+    </div>
+</a>

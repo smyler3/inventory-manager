@@ -1,0 +1,10 @@
+<div class="sortByContainer">
+    <div>Sort by:</div>
+    <div>
+        <select id="filter">
+            <%- options.forEach(option => { %>
+                <option value="<%= option.value %>"><%= option.label %></option>
+            <% }); %>
+        </select>
+    </div>
+</div>

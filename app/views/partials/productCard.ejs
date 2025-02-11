@@ -1,0 +1,14 @@
+<div>
+    <h2><%= product.name %></h2>
+    <p><%= product.description %></p>
+    <div class="">
+        <span class="">
+            <p>$<%= product.price%> </p>
+            <p>Stock count: <%= product.stockCount %></p>
+        </span>
+        <span class="">
+            <a href="/categories/<%= product.id %>/edit">Edit</a>
+            <a href="/categories/<%= product.id %>/delete">Delete</a>
+        </span>
+    </div>
+</div>
