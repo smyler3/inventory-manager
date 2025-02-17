@@ -10,21 +10,21 @@ const validateCreateCategory = [
     body("categoryTitle")
         .trim()
         .notEmpty()
-        .withMessage("Title", errorMessages.EMPTY_ERROR)
+        .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
         .isAlpha()
-        .withMessage("Title", errorMessages.ALPHA_ERROR)
+        .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
-        .withMessage("Title", errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH))
-        .custom(value => {}) // TODO: implement unique title checking
-        .withMessage("Title", errorMessages.UNIQUE_ERROR),
+        .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
+        // .custom(value => {}) // TODO: implement unique title checking
+        // .withMessage(`Title ${errorMessages.UNIQUE_ERROR}`),
     body("categoryDescription")
         .trim()
         .notEmpty()
-        .withMessage("Description", errorMessages.EMPTY_ERROR)
+        .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)
         .isAlphanumeric()
-        .withMessage("Description", errorMessages.ALPHANUMERIC_ERROR)
+        .withMessage(`Description ${errorMessages.ALPHANUMERIC_ERROR}`)
         .isLength({ min: CATEGORY_DESCRIPTION_MIN_LENGTH, max: CATEGORY_DESCRIPTION_MAX_LENGTH})
-        .withMessage("Description", errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)),
+        .withMessage(`Description ${errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)}`),
 ];
 
 module.exports = {

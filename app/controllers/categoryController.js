@@ -1,22 +1,29 @@
 const { validationResult } = require("express-validator");
-const { validateCreateCategory } = require("../validators/categoryValidators.js");
+const categoryValidator = require("../validators/categoryValidators.js");
+const categoryStorage = require("../db/categoryStorage.js");
 
 const getAllCategories = (req, res) => {
-    res.send("All categories");
+    res.send("Get all categories");
 };
 
 const getCreateCategoryPage = (req, res) => {
-    res.send("Get create category");
+    console.log("here");
+    res.render("createCategory", { 
+        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
+    });
 };
 
 const postCreateCategory = [
-    validateCreateCategory,
+    categoryValidator.validateCreateCategory,
     (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
             return res.status(400).render("createCategory", {
-                errors: errors,
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
+                errors: errors.errors,
             });
         };
 

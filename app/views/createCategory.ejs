@@ -1,10 +1,17 @@
 <html>
     <head>
-        <title><%= title %></title>
+        <title>Create A Category</title>
     </head>
     <body>
-        <h1><%= title %></h1>
+        <h1>Create A Category</h1>
         <p>Required fields are marked with (*)</p>
+        <% if (locals.errors) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        <% } %>
         <form action="/categories/new" method="POST">
             <!-- TODO: Add express-validator errors -->
             <label for="categoryTitle">Title *</label>
@@ -13,7 +20,6 @@
                 type="text" 
                 name="categoryTitle" 
                 id="categoryTitle" 
-                minlength="<%= title_min_length %>" 
                 maxlength="<%= title_max_length %>" 
                 required
             >
@@ -23,7 +29,6 @@
             <textarea 
                 name="categoryDescription" 
                 id="categoryDescription" 
-                minlength="<%= title_min_length %>" 
                 maxlength="<%= description_max_length %>" 
                 required
             ></textarea>
