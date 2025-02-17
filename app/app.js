@@ -1,9 +1,9 @@
-require('dotenv').config();
-const express = require('express');
-const path = require('path');
-const indexController = require('./controllers/indexController');
-const categoryRouter = require('./routers/categoryRouter');
-const productRouter = require('./routers/productRouter');
+require("dotenv").config();
+const express = require("express");
+const path = require("path");
+const indexRouter = require("./routers/indexRouter")
+const categoryRouter = require("./routers/categoryRouter");
+const productRouter = require("./routers/productRouter");
 
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -16,9 +16,9 @@ app.set("views", path.join(__dirname, "views"));
 app.use(express.urlencoded({ extended: true }));
 
 // Routes
-app.get("/categories", categoryRouter);
-app.get("/categories/:categoryID/products", productRouter);
-app.get("*", indexRouter);
+app.use("/categories", categoryRouter);
+app.use("/categories/:categoryID/products", productRouter);
+app.use("/", indexRouter);
 
 
 app.listen(PORT, () => {
