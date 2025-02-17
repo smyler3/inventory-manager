@@ -8,8 +8,7 @@
             <input type="text" id="search" placeholder="Search by category name" />
         </form>
         <div class="horizontalContainer">
-            <!-- TODO: Replace this with partial -->
-            <div>Sort by: <%= sort %></div>
+            <%- include("./partials/sortByButton", { options: options }) %>
             <a href="/categories/new">Create new category</a>
         </div>
         <p><%= categories.length %> categories</p>

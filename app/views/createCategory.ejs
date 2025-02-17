@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <p>Required fields are marked with (*)</p>
+        <form action="/categories/new" method="POST">
+            <!-- TODO: Add express-validator errors -->
+            <label for="categoryTitle">Title *</label>
+            <p>Max length: 256</p>
+            <input 
+                type="text" 
+                name="categoryTitle" 
+                id="categoryTitle" 
+                minlength="<%= title_min_length %>" 
+                maxlength="<%= title_max_length %>" 
+                required
+            >
+
+            <label for="categoryDescription">Description *</label>
+            <p>Max length: 1024</p>
+            <textarea 
+                name="categoryDescription" 
+                id="categoryDescription" 
+                minlength="<%= title_min_length %>" 
+                maxlength="<%= description_max_length %>" 
+                required
+            ></textarea>
+
+            <button type="submit">Create new category</button>
+        </form>
+    </body>
+</html>

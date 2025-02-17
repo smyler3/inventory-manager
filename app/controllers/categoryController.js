@@ -1,14 +1,31 @@
+const { validationResult } = require("express-validator");
+const { validateCreateCategory } = require("../validators/categoryValidators.js");
+
 const getAllCategories = (req, res) => {
     res.send("All categories");
 };
 
 const getCreateCategoryPage = (req, res) => {
-    res.send("Create category page");
+    res.send("Get create category");
 };
 
-const postCreateCategory = (req, res) => {
-    res.send("Create category");
-};
+const postCreateCategory = [
+    validateCreateCategory,
+    (req, res) => {
+        const errors = validationResult(req);
+
+        if (!errors.isEmpty()) {
+            return res.status(400).render("createCategory", {
+                errors: errors,
+            });
+        };
+
+        const { categoryTitle, categoryDescription } = req.body;
+        // TODO: Add category storage
+        categoryStorage.createCategory({ categoryTitle, categoryDescription });
+        res.redirect("/categories");
+    },
+];
 
 const getEditCategoryPage = (req, res) => {
     res.send("Edit category page");
