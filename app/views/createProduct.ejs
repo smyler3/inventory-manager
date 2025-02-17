@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title><%= title %></title>
+    </head>
+    <body>
+        <h1><%= title %></h1>
+        <p>Required fields are marked with (*)</p>
+        <form action="/categories/new" method="POST">
+            <label for="categoryTitle">Title *</label>
+            <input type="text" name="categoryTitle" id="categoryTitle" required>
+
+            <label for="categoryDescription">Description *</label>
+            <input type="text" name="categoryDescription" id="categoryDescription" required>
+
+            <label for="categoryDescription">Sale Price *</label>
+            <input type="text" name="categoryDescription" id="categoryDescription" required>
+
+            <label for="stockCount">Stock Count *</label>
+            <p>Max 1000</p> <!-- Is this accessible? -->
+            <input type="text" name="stockCount" id="stockCount" required>
+
+            <label for="lowStockCount">Low Stock Count *</label>
+            <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+            <input type="number" name="lowStockCount" id="lowStockCount" required>
+
+            <label for="criticalStockCount">Critical Stock Count *</label>
+            <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+            <input type="number" name="criticalStockCount" id="criticalStockCount" required>
+
+            <button type="submit">Create new category</button>
+        </form>
+    </body>
+</html>

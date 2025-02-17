@@ -4,7 +4,10 @@
     <div class="">
         <span class="">
             <p>$<%= product.price%> </p>
-            <p>Stock count: <%= product.stockCount %></p>
+            <div class="">
+                <p>Stock count: <%= product.stockCount %></p>
+                <!-- Icon representing stockCount compared to threshold difference -->
+            </div>
         </span>
         <span class="">
             <a href="/categories/<%= product.id %>/edit">Edit</a>
