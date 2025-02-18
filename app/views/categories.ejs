@@ -1,14 +1,14 @@
 <html>
     <head>
-        <title><%= title %></title>
+        <title>All Categories</title>
     </head>
     <body>
-        <h1><%= title %></h1>
+        <h1>All Categories</h1>
         <form>
             <input type="text" id="search" placeholder="Search by category name" />
         </form>
         <div class="horizontalContainer">
-            <%- include("./partials/sortByButton", { options: options }) %>
+            <!-- include("./partials/sortByButton", { options: options }) -->
             <a href="/categories/new">Create new category</a>
         </div>
         <p><%= categories.length %> categories</p>

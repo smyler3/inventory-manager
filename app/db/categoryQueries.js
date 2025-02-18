@@ -14,6 +14,21 @@ async function createCategory({ title, description }) {
     };
 };
 
+async function getAllCategories() {
+    const SQL = `
+        SELECT * FROM categories
+    `;
+
+    try {
+        const { rows } = await pool.query(SQL);
+        return rows;
+    }
+    catch (error) {
+        throw error;
+    };
+};
+
 module.exports = {
     createCategory,
+    getAllCategories,
 };
