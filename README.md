@@ -1,8 +1,7 @@
 # inventory-manager
 
 TODO:
-- Keep working on create category post controller + view (props/logic/etc)
+- Create categories home page
 
-- add middleware for setting ejs state props
-- add express-validator error messages
+- add middleware for setting ejs state props / or create default objects?
 - add unique title checking for validators

@@ -5,15 +5,15 @@
     <body>
         <h1><%= title %></h1>
         <p>Required fields are marked with (*)</p>
-        <form action="/categories/new" method="POST">
-            <label for="categoryTitle">Title *</label>
-            <input type="text" name="categoryTitle" id="categoryTitle" required>
+        <form action="/categories/<%= categoryID %>/products/new" method="POST">
+            <label for="productTitle">Title *</label>
+            <input type="text" name="productTitle" id="productTitle" required>
 
-            <label for="categoryDescription">Description *</label>
-            <input type="text" name="categoryDescription" id="categoryDescription" required>
+            <label for="productDescription">Description *</label>
+            <input type="text" name="productDescription" id="productDescription" required>
 
-            <label for="categoryDescription">Sale Price *</label>
-            <input type="text" name="categoryDescription" id="categoryDescription" required>
+            <label for="salePrice">Sale Price *</label>
+            <input type="text" name="salePrice" id="salePrice" required>
 
             <label for="stockCount">Stock Count *</label>
             <p>Max 1000</p> <!-- Is this accessible? -->
@@ -27,7 +27,7 @@
             <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
             <input type="number" name="criticalStockCount" id="criticalStockCount" required>
 
-            <button type="submit">Create new category</button>
+            <button type="submit">Add new product</button>
         </form>
     </body>
 </html>

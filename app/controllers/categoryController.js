@@ -1,6 +1,6 @@
 const { validationResult } = require("express-validator");
 const categoryValidator = require("../validators/categoryValidators.js");
-const categoryStorage = require("../db/categoryStorage.js");
+const categoryQueries = require("../db/categoryQueries.js");
 
 const getAllCategories = (req, res) => {
     res.send("Get all categories");
@@ -28,8 +28,19 @@ const postCreateCategory = [
         };
 
         const { categoryTitle, categoryDescription } = req.body;
-        // TODO: Add category storage
-        categoryStorage.createCategory({ categoryTitle, categoryDescription });
+        try {
+            categoryQueries.createCategory({ categoryTitle, categoryDescription });
+            res.status(201).redirect("/categories/");
+        }
+        catch (error) {
+            console.error("Error creating category:", error);
+            res.status(500).render("createCategory", {
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
+                errors: [{ msg: error.message || "Something went wrong while creating the category. Please try again." }],
+            });
+        }
+        
         res.redirect("/categories");
     },
 ];
