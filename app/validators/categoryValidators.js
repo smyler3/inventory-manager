@@ -11,7 +11,7 @@ const validateCreateCategory = [
         .trim()
         .notEmpty()
         .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
-        .isAlpha()
+        .isAlpha("en-AU", { ignore: " " })
         .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
@@ -21,7 +21,7 @@ const validateCreateCategory = [
         .trim()
         .notEmpty()
         .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)
-        .isAlphanumeric()
+        .matches(/^[A-Za-z0-9 .,'!&"\/\-+=_\[\]:;\$?]+$/)
         .withMessage(`Description ${errorMessages.ALPHANUMERIC_ERROR}`)
         .isLength({ min: CATEGORY_DESCRIPTION_MIN_LENGTH, max: CATEGORY_DESCRIPTION_MAX_LENGTH})
         .withMessage(`Description ${errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)}`),

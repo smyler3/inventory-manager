@@ -12,6 +12,7 @@ const getAllCategories = async (req, res) => {
     }
     catch (error) {
         console.log(error);
+        res.status(500).send("Internal server error");
     };
 };
 
@@ -24,7 +25,7 @@ const getCreateCategoryPage = (req, res) => {
 
 const postCreateCategory = [
     categoryValidator.validateCreateCategory,
-    (req, res) => {
+    async (req, res) => {
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
@@ -35,10 +36,11 @@ const postCreateCategory = [
             });
         };
 
-        const { categoryTitle, categoryDescription } = req.body;
         try {
-            categoryQueries.createCategory({ categoryTitle, categoryDescription });
-            res.status(201).redirect("/categories/");
+            const { categoryTitle, categoryDescription } = req.body;
+
+            await categoryQueries.createCategory(categoryTitle, categoryDescription);
+            res.status(201).redirect("/categories");
         }
         catch (error) {
             console.error("Error creating category:", error);
@@ -47,9 +49,7 @@ const postCreateCategory = [
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
                 errors: [{ msg: error.message || "Something went wrong while creating the category. Please try again." }],
             });
-        }
-        
-        res.redirect("/categories");
+        };
     },
 ];
 
