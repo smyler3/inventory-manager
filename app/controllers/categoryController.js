@@ -5,13 +5,12 @@ const categoryQueries = require("../db/categoryQueries.js");
 const getAllCategories = async (req, res) => {
     try {
         const categories = await categoryQueries.getAllCategories();
-        console.log(categories);
         res.render("categories", {
             categories: categories,
         });
     }
     catch (error) {
-        console.log(error);
+        console.error(error);
         res.status(500).send("Internal server error");
     };
 };
@@ -63,30 +62,38 @@ const postEditCategory = (req, res) => {
 
 const getDeleteCategory = async (req, res) => {
     const { categoryID } = req.params;
-    console.log("I got this catID", categoryID);
 
     res.render("deleteCategory", {
         categoryID: categoryID,
     });
 };
 
-const postDeleteCategory = async (req, res) => {
-    // res.send("Delete category");
-    res.redirect("/categories");
-    // try {
-    //     const { categoryID } = req.body;
+const postDeleteCategory = [
+    categoryValidator.validateDeleteCategory,
+    async (req, res) => {
+        const errors = validationResult(req);
+        const { categoryID } = req.params;
 
-    //     await categoryQueries.deleteCategory(categoryID);
-    //     res.status(204).redirect("/categories");
-    // }
-    // catch (error) {
-    //     console.error("Error deleting category:", error);
-    //     res.status(500).render("categories");
-    //     // , {
-    //     //     categories: ca
-    //     // })
-    // }
-};
+        if (!errors.isEmpty()) {
+            return res.status(400).render("deleteCategory", {
+                categoryID: categoryID,
+                errors: errors.errors,
+            });
+        };
+
+        try {
+            await categoryQueries.deleteCategory(categoryID);
+            res.status(204).redirect("/categories");
+            res.send(password);
+        }
+        catch (error) {
+            console.error("Error deleting category:", error);
+            res.status(500).render("deleteCategory", {
+                errors: [{ msg: error.message || "Something went wrong while deleting the category. Please try again." }],
+            });
+        };
+    },
+];
 
 const getCategoryByID = (req, res) => {
     res.send("Category by ID");

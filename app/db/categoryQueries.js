@@ -9,6 +9,15 @@ async function createCategory(title, description) {
     await pool.query(SQL, [title, description]);
 };
 
+async function deleteCategory(id) {
+    const SQL = `
+        DELETE FROM categories
+        WHERE id=$1 
+    `;
+
+    await pool.query(SQL, [id]);
+};
+
 async function getAllCategories() {
     const SQL = `
         SELECT * FROM categories
@@ -20,5 +29,6 @@ async function getAllCategories() {
 
 module.exports = {
     createCategory,
+    deleteCategory,
     getAllCategories,
 };

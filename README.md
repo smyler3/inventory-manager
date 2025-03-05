@@ -2,13 +2,11 @@
 
 TODO:
 
-- Add delete category functionality
-  -- Send password form to post to attempt deletion of category
-  -- Compare password to some secret key and only delete if key is correct
-  -- Add validators for received password
-  -- On fail show error message for incorrect password
-
 - Add edit category functionality
+  -- Add edit category form
+  -- Link categoryCard to edit form + password field
+  -- Create validators for edit form
+  -- Write postEditForm logic
 
 - Add 404 page
 - Add layout page

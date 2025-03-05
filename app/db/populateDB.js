@@ -4,14 +4,14 @@ require('dotenv').config();
 const SQL = `
 CREATE TABLE IF NOT EXISTS categories (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    title VARCHAR ( 256 ) NOT NULL,
+    title VARCHAR ( 256 ) NOT NULL UNIQUE,
     description VARCHAR ( 1024 ) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
     category_id INTEGER REFERENCES categories(id),
-    title VARCHAR ( 256 ) NOT NULL,
+    title VARCHAR ( 256 ) NOT NULL UNIQUE,
     description VARCHAR ( 1024 ) NOT NULL,
     sale_price DECIMAL NOT NULL CHECK (sale_price >= 0 AND sale_price <= 1000000),
     stock_count INTEGER NOT NULL DEFAULT 0 CHECK (stock_count >= 0 AND stock_count <= 1000),

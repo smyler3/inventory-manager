@@ -27,8 +27,22 @@ const validateCreateCategory = [
         .withMessage(`Description ${errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)}`),
 ];
 
+const correctPassword = "test";
+const validateDeleteCategory = [
+    body("password")
+        .notEmpty()
+        .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
+        .custom((value) => {
+            if (value !==  correctPassword) {
+                throw new Error("Incorrect password");
+            }
+            return true;
+        }),
+];
+
 module.exports = {
     validateCreateCategory,
+    validateDeleteCategory,
     CATEGORY_TITLE_MIN_LENGTH,
     CATEGORY_TITLE_MAX_LENGTH,
     CATEGORY_DESCRIPTION_MIN_LENGTH,
