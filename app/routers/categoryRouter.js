@@ -8,6 +8,7 @@ categoryRouter.get("/new", categoryController.getCreateCategoryPage);
 categoryRouter.post("/new", categoryController.postCreateCategory);
 categoryRouter.get("/:categoryID/edit", categoryController.getEditCategoryPage);
 categoryRouter.post("/:categoryID/edit", categoryController.postEditCategory);
+categoryRouter.get("/:categoryID/delete", categoryController.getDeleteCategory);
 categoryRouter.post("/:categoryID/delete", categoryController.postDeleteCategory);
 
 module.exports = categoryRouter;

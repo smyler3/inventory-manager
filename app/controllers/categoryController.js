@@ -61,8 +61,31 @@ const postEditCategory = (req, res) => {
     res.send("Edit category");
 };
 
-const postDeleteCategory = (req, res) => {
-    res.send("Delete category");
+const getDeleteCategory = async (req, res) => {
+    const { categoryID } = req.params;
+    console.log("I got this catID", categoryID);
+
+    res.render("deleteCategory", {
+        categoryID: categoryID,
+    });
+};
+
+const postDeleteCategory = async (req, res) => {
+    // res.send("Delete category");
+    res.redirect("/categories");
+    // try {
+    //     const { categoryID } = req.body;
+
+    //     await categoryQueries.deleteCategory(categoryID);
+    //     res.status(204).redirect("/categories");
+    // }
+    // catch (error) {
+    //     console.error("Error deleting category:", error);
+    //     res.status(500).render("categories");
+    //     // , {
+    //     //     categories: ca
+    //     // })
+    // }
 };
 
 const getCategoryByID = (req, res) => {
@@ -75,6 +98,7 @@ module.exports = {
     postCreateCategory,
     getEditCategoryPage,
     postEditCategory,
+    getDeleteCategory,
     postDeleteCategory,
     getCategoryByID,
 };
