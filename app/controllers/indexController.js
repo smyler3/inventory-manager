@@ -5,7 +5,10 @@ const getIndexPage = (req, res) => {
 };
 
 const get404Page = (req, res) => {
-    res.render("404");
+    res.render("layout", {
+        title: "404, page not found",
+        body: "./404",
+    });
 };
 
 module.exports = {

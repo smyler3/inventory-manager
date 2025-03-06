@@ -54,6 +54,7 @@ const postCreateCategory = [
 
 const getEditCategoryPage = async (req, res) => {
     const { categoryID } = req.params;
+
     const category = await categoryQueries.getCategoryByID(categoryID);
 
     res.render("editCategory", {
