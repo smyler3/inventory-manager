@@ -2,9 +2,11 @@
 
 TODO:
 
-- List what is being edited in delete page
+- Allow products to be queried from the database
+- Render products on category page
 
-- Add Category page (list of items in category)
+- Decide sort button options for categories and products
+- Make search fields work
 
 - Add form errors above relevant field
 

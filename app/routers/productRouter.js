@@ -1,7 +1,7 @@
 const { Router } = require("express");
 const productController = require("../controllers/productController.js");
 
-const productRouter = Router();
+const productRouter = Router({ mergeParams: true });
 
 productRouter.get("/", productController.getProductsByCategory);
 productRouter.get("/new", productController.getCreateProductPage);

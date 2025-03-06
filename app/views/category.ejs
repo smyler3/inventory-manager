@@ -1,21 +1,14 @@
-<html>
-    <head>
-        <title><%= title %></title>
-    </head>
-    <body>
-        <h1><%= title %></h1>
-        <form>
-            <input type="text" id="search" placeholder="Search by category name" />
-        </form>
-        <div class="horizontalContainer">
-            <%- include("./partials/sortByButton", { options: options }) %>
-            <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
-        </div>
-        <p><%= products.length %> products</p>
-        <ul>
-            <% products.forEach(product => {%>
-                <li><%- include("./partials/productCard", { product: product }) %></li>
-            <% }); %>
-        </ul>
-    </body>
-</html>
+<h1><%= title %></h1>
+<form>
+    <input type="text" id="search" placeholder="Search by category name" />
+</form>
+<div class="horizontalContainer">
+    <%- include("./partials/sortByButton", { options: options }) %>
+    <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
+</div>
+<p><%= products.length %> products</p>
+<ul>
+    <% products.forEach(product => {%>
+        <li><%- include("./partials/productCard", { product: product }) %></li>
+    <% }); %>
+</ul>
