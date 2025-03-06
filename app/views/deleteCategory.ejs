@@ -1,13 +1,15 @@
 <h1><%= title %></h1>
-<% if (locals.errors) { %>
-    <ul>
-        <% errors.forEach(error => { %>
-            <li><%= error.msg %></li>
-        <% }) %>
-    </ul>
-<% } %>
+<p>Enter password to delete the "<%= category.title %>" category</p>
 <form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form">
-    <label for="password">Enter password to continue</label>
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
+    <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
 </form>
 <a href="/categories">Cancel</a>

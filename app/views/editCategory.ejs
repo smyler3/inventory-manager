@@ -1,13 +1,15 @@
 <h1><%= title %></h1>
-<p>Required fields are marked with (*)</p>
-<% if (locals.errors) { %>
-    <ul>
-        <% errors.forEach(error => { %>
-            <li><%= error.msg %></li>
-        <% }) %>
-    </ul>
-<% } %>
+<p>Fill out fields and enter password to edit the "<%= category.title %>" category</p>
 <form action="/categories/<%= categoryID %>/edit" method="POST" id="edit-category-form">
+    <p>Required fields are marked with (*)</p>
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
     <label for="newCategoryTitle">Title *</label>
     <p>Max length: 256</p>
     <input 

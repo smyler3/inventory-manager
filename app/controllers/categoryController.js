@@ -115,11 +115,13 @@ const postEditCategory = [
 
 const getDeleteCategory = async (req, res) => {
     const { categoryID } = req.params;
+    const category = await categoryQueries.getCategoryByID(categoryID);
 
     res.render("layout", {
         title: "Delete A Category",
         body: "deleteCategory",
         categoryID: categoryID,
+        category: category,
     });
 };
 
@@ -128,12 +130,14 @@ const postDeleteCategory = [
     async (req, res) => {
         const errors = validationResult(req);
         const { categoryID } = req.params;
+        const category = await categoryQueries.getCategoryByID(categoryID);
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
                 title: "Delete A Category",
                 body: "deleteCategory",
                 categoryID: categoryID,
+                category: category,
                 errors: errors.errors,
             });
         };
@@ -148,6 +152,7 @@ const postDeleteCategory = [
                 title: "Delete A Category",
                 body: "deleteCategory",
                 categoryID: categoryID,
+                category: category,
                 errors: [{ msg: "Something went wrong while deleting the category. Please try again." }],
             });
         };
