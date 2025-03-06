@@ -5,9 +5,7 @@ const getIndexPage = (req, res) => {
 };
 
 const get404Page = (req, res) => {
-    res.render("404", { 
-        title: "404 - Page Not Found", 
-    });
+    res.render("404");
 };
 
 module.exports = {
