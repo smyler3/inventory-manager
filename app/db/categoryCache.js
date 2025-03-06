@@ -1,7 +1,7 @@
 let categoryCache = { data: null, lastFetch: 0 };
 const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
 
-function checkCategoryCacheValid() {
+function checkCategoryCacheInvalid() {
     return (!categoryCache.data || Date.now() - categoryCache.lastFetch > CACHE_DURATION);
 };
 
@@ -19,7 +19,7 @@ function clearCategoryCache() {
 };
 
 module.exports = {
-    checkCategoryCacheValid,
+    checkCategoryCacheInvalid,
     getCategoryCacheData,
     updateCategoryCache,
     clearCategoryCache,

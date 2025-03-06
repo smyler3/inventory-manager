@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <title>Edit A Category</title>
+    </head>
+    <body>
+        <h1>Edit A Category</h1>
+        <p>Required fields are marked with (*)</p>
+        <% if (locals.errors) { %>
+            <ul>
+                <% errors.forEach(error => { %>
+                    <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        <% } %>
+        <form action="/categories/<%= categoryID %>/edit" method="POST" id="edit-category-form">
+            <!-- TODO: Add express-validator errors -->
+            <label for="newCategoryTitle">Title *</label>
+            <p>Max length: 256</p>
+            <input 
+                type="text" 
+                name="newCategoryTitle" 
+                id="newCategoryTitle" 
+                maxlength="<%= title_max_length %>" 
+                value="<%= category.title %>"
+                required
+            >
+
+            <label for="newCategoryDescription">Description *</label>
+            <p>Max length: 1024</p>
+            <textarea 
+                name="newCategoryDescription" 
+                id="newCategoryDescription" 
+                maxlength="<%= description_max_length %>" 
+                rows="5"
+                required
+            ><%= category.description %></textarea>
+
+            <label for="password">Enter password to continue</label>
+            <input type="password" name="password" id="password" required>
+        </form>
+        <a href="/categories">Cancel</a>
+        <button type="submit" form="edit-category-form">Save Changes</button>
+    </body>
+</html>

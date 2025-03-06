@@ -11,6 +11,17 @@ async function createCategory(title, description) {
     categoryCache.clearCategoryCache();
 };
 
+async function editCategory(categoryID, title, description) {
+    const SQL = `
+        UPDATE categories
+        SET title = $1, description = $2
+        WHERE id = $3;
+    `;
+
+    await pool.query(SQL, [title, description, categoryID]);
+    categoryCache.clearCategoryCache();
+}
+
 async function deleteCategory(id) {
     const SQL = `
         DELETE FROM categories
@@ -22,7 +33,7 @@ async function deleteCategory(id) {
 };
 
 async function getAllCategories() {
-    if (!categoryCache.checkCategoryCacheValid()) {
+    if (categoryCache.checkCategoryCacheInvalid()) {
         const SQL = `
             SELECT * FROM categories
         `;
@@ -44,6 +55,7 @@ async function getCategoryByID(categoryID) {
 
 module.exports = {
     createCategory,
+    editCategory,
     deleteCategory,
     getAllCategories,
     getCategoryByID,

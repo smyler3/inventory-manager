@@ -52,13 +52,51 @@ const postCreateCategory = [
     },
 ];
 
-const getEditCategoryPage = (req, res) => {
-    res.send("Edit category page");
+const getEditCategoryPage = async (req, res) => {
+    const { categoryID } = req.params;
+    const category = await categoryQueries.getCategoryByID(categoryID);
+
+    res.render("editCategory", {
+        categoryID: categoryID,
+        category: category,
+        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
+    });
 };
 
-const postEditCategory = (req, res) => {
-    res.send("Edit category");
-};
+const postEditCategory = [
+    categoryValidator.validateEditCategory,
+    async (req, res) => {
+        const errors = validationResult(req);
+        const { categoryID } = req.params;
+        const { newCategoryTitle, newCategoryDescription } = req.body;
+
+        if (!errors.isEmpty()) {
+            return res.status(400).render("editCategory", {
+                categoryID: categoryID,
+                category: { title: newCategoryTitle, description: newCategoryDescription },
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
+                errors: errors.errors,
+            });
+        };
+
+        try {
+            await categoryQueries.editCategory(categoryID, newCategoryTitle, newCategoryDescription);
+            res.status(200).redirect("/categories");
+        }
+        catch (error) {
+            console.error("Error editing category:", error);
+            res.status(500).render("editCategory", {
+                categoryID: categoryID,
+                category: { title: newCategoryTitle, description: newCategoryDescription },
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
+                errors: [{ msg: error.message || "Something went wrong while deleting the category. Please try again." }],
+            });
+        };
+    },
+];
 
 const getDeleteCategory = async (req, res) => {
     const { categoryID } = req.params;
@@ -84,7 +122,6 @@ const postDeleteCategory = [
         try {
             await categoryQueries.deleteCategory(categoryID);
             res.status(204).redirect("/categories");
-            res.send(password);
         }
         catch (error) {
             console.error("Error deleting category:", error);
