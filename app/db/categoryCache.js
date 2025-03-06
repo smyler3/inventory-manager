@@ -1,5 +1,5 @@
 let categoryCache = { data: null, lastFetch: 0 };
-const CACHE_DURATION = 2 * 60 * 60 * 1000; // 2 hours
+const CACHE_DURATION = 1000 * 60 * 60 * 2; // 2 hours
 
 function checkCategoryCacheInvalid() {
     return (!categoryCache.data || Date.now() - categoryCache.lastFetch > CACHE_DURATION);

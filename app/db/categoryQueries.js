@@ -42,7 +42,8 @@ async function getAllCategories() {
         categoryCache.updateCategoryCache(rows, Date.now());
 
         return rows;
-    }
+    };
+    
     return categoryCache.getCategoryCacheData();
 };
 

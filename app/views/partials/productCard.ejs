@@ -1,17 +1,17 @@
 <div>
-    <h2><%= product.name %></h2>
+    <h2><%= product.title %></h2>
     <p><%= product.description %></p>
     <div class="">
         <span class="">
-            <p>$<%= product.price%> </p>
+            <p>$<%= product.sale_price%></p>
             <div class="">
-                <p>Stock count: <%= product.stockCount %></p>
+                <p>Stock count: <%= product.stock_count %></p>
                 <!-- Icon representing stockCount compared to threshold difference -->
             </div>
         </span>
         <span class="">
-            <a href="/categories/<%= product.id %>/edit">Edit</a>
-            <a href="/categories/<%= product.id %>/delete">Delete</a>
+            <a href="/categories/<%= category.id %>/products/<%= product.id %>/edit">Edit</a>
+            <a href="/categories/<%= category.id %>/products/<%= product.id %>/delete">Delete</a>
         </span>
     </div>
 </div>

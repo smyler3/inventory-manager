@@ -1,9 +1,9 @@
 const categoryQueries = require("../db/categoryQueries");
+const productQueries = require("../db/productQueries");
 
 const getProductsByCategory = async (req, res) => {
     try {
         const { categoryID } = req.params;
-        console.log(categoryID, req.params);
         const category = await categoryQueries.getCategoryByID(categoryID);
 
         if (!category) {
@@ -14,7 +14,7 @@ const getProductsByCategory = async (req, res) => {
             });
         }
 
-        const products = [];
+        const products = await productQueries.getProductsByCategoryID(categoryID);
         const options = [];
 
         res.render("layout", {
