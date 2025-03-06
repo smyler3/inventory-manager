@@ -1,40 +1,33 @@
-<html>
-    <head>
-        <title>Create A Category</title>
-    </head>
-    <body>
-        <h1>Create A Category</h1>
-        <p>Required fields are marked with (*)</p>
-        <% if (locals.errors) { %>
-            <ul>
-                <% errors.forEach(error => { %>
-                    <li><%= error.msg %></li>
-                <% }) %>
-            </ul>
-        <% } %>
-        <form action="/categories/new" method="POST">
-            <!-- TODO: Add express-validator errors -->
-            <label for="categoryTitle">Title *</label>
-            <p>Max length: 256</p>
-            <input 
-                type="text" 
-                name="categoryTitle" 
-                id="categoryTitle" 
-                maxlength="<%= title_max_length %>" 
-                required
-            >
+<h1><%= title %></h1>
+<p>Required fields are marked with (*)</p>
+<% if (locals.errors) { %>
+    <ul>
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+<form action="/categories/new" method="POST" id="create-category-form">
+    <label for="categoryTitle">Title *</label>
+    <p>Max length: 256</p>
+    <input 
+        type="text" 
+        name="categoryTitle" 
+        id="categoryTitle" 
+        maxlength="<%= title_max_length %>" 
+        required
+    >
 
-            <label for="categoryDescription">Description *</label>
-            <p>Max length: 1024</p>
-            <textarea 
-                name="categoryDescription" 
-                id="categoryDescription" 
-                maxlength="<%= description_max_length %>" 
-                rows="5"
-                required
-            ></textarea>
+    <label for="categoryDescription">Description *</label>
+    <p>Max length: 1024</p>
+    <textarea 
+        name="categoryDescription" 
+        id="categoryDescription" 
+        maxlength="<%= description_max_length %>" 
+        rows="5"
+        required
+    ></textarea>
+</form>
 
-            <button type="submit">Create new category</button>
-        </form>
-    </body>
-</html>
+<a href="/categories">Cancel</a>
+<button type="submit" form="create-category-form">Create new category</button>

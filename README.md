@@ -2,12 +2,10 @@
 
 TODO:
 
-- Convert all pages to layout page
+- List what is being edited in delete page
 
 - Add Category page (list of items in category)
-- Add
 
-- add middleware for setting ejs state props / or create default objects?
-- add unique title checking for validators
+- Add form errors above relevant field
 
 - Remove console.error logs e.g.console.error("Error editing category:", error); for production

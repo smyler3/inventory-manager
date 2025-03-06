@@ -5,7 +5,9 @@ const categoryQueries = require("../db/categoryQueries.js");
 const getAllCategories = async (req, res) => {
     try {
         const categories = await categoryQueries.getAllCategories();
-        res.render("categories", {
+        res.render("layout", {
+            title: "All Categories",
+            body: "categories",
             categories: categories,
         });
     }
@@ -16,7 +18,9 @@ const getAllCategories = async (req, res) => {
 };
 
 const getCreateCategoryPage = (req, res) => {
-    res.render("createCategory", { 
+    res.render("layout", { 
+        title: "Create A Category",
+        body: "createCategory",
         title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
         description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
     });
@@ -28,7 +32,9 @@ const postCreateCategory = [
         const errors = validationResult(req);
 
         if (!errors.isEmpty()) {
-            return res.status(400).render("createCategory", {
+            return res.status(400).render("layout", {
+                title: "Create A Category",
+                body: "createCategory",
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
                 errors: errors.errors,
@@ -43,10 +49,12 @@ const postCreateCategory = [
         }
         catch (error) {
             console.error("Error creating category:", error);
-            res.status(500).render("createCategory", {
+            res.status(500).render("layout", {
+                title: "Create A Category",
+                body: "createCategory",
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
-                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
-                errors: [{ msg: error.message || "Something went wrong while creating the category. Please try again." }],
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,  
+                errors: [{ msg: "Something went wrong while creating the category. Please try again." }],
             });
         };
     },
@@ -57,7 +65,9 @@ const getEditCategoryPage = async (req, res) => {
 
     const category = await categoryQueries.getCategoryByID(categoryID);
 
-    res.render("editCategory", {
+    res.render("layout", {
+        title: "Edit A Category",
+        body: "editCategory",
         categoryID: categoryID,
         category: category,
         title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
@@ -73,7 +83,9 @@ const postEditCategory = [
         const { newCategoryTitle, newCategoryDescription } = req.body;
 
         if (!errors.isEmpty()) {
-            return res.status(400).render("editCategory", {
+            return res.status(400).render("layout", {
+                title: "Edit A Category",
+                body: "editCategory",
                 categoryID: categoryID,
                 category: { title: newCategoryTitle, description: newCategoryDescription },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
@@ -88,12 +100,14 @@ const postEditCategory = [
         }
         catch (error) {
             console.error("Error editing category:", error);
-            res.status(500).render("editCategory", {
+            res.status(500).render("layout", {
+                title: "Edit A Category",
+                body: "editCategory",
                 categoryID: categoryID,
                 category: { title: newCategoryTitle, description: newCategoryDescription },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
-                errors: [{ msg: error.message || "Something went wrong while deleting the category. Please try again." }],
+                errors: [{ msg: "Something went wrong while deleting the category. Please try again." }],
             });
         };
     },
@@ -102,7 +116,9 @@ const postEditCategory = [
 const getDeleteCategory = async (req, res) => {
     const { categoryID } = req.params;
 
-    res.render("deleteCategory", {
+    res.render("layout", {
+        title: "Delete A Category",
+        body: "deleteCategory",
         categoryID: categoryID,
     });
 };
@@ -114,7 +130,9 @@ const postDeleteCategory = [
         const { categoryID } = req.params;
 
         if (!errors.isEmpty()) {
-            return res.status(400).render("deleteCategory", {
+            return res.status(400).render("layout", {
+                title: "Delete A Category",
+                body: "deleteCategory",
                 categoryID: categoryID,
                 errors: errors.errors,
             });
@@ -126,16 +144,15 @@ const postDeleteCategory = [
         }
         catch (error) {
             console.error("Error deleting category:", error);
-            res.status(500).render("deleteCategory", {
-                errors: [{ msg: error.message || "Something went wrong while deleting the category. Please try again." }],
+            res.status(500).render("layout", {
+                title: "Delete A Category",
+                body: "deleteCategory",
+                categoryID: categoryID,
+                errors: [{ msg: "Something went wrong while deleting the category. Please try again." }],
             });
         };
     },
 ];
-
-const getCategoryByID = (req, res) => {
-    res.send("Category by ID");
-};
 
 module.exports = {
     getAllCategories,
@@ -145,5 +162,4 @@ module.exports = {
     postEditCategory,
     getDeleteCategory,
     postDeleteCategory,
-    getCategoryByID,
 };

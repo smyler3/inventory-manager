@@ -1,21 +1,14 @@
-<html>
-    <head>
-        <title>Delete A Category</title>
-    </head>
-    <body>
-        <h1>Delete A Category?</h1>
-        <% if (locals.errors) { %>
-            <ul>
-                <% errors.forEach(error => { %>
-                    <li><%= error.msg %></li>
-                <% }) %>
-            </ul>
-        <% } %>
-        <form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form">
-            <label for="password">Enter password to continue</label>
-            <input type="password" name="password" id="password" required>
-        </form>
-        <a href="/categories">Cancel</a>
-        <button type="submit" form="delete-category-form">Delete</button>
-    </body>
-</html>
+<h1><%= title %></h1>
+<% if (locals.errors) { %>
+    <ul>
+        <% errors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>
+<form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form">
+    <label for="password">Enter password to continue</label>
+    <input type="password" name="password" id="password" required>
+</form>
+<a href="/categories">Cancel</a>
+<button type="submit" form="delete-category-form">Delete</button>
