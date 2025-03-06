@@ -1,33 +1,76 @@
-<html>
-    <head>
-        <title><%= title %></title>
-    </head>
-    <body>
-        <h1><%= title %></h1>
-        <p>Required fields are marked with (*)</p>
-        <form action="/categories/<%= categoryID %>/products/new" method="POST">
-            <label for="productTitle">Title *</label>
-            <input type="text" name="productTitle" id="productTitle" required>
+<h1><%= title %></h1>
+<p>Required fields are marked with (*)</p>
+<form action="/categories/<%= categoryID %>/products/new" method="POST">
+    <label for="productTitle">Title *</label>
+    <p>Max length: <%= title_max_length %></p>
+    <input 
+        type="text" 
+        name="productTitle" 
+        id="productTitle" 
+        max="<%= title_max_length %>"
+        required
+    >
 
-            <label for="productDescription">Description *</label>
-            <input type="text" name="productDescription" id="productDescription" required>
+    <label for="productDescription">Description *</label>
+    <p>Max length: <%= description_max_length %></p>
+    <input 
+        type="text" 
+        name="productDescription" 
+        id="productDescription" 
+        max="<%= description_max_length %>"
+        required
+    >
 
-            <label for="salePrice">Sale Price *</label>
-            <input type="text" name="salePrice" id="salePrice" required>
+    <label for="salePrice">Sale Price *</label>
+    <p>Min: <%= min_sale_price %></p>
+    <p>Max: <%= max_sale_price %></p>
+    <input 
+        type="number" 
+        name="salePrice" 
+        id="salePrice" 
+        min="<%= min_sale_price %>"
+        max="<%= max_sale_price %>"
+        required
+    >
 
-            <label for="stockCount">Stock Count *</label>
-            <p>Max 1000</p> <!-- Is this accessible? -->
-            <input type="text" name="stockCount" id="stockCount" required>
+    <label for="stockCount">Stock Count *</label>
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
+    <input 
+        type="number" 
+        name="stockCount" 
+        id="stockCount" 
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        required
+    >
 
-            <label for="lowStockCount">Low Stock Count *</label>
-            <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-            <input type="number" name="lowStockCount" id="lowStockCount" required>
+    <label for="lowStockCount">Low Stock Count *</label>
+    <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+    <p>Min: <%= min_low_stock_count %></p>
+    <p>Max: <%= max_low_stock_count %></p>
+    <input 
+        type="number" 
+        name="lowStockCount" 
+        id="lowStockCount" 
+        min="<%= min_low_stock_count %>"
+        max="<%= max_low_stock_count %>"
+        required
+    >
 
-            <label for="criticalStockCount">Critical Stock Count *</label>
-            <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-            <input type="number" name="criticalStockCount" id="criticalStockCount" required>
+    <label for="criticalStockCount">Critical Stock Count *</label>
+    <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+    <p>Min: <%= min_critical_stock_count %></p>
+    <p>Max: <%= max_critical_stock_count %></p>
+    <input 
+        type="number" 
+        name="criticalStockCount" 
+        id="criticalStockCount" 
+        min="<%= min_critical_stock_count %>"
+        max="<%= max_critical_stock_count %>"
+        required
+    >
+</form>
 
-            <button type="submit">Add new product</button>
-        </form>
-    </body>
-</html>
+<a href="/categories/<%= categoryID %>/products">Cancel</a>
+<button type="submit">Add new product</button>

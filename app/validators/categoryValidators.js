@@ -5,43 +5,7 @@ const CATEGORY_TITLE_MIN_LENGTH = 1;
 const CATEGORY_TITLE_MAX_LENGTH = 256;
 const CATEGORY_DESCRIPTION_MIN_LENGTH = 1;
 const CATEGORY_DESCRIPTION_MAX_LENGTH = 1024;
-
-// Function to check for empty fields
-const isNotEmpty = (field, fieldName) => 
-    body(field)
-        .trim()
-        .notEmpty()
-        .withMessage(`${fieldName} ${errorMessages.EMPTY_ERROR}`);
-
-// Function to check if the field contains only alphabetic characters (for title)
-const isAlphaTitle = (field, fieldName) =>
-    body(field)
-        .isAlpha("en-AU", { ignore: " " })
-        .withMessage(`${fieldName} ${errorMessages.ALPHA_ERROR}`);
-
-// Function to check the length of the field
-const isValidLength = (field, min, max, fieldName) =>
-    body(field)
-        .isLength({ min, max })
-        .withMessage(`${fieldName} ${errorMessages.LENGTH_ERROR(min, max)}`);
-
-// Function to check alphanumeric description
-const isValidDescription = (field, fieldName) =>
-    body(field)
-        .matches(/^[A-Za-z0-9 .,'!&"\/\-+=_\[\]:;\$?]+$/)
-        .withMessage(`${fieldName} ${errorMessages.ALPHANUMERIC_ERROR}`);
-
-const isPasswordCorrect = (field, correctPassword) =>
-    body(field)
-        .notEmpty()
-        .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
-        .custom((value) => {
-            if (value !== correctPassword) {
-                throw new Error("Incorrect password");
-            }
-            return true;
-        });
-
+const CORRECT_PASSWORD = "test";
 
 const validateCreateCategory = [
     body("categoryTitle")
@@ -52,8 +16,6 @@ const validateCreateCategory = [
         .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
-        // .custom(value => {}) // TODO: implement unique title checking
-        // .withMessage(`Title ${errorMessages.UNIQUE_ERROR}`),
     body("categoryDescription")
         .trim()
         .notEmpty()
@@ -64,13 +26,12 @@ const validateCreateCategory = [
         .withMessage(`Description ${errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)}`),
 ];
 
-const correctPassword = "test";
 const validateDeleteCategory = [
     body("password")
         .notEmpty()
         .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
         .custom((value) => {
-            if (value !==  correctPassword) {
+            if (value !==  CORRECT_PASSWORD) {
                 throw new Error("Incorrect password");
             }
             return true;
@@ -86,8 +47,6 @@ const validateEditCategory = [
         .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
-        // .custom(value => {}) // TODO: implement unique title checking
-        // .withMessage(`Title ${errorMessages.UNIQUE_ERROR}`),
     body("newCategoryDescription")
         .trim()
         .notEmpty()
@@ -100,7 +59,7 @@ const validateEditCategory = [
         .notEmpty()
         .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
         .custom((value) => {
-            if (value !==  correctPassword) {
+            if (value !==  CORRECT_PASSWORD) {
                 throw new Error("Incorrect password");
             }
             return true;

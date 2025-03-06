@@ -2,10 +2,18 @@
 
 TODO:
 
+- Replace magic numbers in populate DB with defined numbers (in productValidators.js)
+- Pass these numbers to create product form
+
+- Add create product form validation
+- Connect create product form to database
+
 - Make Delete product form
+- Add delete product form validation
 - Connect delete product form to database
 
 - Make edit product form
+- Add edit product form validation
 - Connect edit product form to database
 
 - I think checking data, then fetching feels dumb, maybe combine
@@ -17,4 +25,5 @@ TODO:
 
 - Add form errors above relevant field
 
+- Make a secret password for production
 - Remove console.error logs e.g.console.error("Error editing category:", error); for production

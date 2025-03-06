@@ -9,7 +9,7 @@
 <% } %>
 <form action="/categories/new" method="POST" id="create-category-form">
     <label for="categoryTitle">Title *</label>
-    <p>Max length: 256</p>
+    <p>Max length: <%= title_max_length %></p>
     <input 
         type="text" 
         name="categoryTitle" 
@@ -19,7 +19,7 @@
     >
 
     <label for="categoryDescription">Description *</label>
-    <p>Max length: 1024</p>
+    <p>Max length: <%= description_max_length %></p>
     <textarea 
         name="categoryDescription" 
         id="categoryDescription" 
