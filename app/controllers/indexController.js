@@ -6,8 +6,9 @@ const getIndexPage = (req, res) => {
 
 const get404Page = (req, res) => {
     res.render("layout", {
-        title: "404, page not found",
-        body: "./404",
+        title: "404 Page Not Found",
+        body: "404",
+        message: "Sorry, it looks like we couldn't find that page right now, please check the url or navigate home",
     });
 };
 

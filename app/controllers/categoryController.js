@@ -12,8 +12,11 @@ const getAllCategories = async (req, res) => {
         });
     }
     catch (error) {
-        console.error(error);
-        res.status(500).send("Internal server error");
+        console.error("Error rendering categories page:", error);
+        res.status(500).render("layout", {
+            title: "500 Internal Server Error",
+            body: "500",
+        });
     };
 };
 
@@ -50,11 +53,8 @@ const postCreateCategory = [
         catch (error) {
             console.error("Error creating category:", error);
             res.status(500).render("layout", {
-                title: "Create A Category",
-                body: "createCategory",
-                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
-                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,  
-                errors: [{ msg: "Something went wrong while creating the category. Please try again." }],
+                title: "500 Internal Server Error",
+                body: "500",
             });
         };
     },
@@ -101,13 +101,8 @@ const postEditCategory = [
         catch (error) {
             console.error("Error editing category:", error);
             res.status(500).render("layout", {
-                title: "Edit A Category",
-                body: "editCategory",
-                categoryID: categoryID,
-                category: { title: newCategoryTitle, description: newCategoryDescription },
-                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
-                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
-                errors: [{ msg: "Something went wrong while deleting the category. Please try again." }],
+                title: "500 Internal Server Error",
+                body: "500",
             });
         };
     },
@@ -149,11 +144,8 @@ const postDeleteCategory = [
         catch (error) {
             console.error("Error deleting category:", error);
             res.status(500).render("layout", {
-                title: "Delete A Category",
-                body: "deleteCategory",
-                categoryID: categoryID,
-                category: category,
-                errors: [{ msg: "Something went wrong while deleting the category. Please try again." }],
+                title: "500 Internal Server Error",
+                body: "500",
             });
         };
     },
