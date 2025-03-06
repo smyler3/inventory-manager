@@ -2,9 +2,7 @@
 
 TODO:
 
-- Add layout page
-- Add header (to layout)
-- Add footer? (to layout)
+- Convert all pages to layout page
 
 - Add Category page (list of items in category)
 - Add
