@@ -1,6 +1,14 @@
 <h1><%= title %></h1>
 <p>Required fields are marked with (*)</p>
-<form action="/categories/<%= categoryID %>/products/new" method="POST">
+<form action="/categories/<%= categoryID %>/products/new" method="POST" id="create-product-form">
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
     <label for="productTitle">Title *</label>
     <p>Max length: <%= title_max_length %></p>
     <input 
@@ -77,4 +85,4 @@
 </form>
 
 <a href="/categories/<%= categoryID %>/products">Cancel</a>
-<button type="submit">Add new product</button>
+<button type="submit" form="create-product-form">Add new product</button>

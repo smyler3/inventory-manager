@@ -3,7 +3,10 @@ const ALPHA_ERROR = "must only contain alphabet letters";
 const ALPHANUMERIC_ERROR = "must only contain alphabet letters, numbers, and punctuation";
 const UNIQUE_ERROR = "already in use";
 const LENGTH_ERROR = (min_length, max_length) => {
-    return `Description must be within ${min_length} and ${max_length} characters long`;
+    return `must be within ${min_length} and ${max_length} characters long`;
+};
+const BOUND_ERROR = (min_bound, max_bound) => {
+    return `must have a value between ${min_bound} and ${max_bound}`;
 };
 
 
@@ -13,4 +16,5 @@ module.exports = {
     ALPHANUMERIC_ERROR,
     UNIQUE_ERROR,
     LENGTH_ERROR,
+    BOUND_ERROR,
 };

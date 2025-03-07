@@ -16,6 +16,7 @@ const validateCreateCategory = [
         .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
+
     body("categoryDescription")
         .trim()
         .notEmpty()
@@ -43,18 +44,30 @@ const validateEditCategory = [
         .trim()
         .notEmpty()
         .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
+        
         .isAlpha("en-AU", { ignore: " " })
         .withMessage(`Title ${errorMessages.ALPHA_ERROR}`)
+
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
-        .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
+        .withMessage(`Title ${errorMessages.LENGTH_ERROR(
+            CATEGORY_TITLE_MIN_LENGTH, 
+            CATEGORY_TITLE_MAX_LENGTH
+        )}`),
+
     body("newCategoryDescription")
         .trim()
         .notEmpty()
         .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)
+
         .matches(/^[A-Za-z0-9 .,'!&"\/\-+=_\[\]:;\$?]+$/)
         .withMessage(`Description ${errorMessages.ALPHANUMERIC_ERROR}`)
+
         .isLength({ min: CATEGORY_DESCRIPTION_MIN_LENGTH, max: CATEGORY_DESCRIPTION_MAX_LENGTH})
-        .withMessage(`Description ${errorMessages.LENGTH_ERROR(CATEGORY_DESCRIPTION_MIN_LENGTH, CATEGORY_DESCRIPTION_MAX_LENGTH)}`),
+        .withMessage(`Description ${errorMessages.LENGTH_ERROR(
+            CATEGORY_DESCRIPTION_MIN_LENGTH,
+            CATEGORY_DESCRIPTION_MAX_LENGTH
+        )}`),
+
     body("password")
         .notEmpty()
         .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)

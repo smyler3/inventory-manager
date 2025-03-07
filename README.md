@@ -2,8 +2,8 @@
 
 TODO:
 
-- Add create product form validation
-- Connect create product form to database
+- User objects to store create form field values and pass them back to forms on errors so form fields still contain the info
+- Add 500 to indexRouter and redirect to it for errors
 
 - Make Delete product form
 - Add delete product form validation
@@ -19,6 +19,8 @@ TODO:
 - Make search fields work
 
 - Implement warnings for low and critical stock level
+
+- Add validator for not-unique titles
 
 - Add form errors above relevant field
 

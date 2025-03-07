@@ -4,7 +4,7 @@ const categoryCache = require("./categoryCache.js");
 async function createCategory(title, description) {
     const SQL = `
         INSERT INTO categories (title, description) 
-        VALUES ($1, $2)
+        VALUES ($1, $2);
     `;
 
     await pool.query(SQL, [title, description]);
@@ -20,12 +20,12 @@ async function editCategory(categoryID, title, description) {
 
     await pool.query(SQL, [title, description, categoryID]);
     categoryCache.clearCategoryCache();
-}
+};
 
 async function deleteCategory(id) {
     const SQL = `
         DELETE FROM categories
-        WHERE id=$1 
+        WHERE id=$1; 
     `;
 
     await pool.query(SQL, [id]);
@@ -35,7 +35,7 @@ async function deleteCategory(id) {
 async function getAllCategories() {
     if (categoryCache.checkCategoryCacheInvalid()) {
         const SQL = `
-            SELECT * FROM categories
+            SELECT * FROM categories;
         `;
         const { rows } = await pool.query(SQL);
 
