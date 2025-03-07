@@ -2,7 +2,8 @@
 
 TODO:
 
-- Use objects to store create form field values and pass them back to forms on errors so form fields still contain the info
+- homogenise database names and JS names for form fields
+- Convert editcategory to use the new object prop field replacement method with new names
 
 - Make Delete product form
 - Add delete product form validation

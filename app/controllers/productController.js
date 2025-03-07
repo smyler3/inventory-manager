@@ -40,6 +40,7 @@ const getCreateProductPage = (req, res) => {
         title: "Create A Product",
         body: "createProduct",
         categoryID: categoryID,
+        product: {},
         title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
         description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
         min_sale_price: productValidator.MIN_SALE_PRICE,
@@ -52,15 +53,30 @@ const getCreateProductPage = (req, res) => {
 const postCreateProduct = [
     productValidator.validateCreateProduct,
     async (req, res) => {
-        const { categoryID } = req.params;
         const errors = validationResult(req);
-        console.log("errors", errors);
+        const { categoryID } = req.params;
+        const {
+            productTitle,
+            productDescription,
+            salePrice,
+            stockCount,
+            lowStockCount,
+            criticalStockCount,
+        } = req.body;
 
         if (!errors.isEmpty()) {
-            res.status(400).render("layout", {
+            return res.status(400).render("layout", {
                 title: "Create A Product",
                 body: "createProduct",
                 categoryID: categoryID,
+                product: {
+                    productTitle,
+                    productDescription,
+                    salePrice,
+                    stockCount,
+                    lowStockCount,
+                    criticalStockCount,
+                },
                 title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
                 description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
                 min_sale_price: productValidator.MIN_SALE_PRICE,
@@ -72,15 +88,6 @@ const postCreateProduct = [
         }
 
         try {
-            const {
-                productTitle,
-                productDescription,
-                salePrice,
-                stockCount,
-                lowStockCount,
-                criticalStockCount,
-            } = req.body;
-
             await productQueries.createProduct(
                 categoryID,
                 productTitle,

@@ -16,6 +16,7 @@
         name="categoryTitle" 
         id="categoryTitle" 
         maxlength="<%= title_max_length %>" 
+        value="<%= category.categoryTitle ? category.categoryTitle : '' %>"
         required
     >
 
@@ -27,7 +28,7 @@
         maxlength="<%= description_max_length %>" 
         rows="5"
         required
-    ></textarea>
+    ><%= category.categoryDescription ? category.categoryDescription : '' %></textarea>
 </form>
 
 <a href="/categories">Cancel</a>

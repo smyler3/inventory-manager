@@ -16,6 +16,7 @@
         name="productTitle" 
         id="productTitle" 
         max="<%= title_max_length %>"
+        value="<%= product.productTitle ? product.productTitle : '' %>"
         required
     >
 
@@ -26,6 +27,7 @@
         name="productDescription" 
         id="productDescription" 
         max="<%= description_max_length %>"
+        value="<%= product.productDescription ? product.productDescription : '' %>"
         required
     >
 
@@ -39,6 +41,7 @@
         min="<%= min_sale_price %>"
         max="<%= max_sale_price %>"
         step="0.01"
+        value="<%= product.salePrice ? product.salePrice : '' %>"
         required
     >
 
@@ -51,7 +54,7 @@
         id="stockCount" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="0"
+        value="<%= product.stockCount ? product.stockCount : '0' %>"
         required
     >
 
@@ -65,7 +68,7 @@
         id="lowStockCount" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="0"
+        value="<%= product.lowStockCount ? product.lowStockCount : '0' %>"
         required
     >
 
@@ -79,7 +82,7 @@
         id="criticalStockCount" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="0"
+        value="<%= product.criticalStockCount ? product.criticalStockCount : '0' %>"
         required
     >
 </form>

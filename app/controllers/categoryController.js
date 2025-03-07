@@ -21,6 +21,7 @@ const getCreateCategoryPage = (req, res) => {
     res.render("layout", { 
         title: "Create A Category",
         body: "createCategory",
+        category: {},
         title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
         description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
     });
@@ -30,11 +31,16 @@ const postCreateCategory = [
     categoryValidator.validateCreateCategory,
     async (req, res) => {
         const errors = validationResult(req);
+        const { categoryTitle, categoryDescription } = req.body;
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
                 title: "Create A Category",
                 body: "createCategory",
+                category: {
+                    categoryTitle, 
+                    categoryDescription,
+                },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
                 errors: errors.errors,
@@ -81,7 +87,10 @@ const postEditCategory = [
                 title: "Edit A Category",
                 body: "editCategory",
                 categoryID: categoryID,
-                category: { title: newCategoryTitle, description: newCategoryDescription },
+                category: { 
+                    title: newCategoryTitle, 
+                    description: newCategoryDescription
+                },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
                 errors: errors.errors,
