@@ -2,9 +2,6 @@
 
 TODO:
 
-- Replace magic numbers in populate DB with defined numbers (in productValidators.js)
-- Pass these numbers to create product form
-
 - Add create product form validation
 - Connect create product form to database
 

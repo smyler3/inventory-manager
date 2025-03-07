@@ -1,5 +1,6 @@
 const categoryQueries = require("../db/categoryQueries");
 const productQueries = require("../db/productQueries");
+const productValidator = require("../validators/productValidators");
 
 const getProductsByCategory = async (req, res) => {
     try {
@@ -36,19 +37,17 @@ const getProductsByCategory = async (req, res) => {
 };
 
 const getCreateProductPage = (req, res) => {
+    const { categoryID } = req.params;
     res.render("layout", {
         title: "Create A Product",
         body: "createProduct",
+        categoryID: categoryID,
         title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
         description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
         min_sale_price: productValidator.MIN_SALE_PRICE,
         max_sale_price: productValidator.MAX_SALE_PRICE,
         min_stock_count: productValidator.MIN_STOCK_COUNT,
         max_stock_count: productValidator.MAX_STOCK_COUNT,
-        min_low_stock_count: productValidator.MIN_LOW_STOCK_COUNT,
-        max_low_stock_count: productValidator.MAX_LOW_STOCK_COUNT,
-        min_critical_stock_count: productValidator.MIN_CRITICAL_STOCK_COUNT,
-        max_critical_stock_count: productValidator.MAX_CRITICAL_STOCK_COUNT,
     });
 };
 

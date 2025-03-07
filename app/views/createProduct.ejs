@@ -30,6 +30,7 @@
         id="salePrice" 
         min="<%= min_sale_price %>"
         max="<%= max_sale_price %>"
+        step="0.01"
         required
     >
 
@@ -42,32 +43,35 @@
         id="stockCount" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
+        value="0"
         required
     >
 
     <label for="lowStockCount">Low Stock Count *</label>
     <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-    <p>Min: <%= min_low_stock_count %></p>
-    <p>Max: <%= max_low_stock_count %></p>
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
     <input 
         type="number" 
         name="lowStockCount" 
         id="lowStockCount" 
-        min="<%= min_low_stock_count %>"
-        max="<%= max_low_stock_count %>"
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        value="0"
         required
     >
 
     <label for="criticalStockCount">Critical Stock Count *</label>
     <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-    <p>Min: <%= min_critical_stock_count %></p>
-    <p>Max: <%= max_critical_stock_count %></p>
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
     <input 
         type="number" 
         name="criticalStockCount" 
         id="criticalStockCount" 
-        min="<%= min_critical_stock_count %>"
-        max="<%= max_critical_stock_count %>"
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        value="0"
         required
     >
 </form>
