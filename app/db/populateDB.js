@@ -14,9 +14,9 @@ CREATE TABLE IF NOT EXISTS products (
     title VARCHAR ( 256 ) NOT NULL UNIQUE,
     description VARCHAR ( 1024 ) NOT NULL,
     sale_price DECIMAL NOT NULL CHECK (sale_price >= 0 AND sale_price <= 1000000),
-    stock_count INTEGER NOT NULL DEFAULT 0 CHECK (stock_count >= 0 AND stock_count <= 1000),
-    low_stock_count INTEGER NOT NULL DEFAULT 5 CHECK (low_stock_count >= 1 AND low_stock_count <= 1000),
-    critical_stock_count INTEGER NOT NULL DEFAULT 1 CHECK (critical_stock_count >= 0 AND critical_stock_count <= low_stock_count)
+    stock_count INTEGER NOT NULL CHECK (stock_count >= 0 AND stock_count <= 1000000),
+    low_stock_count INTEGER NOT NULL CHECK (low_stock_count >= 0 AND low_stock_count <= 1000000),
+    critical_stock_count INTEGER NOT NULL CHECK (critical_stock_count >= 0 AND critical_stock_count <= low_stock_count)
 );
 
 INSERT INTO categories (title, description)
