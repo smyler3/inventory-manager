@@ -4,6 +4,13 @@ const getIndexPage = (req, res) => {
     });
 };
 
+const get500Page = (req, res) => {
+    res.status(500).render("layout", {
+        title: "500 Internal Server Error",
+        body: "500",
+    });
+};
+
 const get404Page = (req, res) => {
     res.render("layout", {
         title: "404 Page Not Found",
@@ -14,5 +21,6 @@ const get404Page = (req, res) => {
 
 module.exports = {
     getIndexPage,
+    get500Page,
     get404Page,
 };

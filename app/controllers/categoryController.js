@@ -13,10 +13,7 @@ const getAllCategories = async (req, res) => {
     }
     catch (error) {
         console.error("Error rendering categories page:", error);
-        res.status(500).render("layout", {
-            title: "500 Internal Server Error",
-            body: "500",
-        });
+        res.redirect("/500");
     };
 };
 
@@ -52,10 +49,7 @@ const postCreateCategory = [
         }
         catch (error) {
             console.error("Error creating category:", error);
-            res.status(500).render("layout", {
-                title: "500 Internal Server Error",
-                body: "500",
-            });
+            res.redirect("/500");
         };
     },
 ];
@@ -100,10 +94,7 @@ const postEditCategory = [
         }
         catch (error) {
             console.error("Error editing category:", error);
-            res.status(500).render("layout", {
-                title: "500 Internal Server Error",
-                body: "500",
-            });
+            res.redirect("/500");
         };
     },
 ];
@@ -143,10 +134,7 @@ const postDeleteCategory = [
         }
         catch (error) {
             console.error("Error deleting category:", error);
-            res.status(500).render("layout", {
-                title: "500 Internal Server Error",
-                body: "500",
-            });
+            res.redirect("/500");
         };
     },
 ];

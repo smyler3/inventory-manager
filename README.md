@@ -2,8 +2,7 @@
 
 TODO:
 
-- User objects to store create form field values and pass them back to forms on errors so form fields still contain the info
-- Add 500 to indexRouter and redirect to it for errors
+- Use objects to store create form field values and pass them back to forms on errors so form fields still contain the info
 
 - Make Delete product form
 - Add delete product form validation

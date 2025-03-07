@@ -30,10 +30,7 @@ const getProductsByCategory = async (req, res) => {
     }
     catch (error) {
         console.error(error);
-        res.status(500).render("layout", {
-            title: "500 Internal Server Error",
-            body: "500",
-        });
+        res.redirect("/500");
     }
 };
 
@@ -97,10 +94,7 @@ const postCreateProduct = [
         }
         catch (error) {
             console.error(error);
-            res.status(500).render("layout", {
-                title: "500 internal server error",
-                body: "500",
-            })
+            res.redirect("/500");
         }
     },
 ];
