@@ -2,8 +2,6 @@
 
 TODO:
 
-- Convert editcategory to use the new object prop field replacement method with new names
-
 - Make Delete product form
 - Add delete product form validation
 - Connect delete product form to database

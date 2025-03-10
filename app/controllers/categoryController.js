@@ -86,8 +86,8 @@ const postEditCategory = [
                 body: "editCategory",
                 categoryID: categoryID,
                 category: { 
-                    title: title, 
-                    description: description
+                    title, 
+                    description
                 },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
