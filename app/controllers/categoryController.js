@@ -5,6 +5,7 @@ const categoryQueries = require("../db/categoryQueries.js");
 const getAllCategories = async (req, res) => {
     try {
         const categories = await categoryQueries.getAllCategories();
+
         res.render("layout", {
             title: "All Categories",
             body: "categories",
@@ -63,6 +64,14 @@ const getEditCategoryPage = async (req, res) => {
 
     const category = await categoryQueries.getCategoryByID(categoryID);
 
+    if (!category) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category not found" 
+        });
+    };
+
     res.render("layout", {
         title: "Edit A Category",
         body: "editCategory",
@@ -110,8 +119,16 @@ const getDeleteCategory = async (req, res) => {
     const { categoryID } = req.params;
     const category = await categoryQueries.getCategoryByID(categoryID);
 
+    if (!category) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category not found" 
+        });
+    };
+
     res.render("layout", {
-        title: "Delete A Category",
+        title: "Delete a Category",
         body: "deleteCategory",
         categoryID: categoryID,
         category: category,
@@ -127,7 +144,7 @@ const postDeleteCategory = [
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
-                title: "Delete A Category",
+                title: "Delete a Category",
                 body: "deleteCategory",
                 categoryID: categoryID,
                 category: category,

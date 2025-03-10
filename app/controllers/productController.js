@@ -14,7 +14,7 @@ const getProductsByCategory = async (req, res) => {
                 body: "404",
                 message: "Category not found" 
             });
-        }
+        };
 
         const products = await productQueries.getProductsByCategoryID(categoryID);
         const options = [];
@@ -34,8 +34,17 @@ const getProductsByCategory = async (req, res) => {
     }
 };
 
-const getCreateProductPage = (req, res) => {
+const getCreateProductPage = async(req, res) => {
     const { categoryID } = req.params;
+
+    if (!(await categoryQueries.getCategoryByID(categoryID))) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category not found" 
+        });
+    };
+
     res.render("layout", {
         title: "Create A Product",
         body: "createProduct",
@@ -114,6 +123,27 @@ const postEditProduct = (req, res) => {
     res.send("Edit product");
 };
 
+const getDeleteProduct = async (req, res) => {   
+    const { categoryID, productID } = req.params;
+    const category = await categoryQueries.getCategoryByID(categoryID);
+    const product = await productQueries.getProductByID(productID);
+
+    if (!category | !product) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category or product not found" 
+        });
+    };
+
+    res.render("layout", {
+        title: "Delete a Product",
+        body: "deleteProduct",
+        category: category,
+        product: product,
+    });
+};  
+
 const postDeleteProduct = (req, res) => {   
     res.send("Delete product");
 };  
@@ -128,6 +158,7 @@ module.exports = {
     postCreateProduct,
     getEditProductPage,
     postEditProduct,
+    getDeleteProduct,
     postDeleteProduct,
     getProductByID,
 };

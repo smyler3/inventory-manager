@@ -44,14 +44,22 @@ async function getAllProducts() {
 };
 
 async function getProductsByCategoryID(categoryID) {
-    const data = await getAllProducts();
-    const filteredData = data.filter(x => x.category_id === Number(categoryID));
+    const products = await getAllProducts();
+    const filteredData = products.filter(x => x.category_id === Number(categoryID));
 
     return filteredData;
+};
+
+async function getProductByID(productID) {
+    const products = await getAllProducts();
+    const product = products.find(x => x.id === Number(productID)) || null;
+
+    return product;
 };
 
 module.exports = {
     createProduct,
     getAllProducts,
     getProductsByCategoryID,
+    getProductByID,
 };

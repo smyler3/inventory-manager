@@ -2,7 +2,6 @@
 
 TODO:
 
-- Make Delete product form
 - Add delete product form validation
 - Connect delete product form to database
 
