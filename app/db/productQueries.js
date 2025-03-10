@@ -37,6 +37,25 @@ async function deleteProduct(id) {
     productCache.clearProductCache();
 };
 
+async function editProduct(
+    id,
+    title,
+    description,
+    sale_price,
+    stock_count,
+    low_stock_count,
+    critical_stock_count
+) {
+    const SQL = `
+        UPDATE products
+        SET title=$1, description=$2, sale_price=$3, stock_count=$4, low_stock_count=$5, critical_stock_count=$6
+        WHERE id=$7;
+    `;
+
+    await pool.query(SQL, [title, description, sale_price, stock_count, low_stock_count, critical_stock_count, id]);
+    productCache.clearProductCache();
+};
+
 async function getAllProducts() {
     if (productCache.checkProductCacheInvalid()) {
         const SQL = `
@@ -70,6 +89,7 @@ async function getProductByID(productID) {
 module.exports = {
     createProduct,
     deleteProduct,
+    editProduct,
     getAllProducts,
     getProductsByCategoryID,
     getProductByID,

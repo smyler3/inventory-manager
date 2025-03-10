@@ -73,7 +73,7 @@ const getEditCategoryPage = async (req, res) => {
     };
 
     res.render("layout", {
-        title: "Edit A Category",
+        title: "Edit a Category",
         body: "editCategory",
         categoryID: categoryID,
         category: category,
@@ -91,7 +91,7 @@ const postEditCategory = [
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
-                title: "Edit A Category",
+                title: "Edit a Category",
                 body: "editCategory",
                 categoryID: categoryID,
                 category: { 

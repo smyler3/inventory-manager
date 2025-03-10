@@ -2,9 +2,6 @@
 
 TODO:
 
-- Add edit product form validation
-- Connect edit product form to database
-
 - I think checking data, then fetching feels dumb, maybe combine
 
 - Decide sort button options for categories and products

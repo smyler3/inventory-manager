@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
 <p>Fill out fields and enter password to edit "<%= product.title %>" from the "<%= category.title %>" category</p>
-<form action="/categories/<%= category.id %>/products/new" method="POST" id="create-product-form">
+<form action="/categories/<%= category.id %>/products/<%= product.id %>/edit" method="POST" id="edit-product-form">
     <p>Required fields are marked with (*)</p>
     <% if (locals.errors) { %>
         <ul>
@@ -91,4 +91,4 @@
 </form>
 
 <a href="/categories/<%= category.id %>/products">Cancel</a>
-<button type="submit" form="create-product-form">Save changes</button>
+<button type="submit" form="edit-product-form">Save changes</button>

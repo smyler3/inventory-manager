@@ -128,8 +128,10 @@ const getEditProductPage = async (req, res) => {
         });
     };
 
+    console.log("rendering with product:", product);
+
     res.render("layout", {
-        title: "",
+        title: "Edit a Product",
         body: "editProduct",
         category: category,
         product: product,
@@ -142,9 +144,62 @@ const getEditProductPage = async (req, res) => {
     });
 }; 
 
-const postEditProduct = (req, res) => { 
-    res.send("Edit product");
-};
+const postEditProduct = [
+    productValidator.validateEditProduct,
+    async (req, res) => { 
+        const errors = validationResult(req);
+        const { categoryID, productID } = req.params;
+        const {
+            title,
+            description,
+            sale_price,
+            stock_count,
+            low_stock_count,
+            critical_stock_count
+        } = req.body;
+
+        if (!errors.isEmpty()) {
+            const category = await categoryQueries.getCategoryByID(categoryID);
+            return res.status(400).render("layout", {
+                title: "Edit a Product",
+                body: "editProduct",
+                category: category,
+                product: {
+                    title,
+                    description,
+                    sale_price,
+                    stock_count,
+                    low_stock_count,
+                    critical_stock_count
+                },
+                title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
+                description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
+                min_sale_price: productValidator.MIN_SALE_PRICE,
+                max_sale_price: productValidator.MAX_SALE_PRICE,
+                min_stock_count: productValidator.MIN_STOCK_COUNT,
+                max_stock_count: productValidator.MAX_STOCK_COUNT,
+                errors: errors.errors,
+            })
+        };
+
+        try {
+            await productQueries.editProduct(
+                productID,
+                title,
+                description,
+                sale_price,
+                stock_count,
+                low_stock_count,
+                critical_stock_count,
+            );
+            res.status(200).redirect(`/categories/${categoryID}/products`);
+        }
+        catch (error) {
+            console.error("Error editing product:", error);
+            res.redirect("/500");
+        };
+    },
+];
 
 const getDeleteProduct = async (req, res) => {   
     const { categoryID, productID } = req.params;
