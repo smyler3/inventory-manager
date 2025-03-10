@@ -12,7 +12,7 @@ const MAX_STOCK_COUNT = 1000000;
 const CORRECT_PASSWORD = "test";
 
 const validateCreateProduct = [
-    body("productTitle")
+    body("title")
         .trim()
         .notEmpty()
         .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
@@ -26,7 +26,7 @@ const validateCreateProduct = [
             PRODUCT_TITLE_MAX_LENGTH
         )}`),
 
-    body("productDescription")
+    body("description")
         .trim()
         .notEmpty()
         .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)
@@ -40,36 +40,36 @@ const validateCreateProduct = [
             PRODUCT_DESCRIPTION_MAX_LENGTH
         )}`),
 
-    body("salePrice")
+    body("sale_price")
         .isFloat({ min: MIN_SALE_PRICE, max: MAX_SALE_PRICE })
         .withMessage(`Sale Price ${errorMessages.BOUND_ERROR(
             MIN_SALE_PRICE, 
             MAX_SALE_PRICE
         )}`),
 
-    body("stockCount")
+    body("stock_count")
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
             MAX_STOCK_COUNT
         )}`),
 
-    body("lowStockCount")
+    body("low_stock_count")
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Low Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
             MAX_STOCK_COUNT
         )}`),
 
-    body("criticalStockCount")
+    body("critical_stock_count")
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Critical Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
             MAX_STOCK_COUNT
         )}`)
         .custom((value, { req }) => {
-            const lowStockCount = req.body.lowStockCount;
-            if (value > lowStockCount) {
+            const low_stock_count = req.body.low_stock_count;
+            if (value > low_stock_count) {
                 throw new Error("Critical Stock Count must be less than or equal to Low Stock Count");
             }
             return true;

@@ -10,22 +10,22 @@
         </ul>
     <% } %>
     
-    <label for="newCategoryTitle">Title *</label>
+    <label for="title">Title *</label>
     <p>Max length: 256</p>
     <input 
         type="text" 
-        name="newCategoryTitle" 
-        id="newCategoryTitle" 
+        name="title" 
+        id="title" 
         maxlength="<%= title_max_length %>" 
         value="<%= category.title %>"
         required
     >
 
-    <label for="newCategoryDescription">Description *</label>
+    <label for="description">Description *</label>
     <p>Max length: 1024</p>
     <textarea 
-        name="newCategoryDescription" 
-        id="newCategoryDescription" 
+        name="description" 
+        id="description" 
         maxlength="<%= description_max_length %>" 
         rows="5"
         required

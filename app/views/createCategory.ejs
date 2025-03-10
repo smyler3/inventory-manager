@@ -9,26 +9,26 @@
         </ul>
     <% } %>
     
-    <label for="categoryTitle">Title *</label>
+    <label for="title">Title *</label>
     <p>Max length: <%= title_max_length %></p>
     <input 
         type="text" 
-        name="categoryTitle" 
-        id="categoryTitle" 
+        name="title" 
+        id="title" 
         maxlength="<%= title_max_length %>" 
-        value="<%= category.categoryTitle ? category.categoryTitle : '' %>"
+        value="<%= category.title ? category.title : '' %>"
         required
     >
 
-    <label for="categoryDescription">Description *</label>
+    <label for="description">Description *</label>
     <p>Max length: <%= description_max_length %></p>
     <textarea 
-        name="categoryDescription" 
-        id="categoryDescription" 
+        name="description" 
+        id="description" 
         maxlength="<%= description_max_length %>" 
         rows="5"
         required
-    ><%= category.categoryDescription ? category.categoryDescription : '' %></textarea>
+    ><%= category.description ? category.description : '' %></textarea>
 </form>
 
 <a href="/categories">Cancel</a>

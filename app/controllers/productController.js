@@ -56,12 +56,12 @@ const postCreateProduct = [
         const errors = validationResult(req);
         const { categoryID } = req.params;
         const {
-            productTitle,
-            productDescription,
-            salePrice,
-            stockCount,
-            lowStockCount,
-            criticalStockCount,
+            title,
+            description,
+            sale_price,
+            stock_count,
+            low_stock_count,
+            critical_stock_count,
         } = req.body;
 
         if (!errors.isEmpty()) {
@@ -70,12 +70,12 @@ const postCreateProduct = [
                 body: "createProduct",
                 categoryID: categoryID,
                 product: {
-                    productTitle,
-                    productDescription,
-                    salePrice,
-                    stockCount,
-                    lowStockCount,
-                    criticalStockCount,
+                    title,
+                    description,
+                    sale_price,
+                    stock_count,
+                    low_stock_count,
+                    critical_stock_count,
                 },
                 title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
                 description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
@@ -90,12 +90,12 @@ const postCreateProduct = [
         try {
             await productQueries.createProduct(
                 categoryID,
-                productTitle,
-                productDescription,
-                salePrice,
-                stockCount,
-                lowStockCount,
-                criticalStockCount,
+                title,
+                description,
+                sale_price,
+                stock_count,
+                low_stock_count,
+                critical_stock_count,
             );
             res.status(201).redirect(`/categories/${categoryID}/products`);
         }

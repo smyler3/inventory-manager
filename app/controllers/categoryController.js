@@ -31,15 +31,15 @@ const postCreateCategory = [
     categoryValidator.validateCreateCategory,
     async (req, res) => {
         const errors = validationResult(req);
-        const { categoryTitle, categoryDescription } = req.body;
+        const { title, description } = req.body;
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
                 title: "Create A Category",
                 body: "createCategory",
                 category: {
-                    categoryTitle, 
-                    categoryDescription,
+                    title, 
+                    description,
                 },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
@@ -48,9 +48,7 @@ const postCreateCategory = [
         };
 
         try {
-            const { categoryTitle, categoryDescription } = req.body;
-
-            await categoryQueries.createCategory(categoryTitle, categoryDescription);
+            await categoryQueries.createCategory(title, description);
             res.status(201).redirect("/categories");
         }
         catch (error) {
@@ -80,7 +78,7 @@ const postEditCategory = [
     async (req, res) => {
         const errors = validationResult(req);
         const { categoryID } = req.params;
-        const { newCategoryTitle, newCategoryDescription } = req.body;
+        const { title, description } = req.body;
 
         if (!errors.isEmpty()) {
             return res.status(400).render("layout", {
@@ -88,8 +86,8 @@ const postEditCategory = [
                 body: "editCategory",
                 categoryID: categoryID,
                 category: { 
-                    title: newCategoryTitle, 
-                    description: newCategoryDescription
+                    title: title, 
+                    description: description
                 },
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
@@ -98,7 +96,7 @@ const postEditCategory = [
         };
 
         try {
-            await categoryQueries.editCategory(categoryID, newCategoryTitle, newCategoryDescription);
+            await categoryQueries.editCategory(categoryID, title, description);
             res.status(200).redirect("/categories");
         }
         catch (error) {

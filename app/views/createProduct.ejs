@@ -9,80 +9,80 @@
         </ul>
     <% } %>
     
-    <label for="productTitle">Title *</label>
+    <label for="title">Title *</label>
     <p>Max length: <%= title_max_length %></p>
     <input 
         type="text" 
-        name="productTitle" 
-        id="productTitle" 
+        name="title" 
+        id="title" 
         max="<%= title_max_length %>"
-        value="<%= product.productTitle ? product.productTitle : '' %>"
+        value="<%= product.title ? product.title : '' %>"
         required
     >
 
-    <label for="productDescription">Description *</label>
+    <label for="description">Description *</label>
     <p>Max length: <%= description_max_length %></p>
     <input 
         type="text" 
-        name="productDescription" 
-        id="productDescription" 
+        name="description" 
+        id="description" 
         max="<%= description_max_length %>"
-        value="<%= product.productDescription ? product.productDescription : '' %>"
+        value="<%= product.description ? product.description : '' %>"
         required
     >
 
-    <label for="salePrice">Sale Price *</label>
+    <label for="sale_price">Sale Price *</label>
     <p>Min: <%= min_sale_price %></p>
     <p>Max: <%= max_sale_price %></p>
     <input 
         type="number" 
-        name="salePrice" 
-        id="salePrice" 
+        name="sale_price" 
+        id="sale_price" 
         min="<%= min_sale_price %>"
         max="<%= max_sale_price %>"
         step="0.01"
-        value="<%= product.salePrice ? product.salePrice : '' %>"
+        value="<%= product.sale_price ? product.sale_price : '' %>"
         required
     >
 
-    <label for="stockCount">Stock Count *</label>
+    <label for="stock_count">Stock Count *</label>
     <p>Min: <%= min_stock_count %></p>
     <p>Max: <%= max_stock_count %></p>
     <input 
         type="number" 
-        name="stockCount" 
-        id="stockCount" 
+        name="stock_count" 
+        id="stock_count" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="<%= product.stockCount ? product.stockCount : '0' %>"
+        value="<%= product.stock_count ? product.stock_count : '0' %>"
         required
     >
 
-    <label for="lowStockCount">Low Stock Count *</label>
+    <label for="low_stock_count">Low Stock Count *</label>
     <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
     <p>Min: <%= min_stock_count %></p>
     <p>Max: <%= max_stock_count %></p>
     <input 
         type="number" 
-        name="lowStockCount" 
-        id="lowStockCount" 
+        name="low_stock_count" 
+        id="low_stock_count" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="<%= product.lowStockCount ? product.lowStockCount : '0' %>"
+        value="<%= product.low_stock_count ? product.low_stock_count : '0' %>"
         required
     >
 
-    <label for="criticalStockCount">Critical Stock Count *</label>
+    <label for="critical_stock_count">Critical Stock Count *</label>
     <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
     <p>Min: <%= min_stock_count %></p>
     <p>Max: <%= max_stock_count %></p>
     <input 
         type="number" 
-        name="criticalStockCount" 
-        id="criticalStockCount" 
+        name="critical_stock_count" 
+        id="critical_stock_count" 
         min="<%= min_stock_count %>"
         max="<%= max_stock_count %>"
-        value="<%= product.criticalStockCount ? product.criticalStockCount : '0' %>"
+        value="<%= product.critical_stock_count ? product.critical_stock_count : '0' %>"
         required
     >
 </form>

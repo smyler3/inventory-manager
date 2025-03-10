@@ -8,7 +8,7 @@ const CATEGORY_DESCRIPTION_MAX_LENGTH = 1024;
 const CORRECT_PASSWORD = "test";
 
 const validateCreateCategory = [
-    body("categoryTitle")
+    body("title")
         .trim()
         .notEmpty()
         .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
@@ -17,7 +17,7 @@ const validateCreateCategory = [
         .isLength({ min: CATEGORY_TITLE_MIN_LENGTH, max: CATEGORY_TITLE_MAX_LENGTH})
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(CATEGORY_TITLE_MIN_LENGTH, CATEGORY_TITLE_MAX_LENGTH)}`),
 
-    body("categoryDescription")
+    body("description")
         .trim()
         .notEmpty()
         .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)
@@ -40,7 +40,7 @@ const validateDeleteCategory = [
 ];
 
 const validateEditCategory = [
-    body("newCategoryTitle")
+    body("title")
         .trim()
         .notEmpty()
         .withMessage(`Title ${errorMessages.EMPTY_ERROR}`)
@@ -54,7 +54,7 @@ const validateEditCategory = [
             CATEGORY_TITLE_MAX_LENGTH
         )}`),
 
-    body("newCategoryDescription")
+    body("description")
         .trim()
         .notEmpty()
         .withMessage(`Description ${errorMessages.EMPTY_ERROR}`)

@@ -3,12 +3,12 @@ const productCache = require("./productCache");
 
 async function createProduct(
     categoryID,
-    productTitle, 
-    productDescription, 
-    salePrice, 
-    stockCount, 
-    lowStockCount, 
-    criticalStockCount
+    title, 
+    description, 
+    sale_price, 
+    stock_count, 
+    low_stock_count, 
+    critical_stock_count
 ) {
     const SQL = `
         INSERT INTO products (category_id, title, description, sale_price, stock_count, low_stock_count, critical_stock_count)
@@ -17,12 +17,12 @@ async function createProduct(
 
     await pool.query(SQL, [
         categoryID,
-        productTitle, 
-        productDescription, 
-        salePrice, 
-        stockCount, 
-        lowStockCount, 
-        criticalStockCount
+        title, 
+        description, 
+        sale_price, 
+        stock_count, 
+        low_stock_count, 
+        critical_stock_count
     ]);
     productCache.clearProductCache();
 };

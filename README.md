@@ -2,7 +2,6 @@
 
 TODO:
 
-- homogenise database names and JS names for form fields
 - Convert editcategory to use the new object prop field replacement method with new names
 
 - Make Delete product form
