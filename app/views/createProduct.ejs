@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
-<p>Required fields are marked with (*)</p>
 <form action="/categories/<%= categoryID %>/products/new" method="POST" id="create-product-form">
+    <p>Required fields are marked with (*)</p>
     <% if (locals.errors) { %>
         <ul>
             <% errors.forEach(error => { %>
@@ -11,14 +11,13 @@
     
     <label for="title">Title *</label>
     <p>Max length: <%= title_max_length %></p>
-    <input 
-        type="text" 
+    <textarea
         name="title" 
         id="title" 
+        rows="5"
         max="<%= title_max_length %>"
-        value="<%= product.title ? product.title : '' %>"
         required
-    >
+    ><%= product.title ? product.title : '' %></textarea>
 
     <label for="description">Description *</label>
     <p>Max length: <%= description_max_length %></p>

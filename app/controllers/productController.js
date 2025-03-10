@@ -115,8 +115,31 @@ const postCreateProduct = [
     },
 ];
 
-const getEditProductPage = (req, res) => {  
-    res.send("Edit product page");
+const getEditProductPage = async (req, res) => {  
+    const { categoryID, productID } = req.params;
+    const category = await categoryQueries.getCategoryByID(categoryID);
+    const product = await productQueries.getProductByID(productID);
+
+    if (!category | !product) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category or product not found" 
+        });
+    };
+
+    res.render("layout", {
+        title: "",
+        body: "editProduct",
+        category: category,
+        product: product,
+        title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
+        description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
+        min_sale_price: productValidator.MIN_SALE_PRICE,
+        max_sale_price: productValidator.MAX_SALE_PRICE,
+        min_stock_count: productValidator.MIN_STOCK_COUNT,
+        max_stock_count: productValidator.MAX_STOCK_COUNT,
+    });
 }; 
 
 const postEditProduct = (req, res) => { 

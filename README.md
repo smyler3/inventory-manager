@@ -2,7 +2,6 @@
 
 TODO:
 
-- Make edit product form
 - Add edit product form validation
 - Connect edit product form to database
 

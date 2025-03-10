@@ -1,0 +1,94 @@
+<h1><%= title %></h1>
+<p>Fill out fields and enter password to edit "<%= product.title %>" from the "<%= category.title %>" category</p>
+<form action="/categories/<%= category.id %>/products/new" method="POST" id="create-product-form">
+    <p>Required fields are marked with (*)</p>
+    <% if (locals.errors) { %>
+        <ul>
+            <% errors.forEach(error => { %>
+                <li><%= error.msg %></li>
+            <% }) %>
+        </ul>
+    <% } %>
+    
+    <label for="title">Title *</label>
+    <p>Max length: <%= title_max_length %></p>
+    <textarea
+        name="title" 
+        id="title" 
+        rows="5"
+        max="<%= title_max_length %>"
+        required
+    ><%= product.title %></textarea>
+
+    <label for="description">Description *</label>
+    <p>Max length: <%= description_max_length %></p>
+    <input 
+        type="text" 
+        name="description" 
+        id="description" 
+        max="<%= description_max_length %>"
+        value="<%= product.description %>"
+        required
+    >
+
+    <label for="sale_price">Sale Price *</label>
+    <p>Min: <%= min_sale_price %></p>
+    <p>Max: <%= max_sale_price %></p>
+    <input 
+        type="number" 
+        name="sale_price" 
+        id="sale_price" 
+        min="<%= min_sale_price %>"
+        max="<%= max_sale_price %>"
+        step="0.01"
+        value="<%= product.sale_price %>"
+        required
+    >
+
+    <label for="stock_count">Stock Count *</label>
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
+    <input 
+        type="number" 
+        name="stock_count" 
+        id="stock_count" 
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        value="<%= product.stock_count %>"
+        required
+    >
+
+    <label for="low_stock_count">Low Stock Count *</label>
+    <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
+    <input 
+        type="number" 
+        name="low_stock_count" 
+        id="low_stock_count" 
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        value="<%= product.low_stock_count %>"
+        required
+    >
+
+    <label for="critical_stock_count">Critical Stock Count *</label>
+    <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
+    <p>Min: <%= min_stock_count %></p>
+    <p>Max: <%= max_stock_count %></p>
+    <input 
+        type="number" 
+        name="critical_stock_count" 
+        id="critical_stock_count" 
+        min="<%= min_stock_count %>"
+        max="<%= max_stock_count %>"
+        value="<%= product.critical_stock_count %>"
+        required
+    >
+
+    <label for="password">Enter password to continue</label>
+    <input type="password" name="password" id="password" required>
+</form>
+
+<a href="/categories/<%= category.id %>/products">Cancel</a>
+<button type="submit" form="create-product-form">Save changes</button>

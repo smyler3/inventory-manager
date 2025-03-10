@@ -1,6 +1,6 @@
 <h1><%= title %></h1>
-<p>Required fields are marked with (*)</p>
 <form action="/categories/new" method="POST" id="create-category-form">
+    <p>Required fields are marked with (*)</p>
     <% if (locals.errors) { %>
         <ul>
             <% errors.forEach(error => { %>
