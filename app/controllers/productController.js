@@ -144,9 +144,35 @@ const getDeleteProduct = async (req, res) => {
     });
 };  
 
-const postDeleteProduct = (req, res) => {   
-    res.send("Delete product");
-};  
+const postDeleteProduct = [
+    productValidator.validateDeleteProduct,
+    async (req, res) => {   
+        const errors = validationResult(req);
+        const { categoryID, productID } = req.params;
+
+        if (!errors.isEmpty()) {
+            const category = await categoryQueries.getCategoryByID(categoryID);
+            const product = await productQueries.getProductByID(productID);
+
+            return res.status(400).render("layout", {
+                title: "Delete a product",
+                body: "deleteProduct",
+                category: category,
+                product: product,
+                errors: errors.errors,
+            });
+        };
+
+        try {
+            await productQueries.deleteProduct(productID);
+            res.redirect(`/categories/${categoryID}/products`);
+        }
+        catch (error) {
+            console.error("Error deleting product:", error);
+            res.redirect("/500");
+        };
+    },
+];  
 
 const getProductByID = (req, res) => {
     res.send("Product by ID");

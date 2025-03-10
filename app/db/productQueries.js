@@ -27,6 +27,16 @@ async function createProduct(
     productCache.clearProductCache();
 };
 
+async function deleteProduct(id) {
+    const SQL = `
+        DELETE FROM products
+        WHERE id=$1;
+    `;
+
+    await pool.query(SQL, [id]);
+    productCache.clearProductCache();
+};
+
 async function getAllProducts() {
     if (productCache.checkProductCacheInvalid()) {
         const SQL = `
@@ -59,6 +69,7 @@ async function getProductByID(productID) {
 
 module.exports = {
     createProduct,
+    deleteProduct,
     getAllProducts,
     getProductsByCategoryID,
     getProductByID,

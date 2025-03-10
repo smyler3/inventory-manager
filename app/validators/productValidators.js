@@ -76,6 +76,18 @@ const validateCreateProduct = [
         }),
 ];
 
+const validateDeleteProduct = [
+    body("password")
+        .notEmpty()
+        .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
+        .custom((value) => {
+            if (value !== CORRECT_PASSWORD) {
+                throw new Error(`Password ${errorMessages.PASSWORD_ERROR}`);
+            }
+            return true;
+        }),
+];
+
 module.exports = {
     PRODUCT_TITLE_MAX_LENGTH,
     PRODUCT_DESCRIPTION_MAX_LENGTH,
@@ -84,4 +96,5 @@ module.exports = {
     MIN_STOCK_COUNT,
     MAX_STOCK_COUNT,
     validateCreateProduct,
+    validateDeleteProduct,
 }

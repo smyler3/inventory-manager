@@ -33,7 +33,7 @@ const validateDeleteCategory = [
         .withMessage(`Password ${errorMessages.EMPTY_ERROR}`)
         .custom((value) => {
             if (value !==  CORRECT_PASSWORD) {
-                throw new Error("Incorrect password");
+                throw new Error(`Password ${errorMessages.PASSWORD_ERROR}`);
             }
             return true;
         }),
