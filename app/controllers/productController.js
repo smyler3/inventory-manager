@@ -165,6 +165,7 @@ const postEditProduct = [
                 body: "editProduct",
                 category: category,
                 product: {
+                    id: productID,
                     title,
                     description,
                     sale_price,
