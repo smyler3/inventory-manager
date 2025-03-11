@@ -120,6 +120,8 @@ const validateEditProduct = [
         )}`),
 
     body("sale_price")
+        .customSanitizer((value) => Number(value))
+
         .isFloat({ min: MIN_SALE_PRICE, max: MAX_SALE_PRICE })
         .withMessage(`Sale Price ${errorMessages.BOUND_ERROR(
             MIN_SALE_PRICE, 
@@ -127,6 +129,8 @@ const validateEditProduct = [
         )}`),
 
     body("stock_count")
+        .customSanitizer((value) => Number(value))
+
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
@@ -134,6 +138,8 @@ const validateEditProduct = [
         )}`),
 
     body("low_stock_count")
+        .customSanitizer((value) => Number(value))
+
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Low Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
@@ -141,6 +147,8 @@ const validateEditProduct = [
         )}`),
 
     body("critical_stock_count")
+        .customSanitizer((value) => Number(value))
+
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Critical Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 
