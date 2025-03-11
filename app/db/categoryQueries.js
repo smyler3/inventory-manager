@@ -35,7 +35,13 @@ async function deleteCategory(id) {
 async function getAllCategories() {
     if (categoryCache.checkCategoryCacheInvalid()) {
         const SQL = `
-            SELECT * FROM categories;
+            SELECT categories.*, 
+                COUNT(products.id) AS product_count, 
+                SUM(CASE WHEN products.stock_count <= products.low_stock_count AND products.stock_count > products.critical_stock_count THEN 1 ELSE 0 END) AS low_warnings,
+                SUM(CASE WHEN products.stock_count <= products.critical_stock_count THEN 1 ELSE 0 END) AS critical_warnings
+            FROM categories
+            LEFT JOIN products ON categories.id = products.category_id
+            GROUP BY categories.id;
         `;
         const { rows } = await pool.query(SQL);
 

@@ -6,7 +6,11 @@
             <p>$<%= product.sale_price%></p>
             <div class="">
                 <p>Stock count: <%= product.stock_count %></p>
-                <!-- Icon representing stock_count compared to threshold difference -->
+                <% if (product.stock_count <= product.critical_stock_count) { %>
+                    <img src="" alt="critical_stock_icon" />
+                <% } else if (product.stock_count <= product.low_stock_count) { %>
+                    <img src="" alt="low_stock_icon" />
+                <% } %>
             </div>
         </span>
         <span class="">

@@ -2,9 +2,16 @@
 
 TODO:
 
-- I think checking data, then fetching feels dumb, maybe combine
+- Add back buttons
 
 - Decide sort button options for categories and products
+  -- Default
+  -- Alphabetical
+  -- Low Stock Warnings (most to least)
+  -- Low Stock Warnings (least to most)
+  -- critical Stock Warnings (most to least)
+  -- critical Stock Warnings (least to most)
+
 - Make search fields work
 
 - Implement warnings for low and critical stock level

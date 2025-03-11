@@ -6,7 +6,9 @@
     <%- include("./partials/sortByButton", { options: options }) %>
     <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
 </div>
-<p><%= products.length %> products</p>
+<p>Products: <%= category.product_count%> </p>
+<p>Low stock warnings: <%= category.low_warnings %> </p>
+<p>Critical stock warnings: <%= category.critical_warnings %> </p>
 <ul>
     <% products.forEach(product => {%>
         <li><%- include("./partials/productCard", { product: product }) %></li>

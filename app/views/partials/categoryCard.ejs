@@ -4,8 +4,9 @@
         <p><%= category.description %></p>
         <div class="">
             <span class="">
-                <p><%= category.productCount%> products</p>
-                <p>Low stock: <%= category.lowStockCount %>, Critical stock: <%= category.criticalStockCount %></p>
+                <p>Products: <%= category.product_count%> </p>
+                <p>Low stock warnings: <%= category.low_warnings %> </p>
+                <p>Critical stock warnings: <%= category.critical_warnings %> </p>
             </span>
             <span class="">
                 <a href="/categories/<%= category.id %>/edit">Edit</a>
