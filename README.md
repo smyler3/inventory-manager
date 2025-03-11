@@ -2,7 +2,7 @@
 
 TODO:
 
-- Decide sort button options for categories and products
+- Decide sort button options for categories
   -- Default
   -- Alphabetical
   -- Low Stock Warnings (most to least)

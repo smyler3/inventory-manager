@@ -1,10 +1,22 @@
 <div class="sortByContainer">
     <div>Sort by:</div>
     <div>
-        <select id="filter">
+        <select id="sortFilter">
             <% options.forEach(option => { %>
-                <option value="<%= option.value %>"><%= option.label %></option>
+                <option value="<%= option.id %>" <%= (sortID === option.id && "selected") %>><%= option.label %></option>
             <% }) %>
         </select>
     </div>
 </div>
+
+<script>
+    // Reload the page with new sort query parameter after selecting sort option
+    document.getElementById("sortFilter").addEventListener("change", function() {
+        const selectedParam = this.value;
+        const url = new URL(window.location);
+
+        url.searchParams.set("sortID", selectedParam);
+
+        window.location.href = url.toString();
+    });
+</script>

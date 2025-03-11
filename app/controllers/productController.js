@@ -2,10 +2,12 @@ const { validationResult } = require("express-validator");
 const categoryQueries = require("../db/categoryQueries");
 const productQueries = require("../db/productQueries");
 const productValidator = require("../validators/productValidators");
+const { PRODUCT_SORT_OPTIONS, applyProductSort } = require("../utils/sorting");
 
 const getProductsByCategory = async (req, res) => {
     try {
         const { categoryID } = req.params;
+        const { sortID } = req.query;
         const category = await categoryQueries.getCategoryByID(categoryID);
 
         if (!category) {
@@ -16,8 +18,8 @@ const getProductsByCategory = async (req, res) => {
             });
         };
 
-        const products = await productQueries.getProductsByCategoryID(categoryID);
-        const options = [];
+        const unsortedProducts = await productQueries.getProductsByCategoryID(categoryID);
+        const products = applyProductSort(unsortedProducts, sortID);
 
         res.render("layout", {
             title: category.title,
@@ -25,7 +27,8 @@ const getProductsByCategory = async (req, res) => {
             categoryID: categoryID,
             category: category,
             products: products,
-            options: options,
+            options: PRODUCT_SORT_OPTIONS,
+            sortID: sortID,
         });
     }
     catch (error) {
@@ -127,8 +130,6 @@ const getEditProductPage = async (req, res) => {
             message: "Category or product not found" 
         });
     };
-
-    console.log("rendering with product:", product);
 
     res.render("layout", {
         title: "Edit a Product",

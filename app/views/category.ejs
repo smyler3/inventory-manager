@@ -12,7 +12,7 @@
     <input type="text" id="search" placeholder="Search by product name" />
 </form>
 <div class="horizontalContainer">
-    <%- include("./partials/sortByButton", { options: options }) %>
+    <%- include("./partials/sortByButton", { options, sortID }) %>
     <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
 </div>
 <ul>
