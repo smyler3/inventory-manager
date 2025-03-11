@@ -2,8 +2,6 @@
 
 TODO:
 
-- Add back buttons
-
 - Decide sort button options for categories and products
   -- Default
   -- Alphabetical

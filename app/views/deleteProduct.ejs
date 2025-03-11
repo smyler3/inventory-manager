@@ -1,3 +1,4 @@
+<a href="/categories/<%= category.id %>/products">Back to category</a>
 <h1><%= title %></h1>
 <p>Enter password to delete "<%= product.title %>" from the "<%= category.title %>" category</p>
 <form action="/categories/<%= category.id %>/products/<%= product.id %>/delete" method="POST" id="delete-product-form">

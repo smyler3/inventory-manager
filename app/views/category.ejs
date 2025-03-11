@@ -1,14 +1,20 @@
+<a href="/categories">Back to categories</a>
 <h1><%= title %></h1>
+<p><%= category.description %></p>
+<p>Products: <%= category.product_count%> </p>
+<p>Low stock warnings: <%= category.low_warnings %> </p>
+<p>Critical stock warnings: <%= category.critical_warnings %> </p>
+<span class="">
+    <a href="/categories/<%= category.id %>/edit">Edit</a>
+    <a href="/categories/<%= category.id %>/delete">Delete</a>
+</span>
 <form>
-    <input type="text" id="search" placeholder="Search by category name" />
+    <input type="text" id="search" placeholder="Search by product name" />
 </form>
 <div class="horizontalContainer">
     <%- include("./partials/sortByButton", { options: options }) %>
     <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
 </div>
-<p>Products: <%= category.product_count%> </p>
-<p>Low stock warnings: <%= category.low_warnings %> </p>
-<p>Critical stock warnings: <%= category.critical_warnings %> </p>
 <ul>
     <% products.forEach(product => {%>
         <li><%- include("./partials/productCard", { product: product }) %></li>

@@ -106,7 +106,7 @@ const postEditCategory = [
 
         try {
             await categoryQueries.editCategory(categoryID, title, description);
-            res.status(200).redirect("/categories");
+            res.status(200).redirect(`/categories/${categoryID}/products`);
         }
         catch (error) {
             console.error("Error editing category:", error);
@@ -154,7 +154,7 @@ const postDeleteCategory = [
 
         try {
             await categoryQueries.deleteCategory(categoryID);
-            res.status(204).redirect("/categories");
+            res.status(204).redirect(`/categories/${categoryID}/products`);
         }
         catch (error) {
             console.error("Error deleting category:", error);
