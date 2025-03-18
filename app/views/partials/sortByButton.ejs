@@ -3,7 +3,7 @@
     <div>
         <select id="sortFilter">
             <% options.forEach(option => { %>
-                <option value="<%= option.id %>" <%= (sortID === option.id && "selected") %>><%= option.label %></option>
+                <option value="<%= option.id %>" <%= (Number(sortID) === option.id && "selected") %>><%= option.label %></option>
             <% }) %>
         </select>
     </div>
