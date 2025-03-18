@@ -11,7 +11,7 @@ const PRODUCT_SORT_OPTIONS = [
     },
     {
         id: 2,
-        label: "Alphabetical (a-z)",
+        label: "Title (a-z)",
         sortFunction: (a, b) => {
             if (a.title < b.title) {
                 return -1;
@@ -24,7 +24,7 @@ const PRODUCT_SORT_OPTIONS = [
     },
     {
         id: 3,
-        label: "Alphabetical (z-a)",
+        label: "Title (z-a)",
         sortFunction: (a, b) => {
             if (b.title < a.title) {
                 return -1;
@@ -65,19 +65,82 @@ const PRODUCT_SORT_OPTIONS = [
     },
 ];
 
-function applyProductSort(products, sortID) {
+const CATEGORY_SORT_OPTIONS = [
+    {
+        id: 0,
+        label: "Date added (newest first)",
+        sortFunction: (a, b) => a.id - b.id,
+    },
+    {
+        id: 1,
+        label: "Date added (oldest first)",
+        sortFunction: (a, b) => b.id - a.id,
+    },
+    {
+        id: 2,
+        label: "Title (a-z)",
+        sortFunction: (a, b) => a.title.localeCompare(b.title),
+    },
+    {
+        id: 3,
+        label: "Title (z-a)",
+        sortFunction: (a, b) => b.title.localeCompare(a.title),
+    },
+    {
+        id: 4,
+        label: "Products (most first)",
+        sortFunction: (a, b) => b.product_count - a.product_count,
+    },
+    {
+        id: 5,
+        label: "Products (least first)",
+        sortFunction: (a, b) => a.product_count - b.product_count,
+    },
+    {
+        id: 6,
+        label: "Low warnings (most first)",
+        sortFunction: (a, b) => b.low_warnings - a.low_warnings,
+    },
+    {
+        id: 7,
+        label: "Low warnings (least first)",
+        sortFunction: (a, b) => a.low_warnings - b.low_warnings,
+    },
+    {
+        id: 8,
+        label: "Critical warnings (most first)",
+        sortFunction: (a, b) => b.critical_warnings - a.critical_warnings,
+    },
+    {
+        id: 9,
+        label: "Critical warnings (least first)",
+        sortFunction: (a, b) => a.critical_warnings - b.critical_warnings,
+    },
+];
+
+function applySort (items, sortID, sortOptions) {
     let sort = null;
     if (!sortID) {
-        sort = PRODUCT_SORT_OPTIONS.find(x => x.id === 0);
+        sort = sortOptions.find(x => x.id === 0);
     }
     else {
-        sort = PRODUCT_SORT_OPTIONS.find(x => x.id === Number(sortID));
+        sort = sortOptions.find(x => x.id === Number(sortID));
     }
 
-    return products.sort(sort.sortFunction);
-}
+    return items.sort(sort.sortFunction);
+};
+
+function applyProductSort(products, sortID) {
+    return applySort(products, sortID, PRODUCT_SORT_OPTIONS);
+};
+
+function applyCategorySort(categories, sortID) {
+    return applySort(categories, sortID, CATEGORY_SORT_OPTIONS);
+};
 
 module.exports = {
     PRODUCT_SORT_OPTIONS,
+    CATEGORY_SORT_OPTIONS,
     applyProductSort,
+    applyCategorySort,
 };

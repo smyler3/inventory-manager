@@ -4,7 +4,7 @@
     <input type="text" id="search" placeholder="Search by category name" />
 </form>
 <div class="horizontalContainer">
-    <!-- include("./partials/sortByButton", { options: options }) -->
+    <%- include("./partials/sortByButton", { options, sortID }) %>
     <a href="/categories/new">Create new category</a>
 </div>
 <p><%= categories.length %> categories</p>
