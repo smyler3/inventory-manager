@@ -9,18 +9,8 @@
     <a href="/categories/<%= category.id %>/delete">Delete</a>
 </span>
 
-<form action="/categories/<%= categoryID %>/products">
-    <input type="hidden" name="sortID" value="<%= sortID && sortID %>" />
-    <label for="search" >Search by product name</label>
-    <input type="search" id="search" name="search" placeholder="Search..." value="<%= search && search %>" required />
-    <button id="searchClear" type="reset">Clear</button>
-    <button type="submit">Search</button>
-</form>
+<%- include("./partials/filters", { action, search, sort, options }) %>
 
-<div class="horizontalContainer">
-    <%- include("./partials/sortByButton", { options, sortID }) %>
-    <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
-</div>
 <p><%= products.length %> products</p>
 <ul>
     <% products.forEach(product => {%>

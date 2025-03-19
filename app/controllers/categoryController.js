@@ -6,19 +6,19 @@ const { CATEGORY_SORT_OPTIONS, applyCategoryFilters } = require("../utils/filter
 
 const getAllCategories = async (req, res) => {
     try {
-        console.log(req.query);
-        const { sortID, search } = req.query;
+        const { sort, search } = req.query;
         const searchFilter = search ? search.trim() : undefined;
         const rawCategories = await categoryQueries.getAllCategories();
-        const categories = applyCategoryFilters(rawCategories, searchFilter, sortID);
+        const categories = applyCategoryFilters(rawCategories, searchFilter, sort);
 
         res.render("layout", {
             title: "All Categories",
             body: "categories",
             categories: categories,
-            options: CATEGORY_SORT_OPTIONS,
-            sortID: sortID,
+            action: "/categories",
             search: searchFilter,
+            sort: sort,
+            options: CATEGORY_SORT_OPTIONS,
         });
     }
     catch (error) {

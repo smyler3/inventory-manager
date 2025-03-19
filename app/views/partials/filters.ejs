@@ -1,0 +1,61 @@
+<form action="<%= action %>" method="GET">
+    <input type="hidden" name="sort" value="<%= sort && sort %>" />
+    <label for="search" >Search by name</label>
+    <input type="search" id="search" name="search" placeholder="Search..." value="<%= search && search %>" required />
+    <button id="searchClear" class="<%= search && "show" %>" type="button">x</button>
+
+    <button type="submit">Search</button>
+</form>
+
+<form action="<%= action %>" method="GET">
+    <input type="hidden" name="search" value="<%= search && search %>" />
+    <label for="sort">Sort by</label>
+    <select id="sort" name="sort">
+        <% options.forEach(option => { %>
+            <option value="<%= option.id %>" <%= (Number(sort) === option.id && "selected") %>><%= option.label %></option>
+        <% }) %>
+    </select>
+    <button id="sortClear" class="<%= sort && "show" %>" type="button">x</button>
+
+    <button type="submit">Search</button>
+</form>
+
+<button id="allClear" type="button">Clear All</button>
+
+<script>
+    // Clear button functionality for form
+    document.getElementById("allClear").addEventListener("click", () => {
+        const url = new URL(window.location);
+
+        url.searchParams.delete("search");
+        url.searchParams.delete("sort");
+        window.location.href = url.toString();
+    });
+
+    // Clear button functionality for form
+    document.getElementById("searchClear").addEventListener("click", () => {
+        const url = new URL(window.location);
+
+        url.searchParams.delete("search");
+        window.location.href = url.toString();
+    });
+
+    // Clear button functionality for form
+    document.getElementById("sortClear").addEventListener("click", () => {
+        const url = new URL(window.location);
+
+        url.searchParams.delete("sort");
+        window.location.href = url.toString();
+    });
+
+    // Reload the page with new sort query parameter after selecting sort option
+    document.getElementById("sort").addEventListener("change", (e) => {
+        const selectedParam = e.target.value;
+        console.log("yo", selectedParam);
+        const url = new URL(window.location);
+
+        url.searchParams.set("sort", selectedParam);
+
+        window.location.href = url.toString();
+    });
+</script>

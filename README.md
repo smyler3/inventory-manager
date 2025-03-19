@@ -2,9 +2,6 @@
 
 TODO:
 
-- Seperate search field into own component
-- And just make a big form with both options
-
 - Add validator for not-unique titles
 
 - Add form errors above relevant field

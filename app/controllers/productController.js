@@ -7,7 +7,7 @@ const { PRODUCT_SORT_OPTIONS, applyProductSort, applyProductFilters } = require(
 const getProductsByCategory = async (req, res) => {
     try {
         const { categoryID } = req.params;
-        const { sortID, search } = req.query;
+        const { sort, search } = req.query;
         const searchFilter = search ? search.trim() : undefined;
         const category = await categoryQueries.getCategoryByID(categoryID);
 
@@ -20,7 +20,7 @@ const getProductsByCategory = async (req, res) => {
         };
 
         const rawProducts = await productQueries.getProductsByCategoryID(categoryID);
-        const products = applyProductFilters(rawProducts, searchFilter, sortID);
+        const products = applyProductFilters(rawProducts, searchFilter, sort);
 
         res.render("layout", {
             title: category.title,
@@ -28,9 +28,10 @@ const getProductsByCategory = async (req, res) => {
             categoryID: categoryID,
             category: category,
             products: products,
-            options: PRODUCT_SORT_OPTIONS,
-            sortID: sortID,
+            action: `/categories/${categoryID}/products`,
             search: searchFilter,
+            sort: sort,
+            options: PRODUCT_SORT_OPTIONS,
         });
     }
     catch (error) {

@@ -1,36 +1,15 @@
 
 <h1><%= title %></h1>
 
-<form action="/categories" method="GET">
-    <input type="hidden" name="sortID" value="<%= sortID && sortID %>" />
-    <label for="search" >Search by category name</label>
-    <input type="search" id="search" name="search" placeholder="Search..." value="<%= search && search %>" required />
-    <button id="searchClear" type="reset">Clear</button>
-    <button type="submit">Search</button>
-</form>
+<%- include("./partials/filters", { action, search, sort, options }) %>
 
-
-<div class="horizontalContainer">
-    <%- include("./partials/sortByButton", { options, sortID }) %>
-    <a href="/categories/new">Create new category</a>
-</div>
 <p><%= categories.length %> categories</p>
 <% if (categories.length > 0) { %>
     <ul>
         <% categories.forEach(category => {%>
-            <li><%- include("./partials/categoryCard", { category: category }) %></li>
+            <li><%- include("./partials/categoryCard", { category }) %></li>
         <% }); %>
     </ul>
 <% } else { %>
     <p>No results for "<%= search %>" found</p>
 <% } %>
-
-<script>
-    // Clear button functionality for form
-    document.getElementById("searchClear").addEventListener("click", () => {
-        const url = new URL(window.location);
-
-        url.searchParams.delete("search");
-        window.location.href = url.toString();
-    });
-</script>

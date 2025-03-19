@@ -118,13 +118,13 @@ const CATEGORY_SORT_OPTIONS = [
     },
 ];
 
-function applySort (items, sortID, sortOptions) {
+function applySort (items, sort, sortOptions) {
     let sort = null;
-    if (!sortID) {
+    if (!sort) {
         sort = sortOptions.find(x => x.id === 0);
     }
     else {
-        sort = sortOptions.find(x => x.id === Number(sortID));
+        sort = sortOptions.find(x => x.id === Number(sort));
     }
 
     return items.sort(sort.sortFunction);
@@ -139,18 +139,18 @@ function applySearch(items, searchFilter) {
     return items.filter(x => x.title.match(new RegExp(`.*${safeSearchFilter}.*`, "i")));
 }
 
-function applyFilters(items, searchFilter, sortID, sortOptions) {
+function applyFilters(items, searchFilter, sort, sortOptions) {
     const filtered = applySearch(items, searchFilter);
-    const sorted = applySort(filtered, sortID, sortOptions);
+    const sorted = applySort(filtered, sort, sortOptions);
     return sorted;
 };
 
-function applyProductFilters(products, searchFilter, sortID) {
-    return applyFilters(products, searchFilter, sortID, PRODUCT_SORT_OPTIONS);
+function applyProductFilters(products, searchFilter, sort) {
+    return applyFilters(products, searchFilter, sort, PRODUCT_SORT_OPTIONS);
 };
 
-function applyCategoryFilters(categories, searchFilter, sortID) {
-    return applyFilters(categories, searchFilter, sortID, CATEGORY_SORT_OPTIONS);
+function applyCategoryFilters(categories, searchFilter, sort) {
+    return applyFilters(categories, searchFilter, sort, CATEGORY_SORT_OPTIONS);
 };
 
 module.exports = {
