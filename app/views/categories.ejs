@@ -1,7 +1,7 @@
 
 <h1><%= title %></h1>
 <form action="/categories" method="GET">
-    <input type="search" id="search" name="search" placeholder="Search by category name" value="<%= search && search %>" />
+    <input type="search" id="search" name="search" placeholder="Search by category name" value="<%= search && search %>" required/>
     <button id="searchClear" type="reset">Clear</button>
     <button type="submit">Search</button>
 </form>
@@ -12,11 +12,15 @@
     <a href="/categories/new">Create new category</a>
 </div>
 <p><%= categories.length %> categories</p>
-<ul>
-    <% categories.forEach(category => {%>
-        <li><%- include("./partials/categoryCard", { category: category }) %></li>
-    <% }); %>
-</ul>
+<% if (categories.length > 0) { %>
+    <ul>
+        <% categories.forEach(category => {%>
+            <li><%- include("./partials/categoryCard", { category: category }) %></li>
+        <% }); %>
+    </ul>
+<% } else { %>
+    <p>No results for "<%= search %>" found</p>
+<% } %>
 
 <script>
     // Clear button functionality for form
