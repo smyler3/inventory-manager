@@ -2,9 +2,8 @@
 
 TODO:
 
-- Make sort filters applied when searching products
-
 - Seperate search field into own component
+- And just make a big form with both options
 
 - Add validator for not-unique titles
 
