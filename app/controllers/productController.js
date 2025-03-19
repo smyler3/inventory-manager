@@ -2,12 +2,13 @@ const { validationResult } = require("express-validator");
 const categoryQueries = require("../db/categoryQueries");
 const productQueries = require("../db/productQueries");
 const productValidator = require("../validators/productValidators");
-const { PRODUCT_SORT_OPTIONS, applyProductSort } = require("../utils/filters");
+const { PRODUCT_SORT_OPTIONS, applyProductSort, applyProductFilters } = require("../utils/filters");
 
 const getProductsByCategory = async (req, res) => {
     try {
         const { categoryID } = req.params;
-        const { sortID } = req.query;
+        const { sortID, search } = req.query;
+        const searchFilter = search ? search.trim() : undefined;
         const category = await categoryQueries.getCategoryByID(categoryID);
 
         if (!category) {
@@ -18,8 +19,8 @@ const getProductsByCategory = async (req, res) => {
             });
         };
 
-        const unsortedProducts = await productQueries.getProductsByCategoryID(categoryID);
-        const products = applyProductSort(unsortedProducts, sortID);
+        const rawProducts = await productQueries.getProductsByCategoryID(categoryID);
+        const products = applyProductFilters(rawProducts, searchFilter, sortID);
 
         res.render("layout", {
             title: category.title,
@@ -29,6 +30,7 @@ const getProductsByCategory = async (req, res) => {
             products: products,
             options: PRODUCT_SORT_OPTIONS,
             sortID: sortID,
+            search: searchFilter,
         });
     }
     catch (error) {

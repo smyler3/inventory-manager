@@ -1,7 +1,8 @@
 
 <h1><%= title %></h1>
+
 <form action="/categories" method="GET">
-    <input type="search" id="search" name="search" placeholder="Search by category name" value="<%= search && search %>" required/>
+    <input type="search" id="search" name="search" placeholder="Search by category name" value="<%= search && search %>" required />
     <button id="searchClear" type="reset">Clear</button>
     <button type="submit">Search</button>
 </form>

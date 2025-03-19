@@ -145,8 +145,8 @@ function applyFilters(items, searchFilter, sortID, sortOptions) {
     return sorted;
 };
 
-function applyProductSort(products, sortID) {
-    return applySort(products, sortID, PRODUCT_SORT_OPTIONS);
+function applyProductFilters(products, searchFilter, sortID) {
+    return applyFilters(products, searchFilter, sortID, PRODUCT_SORT_OPTIONS);
 };
 
 function applyCategoryFilters(categories, searchFilter, sortID) {
@@ -156,6 +156,6 @@ function applyCategoryFilters(categories, searchFilter, sortID) {
 module.exports = {
     PRODUCT_SORT_OPTIONS,
     CATEGORY_SORT_OPTIONS,
-    applyProductSort,
+    applyProductFilters,
     applyCategoryFilters,
 };

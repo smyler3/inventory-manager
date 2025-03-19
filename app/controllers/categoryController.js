@@ -11,7 +11,6 @@ const getAllCategories = async (req, res) => {
         const searchFilter = search ? search.trim() : undefined;
         const rawCategories = await categoryQueries.getAllCategories();
         const categories = applyCategoryFilters(rawCategories, searchFilter, sortID);
-        console.log(categories);
 
         res.render("layout", {
             title: "All Categories",

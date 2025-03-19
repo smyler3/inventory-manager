@@ -8,15 +8,30 @@
     <a href="/categories/<%= category.id %>/edit">Edit</a>
     <a href="/categories/<%= category.id %>/delete">Delete</a>
 </span>
-<form>
-    <input type="text" id="search" placeholder="Search by product name" />
+
+<form action="/categories/<%= categoryID %>/products">
+    <input type="search" id="search" name="search" placeholder="Search by product name" value="<%= search && search %>" required />
+    <button id="searchClear" type="reset">Clear</button>
+    <button type="submit">Search</button>
 </form>
+
 <div class="horizontalContainer">
     <%- include("./partials/sortByButton", { options, sortID }) %>
     <a href="/categories/<%= categoryID %>/products/new">Create new product</a>
 </div>
+<p><%= products.length %> products</p>
 <ul>
     <% products.forEach(product => {%>
         <li><%- include("./partials/productCard", { product: product }) %></li>
     <% }); %>
 </ul>
+
+<script>
+    // Clear button functionality for form
+    document.getElementById("searchClear").addEventListener("click", () => {
+        const url = new URL(window.location);
+
+        url.searchParams.delete("search");
+        window.location.href = url.toString();
+    });
+</script>
