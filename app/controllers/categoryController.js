@@ -2,13 +2,16 @@ const { validationResult } = require("express-validator");
 const categoryValidator = require("../validators/categoryValidators.js");
 const categoryQueries = require("../db/categoryQueries.js");
 const { options } = require("../db/pool.js");
-const { applyCategorySort, CATEGORY_SORT_OPTIONS } = require("../utils/sorting.js");
+const { CATEGORY_SORT_OPTIONS, applyCategoryFilters } = require("../utils/filters.js");
 
 const getAllCategories = async (req, res) => {
     try {
-        const { sortID } = req.query;
-        const unsortedCategories = await categoryQueries.getAllCategories();
-        const categories = applyCategorySort(unsortedCategories, sortID);
+        console.log(req.query);
+        const { sortID, search } = req.query;
+        const searchFilter = search ? search.trim() : undefined;
+        const rawCategories = await categoryQueries.getAllCategories();
+        const categories = applyCategoryFilters(rawCategories, searchFilter, sortID);
+        console.log(categories);
 
         res.render("layout", {
             title: "All Categories",
@@ -16,6 +19,7 @@ const getAllCategories = async (req, res) => {
             categories: categories,
             options: CATEGORY_SORT_OPTIONS,
             sortID: sortID,
+            search: searchFilter,
         });
     }
     catch (error) {

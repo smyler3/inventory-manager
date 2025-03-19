@@ -32,7 +32,7 @@ async function deleteCategory(id) {
     categoryCache.clearCategoryCache();
 };
 
-async function getAllCategories() {
+async function getAllCategories(search) {
     if (categoryCache.checkCategoryCacheInvalid()) {
         const SQL = `
             SELECT categories.*, 
@@ -53,6 +53,26 @@ async function getAllCategories() {
     return categoryCache.getCategoryCacheData();
 };
 
+async function getCategoriesBySearch(search) {
+    if (categoryCache.checkCategoryCacheInvalid()) {
+        const SQL = `
+            SELECT categories.*, 
+                COUNT(products.id) AS product_count, 
+                SUM(CASE WHEN products.stock_count <= products.low_stock_count AND products.stock_count > products.critical_stock_count THEN 1 ELSE 0 END) AS low_warnings,
+                SUM(CASE WHEN products.stock_count <= products.critical_stock_count THEN 1 ELSE 0 END) AS critical_warnings
+            FROM categories
+            LEFT JOIN products ON categories.id = products.category_id
+            WHERE categories.title ILIKE '%' || $1 || '%'
+            GROUP BY categories.id;
+        `;
+        const { rows } = await pool.query(SQL, [search]);
+
+        return rows;
+    };
+    
+    return categoryCache.getCategoryCacheData();
+};
+
 async function getCategoryByID(categoryID) {
     const categories = await getAllCategories();
     const category = categories.find(x => x.id === Number(categoryID)) || null;
@@ -65,5 +85,6 @@ module.exports = {
     editCategory,
     deleteCategory,
     getAllCategories,
+    getCategoriesBySearch,
     getCategoryByID,
 };

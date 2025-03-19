@@ -130,17 +130,32 @@ function applySort (items, sortID, sortOptions) {
     return items.sort(sort.sortFunction);
 };
 
+function applySearch(items, searchFilter) {
+    if (!searchFilter) {
+        return items;
+    }
+    const safeSearchFilter = searchFilter.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); 
+
+    return items.filter(x => x.title.match(new RegExp(`.*${safeSearchFilter}.*`, "i")));
+}
+
+function applyFilters(items, searchFilter, sortID, sortOptions) {
+    const filtered = applySearch(items, searchFilter);
+    const sorted = applySort(filtered, sortID, sortOptions);
+    return sorted;
+};
+
 function applyProductSort(products, sortID) {
     return applySort(products, sortID, PRODUCT_SORT_OPTIONS);
 };
 
-function applyCategorySort(categories, sortID) {
-    return applySort(categories, sortID, CATEGORY_SORT_OPTIONS);
+function applyCategoryFilters(categories, searchFilter, sortID) {
+    return applyFilters(categories, searchFilter, sortID, CATEGORY_SORT_OPTIONS);
 };
 
 module.exports = {
     PRODUCT_SORT_OPTIONS,
     CATEGORY_SORT_OPTIONS,
     applyProductSort,
-    applyCategorySort,
+    applyCategoryFilters,
 };

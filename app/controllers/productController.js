@@ -2,7 +2,7 @@ const { validationResult } = require("express-validator");
 const categoryQueries = require("../db/categoryQueries");
 const productQueries = require("../db/productQueries");
 const productValidator = require("../validators/productValidators");
-const { PRODUCT_SORT_OPTIONS, applyProductSort } = require("../utils/sorting");
+const { PRODUCT_SORT_OPTIONS, applyProductSort } = require("../utils/filters");
 
 const getProductsByCategory = async (req, res) => {
     try {

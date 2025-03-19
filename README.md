@@ -2,11 +2,16 @@
 
 TODO:
 
-- Make search fields work
+- Make categories search field work
+  -- Add visuals for if no option found
+
+- Make products search field work
 
 - Add validator for not-unique titles
 
 - Add form errors above relevant field
+
+- Make back buttons return with last sort alg still applied in url
 
 - make everything pretty
 

@@ -1,8 +1,12 @@
 
 <h1><%= title %></h1>
-<form>
-    <input type="text" id="search" placeholder="Search by category name" />
+<form action="/categories" method="GET">
+    <input type="search" id="search" name="search" placeholder="Search by category name" value="<%= search && search %>" />
+    <button id="searchClear" type="reset">Clear</button>
+    <button type="submit">Search</button>
 </form>
+
+
 <div class="horizontalContainer">
     <%- include("./partials/sortByButton", { options, sortID }) %>
     <a href="/categories/new">Create new category</a>
@@ -13,3 +17,13 @@
         <li><%- include("./partials/categoryCard", { category: category }) %></li>
     <% }); %>
 </ul>
+
+<script>
+    // Clear button functionality for form
+    document.getElementById("searchClear").addEventListener("click", () => {
+        const url = new URL(window.location);
+
+        url.searchParams.delete("search");
+        window.location.href = url.toString();
+    });
+</script>
