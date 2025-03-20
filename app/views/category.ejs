@@ -10,6 +10,7 @@
 </span>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
+<a href="/categories/<%= categoryID %>/products/new">Create new product</a>
 
 <p><%= products.length %> products</p>
 <ul>
