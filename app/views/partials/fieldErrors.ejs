@@ -1,0 +1,8 @@
+<% const localErrors = errors.filter(x => x.path === selector) %>
+<% if (localErrors.length > 0) { %>
+    <ul>
+        <% localErrors.forEach(error => { %>
+            <li><%= error.msg %></li>
+        <% }) %>
+    </ul>
+<% } %>

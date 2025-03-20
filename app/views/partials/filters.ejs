@@ -51,11 +51,9 @@
     // Reload the page with new sort query parameter after selecting sort option
     document.getElementById("sort").addEventListener("change", (e) => {
         const selectedParam = e.target.value;
-        console.log("yo", selectedParam);
         const url = new URL(window.location);
 
         url.searchParams.set("sort", selectedParam);
-
         window.location.href = url.toString();
     });
 </script>

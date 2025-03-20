@@ -3,14 +3,7 @@
 <p>Fill out fields and enter password to edit the "<%= category.title %>" category</p>
 <form action="/categories/<%= categoryID %>/edit" method="POST" id="edit-category-form">
     <p>Required fields are marked with (*)</p>
-    <% if (locals.errors) { %>
-        <ul>
-            <% errors.forEach(error => { %>
-                <li><%= error.msg %></li>
-            <% }) %>
-        </ul>
-    <% } %>
-    
+
     <label for="title">Title *</label>
     <p>Max length: 256</p>
     <input 
@@ -21,6 +14,9 @@
         value="<%= category.title %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "title" }) %>
+    <% } %>
 
     <label for="description">Description *</label>
     <p>Max length: 1024</p>
@@ -31,9 +27,15 @@
         rows="5"
         required
     ><%= category.description %></textarea>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "description" }) %>
+    <% } %>
 
     <label for="password">Enter password to continue</label>
     <input type="password" name="password" id="password" required>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "password" }) %>
+    <% } %>
 </form>
 <a href="/categories">Cancel</a>
 <button type="submit" form="edit-category-form">Save Changes</button>

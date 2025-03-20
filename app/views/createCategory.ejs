@@ -2,13 +2,6 @@
 <h1><%= title %></h1>
 <form action="/categories/new" method="POST" id="create-category-form">
     <p>Required fields are marked with (*)</p>
-    <% if (locals.errors) { %>
-        <ul>
-            <% errors.forEach(error => { %>
-                <li><%= error.msg %></li>
-            <% }) %>
-        </ul>
-    <% } %>
     
     <label for="title">Title *</label>
     <p>Max length: <%= title_max_length %></p>
@@ -20,6 +13,9 @@
         value="<%= category.title ? category.title : '' %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "title" }) %>
+    <% } %>
 
     <label for="description">Description *</label>
     <p>Max length: <%= description_max_length %></p>
@@ -30,6 +26,9 @@
         rows="5"
         required
     ><%= category.description ? category.description : '' %></textarea>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "description" }) %>
+    <% } %>
 </form>
 
 <a href="/categories">Cancel</a>
