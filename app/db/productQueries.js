@@ -86,6 +86,13 @@ async function getProductByID(productID) {
     return product;
 };
 
+async function getProductByTitle(title) {
+    const products = await getAllProducts();
+    const result = products.some(x => x.title === title);
+
+    return result;
+};
+
 module.exports = {
     createProduct,
     deleteProduct,
@@ -93,4 +100,5 @@ module.exports = {
     getAllProducts,
     getProductsByCategoryID,
     getProductByID,
+    getProductByTitle,
 };

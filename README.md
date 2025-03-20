@@ -2,7 +2,7 @@
 
 TODO:
 
-- Add validator for not-unique titles
+- Use 0 placeholder not 0 value for product price/stock fields or clear field on click or remove default
 
 - Make back buttons return with last sort alg still applied in url
 

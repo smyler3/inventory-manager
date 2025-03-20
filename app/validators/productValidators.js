@@ -1,5 +1,6 @@
 const { body } = require("express-validator");
 const errorMessages = require("./errorMessages.js");
+const { getProductByTitle } = require("../db/productQueries.js");
 
 const PRODUCT_TITLE_MIN_LENGTH = 1;
 const PRODUCT_TITLE_MAX_LENGTH = 256;
@@ -24,7 +25,14 @@ const validateCreateProduct = [
         .withMessage(`Title ${errorMessages.LENGTH_ERROR(
             PRODUCT_TITLE_MIN_LENGTH, 
             PRODUCT_TITLE_MAX_LENGTH
-        )}`),
+        )}`)
+
+        .custom(async (value) => {
+            if (await getProductByTitle(value)) {
+                throw new Error(`Title ${errorMessages.UNIQUE_ERROR}`)
+            }
+            return true;
+        }),
 
     body("description")
         .trim()

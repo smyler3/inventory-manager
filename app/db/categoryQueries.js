@@ -80,6 +80,13 @@ async function getCategoryByID(categoryID) {
     return category;
 };
 
+async function getCategoryByTitle(title) {
+    const categories = await getAllCategories();
+    const result = categories.some(x => x.title === title);
+
+    return result;
+};
+
 module.exports = {
     createCategory,
     editCategory,
@@ -87,4 +94,5 @@ module.exports = {
     getAllCategories,
     getCategoriesBySearch,
     getCategoryByID,
+    getCategoryByTitle,
 };
