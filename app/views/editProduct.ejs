@@ -3,34 +3,33 @@
 <p>Fill out fields and enter password to edit "<%= product.title %>" from the "<%= category.title %>" category</p>
 <form action="/categories/<%= category.id %>/products/<%= product.id %>/edit" method="POST" id="edit-product-form">
     <p>Required fields are marked with (*)</p>
-    <% if (locals.errors) { %>
-        <ul>
-            <% errors.forEach(error => { %>
-                <li><%= error.msg %></li>
-            <% }) %>
-        </ul>
-    <% } %>
     
     <label for="title">Title *</label>
     <p>Max length: <%= title_max_length %></p>
-    <textarea
+    <input 
+        type="text" 
         name="title" 
         id="title" 
-        rows="5"
         max="<%= title_max_length %>"
+        value="<%= product.title ? product.title : '' %>"
         required
-    ><%= product.title %></textarea>
+    >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "title" }) %>
+    <% } %>
 
     <label for="description">Description *</label>
     <p>Max length: <%= description_max_length %></p>
-    <input 
-        type="text" 
+    <textarea
         name="description" 
         id="description" 
+        rows="5"
         max="<%= description_max_length %>"
-        value="<%= product.description %>"
         required
-    >
+    ><%= product.description ? product.description : '' %></textarea>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "description" }) %>
+    <% } %>
 
     <label for="sale_price">Sale Price *</label>
     <p>Min: <%= min_sale_price %></p>
@@ -45,6 +44,9 @@
         value="<%= product.sale_price %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "sale_price" }) %>
+    <% } %>
 
     <label for="stock_count">Stock Count *</label>
     <p>Min: <%= min_stock_count %></p>
@@ -58,6 +60,9 @@
         value="<%= product.stock_count %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "stock_count" }) %>
+    <% } %>
 
     <label for="low_stock_count">Low Stock Count *</label>
     <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
@@ -72,6 +77,9 @@
         value="<%= product.low_stock_count %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "low_stock_count" }) %>
+    <% } %>
 
     <label for="critical_stock_count">Critical Stock Count *</label>
     <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
@@ -86,9 +94,15 @@
         value="<%= product.critical_stock_count %>"
         required
     >
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "critical_stock_count" }) %>
+    <% } %>
 
     <label for="password">Enter password to continue</label>
     <input type="password" name="password" id="password" required>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "password" }) %>
+    <% } %>
 </form>
 
 <a href="/categories/<%= category.id %>/products">Cancel</a>

@@ -1,17 +1,13 @@
 <a href="/categories/<%= category.id %>/products">Back to category</a>
 <h1><%= title %></h1>
-<p>Enter password to delete "<%= product.title %>" from the "<%= category.title %>" category</p>
 <form action="/categories/<%= category.id %>/products/<%= product.id %>/delete" method="POST" id="delete-product-form">
-    <% if (locals.errors) { %>
-        <ul>
-            <% errors.forEach(error => { %>
-                <li><%= error.msg %></li>
-            <% }) %>
-        </ul>
-    <% } %>
+    <p>Enter password to delete "<%= product.title %>" from the "<%= category.title %>" category</p>
     
     <label for="password">Password</label>
     <input type="password" name="password" id="password" required>
+    <% if (locals.errors) { %>
+        <%- include("./partials/fieldErrors", { errors: errors, selector: "password" }) %>
+    <% } %>
 </form>
 <a href="/categories/<%= category.id %>/products">Cancel</a>
 <button type="submit" form="delete-product-form">Delete</button>
