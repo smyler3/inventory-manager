@@ -1,7 +1,9 @@
 <header>
-    <a href="/">Bits & Bobs</a>
+    <a href="/" class="logo">
+        <div class="placeholder-logo">Bits & Bobs</div>
+    </a>
     <nav>
-        <ul>
+        <ul class="links-list">
             <li>
                 <a href="/categories">Categories</a>
             </li>
@@ -11,3 +13,40 @@
         </ul>
     </nav>
 </header>
+
+<style>
+    header {
+        display: flex;
+        align-items: center;
+        /* justify-content: center; */
+        gap: 20px;
+
+        width: 100%;
+        padding: 40px;
+
+        background-color: rgb(67, 170, 255);
+        box-shadow: 0 4px 4px #00000025;
+    }
+
+    .logo {
+        
+    }
+
+    .placeholder-logo {
+        font-size: 3rem;
+        line-height: 1;
+
+        background-color: aquamarine;
+    }
+
+    .links-list {
+        display: flex;
+        align-items: start;
+        gap: 8px;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+</style>

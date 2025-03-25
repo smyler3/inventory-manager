@@ -3,9 +3,7 @@
 TODO:
 
 - make everything pretty
-  -- Footer
-  -- Header
-  -- Category Cards
+  Filters
 
 - Add all products page
 
