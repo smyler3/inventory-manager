@@ -139,6 +139,7 @@ const getEditProductPage = async (req, res) => {
         body: "editProduct",
         category: category,
         product: product,
+        defaultTitle: product.title,
         title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
         description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
         min_sale_price: productValidator.MIN_SALE_PRICE,
@@ -164,6 +165,16 @@ const postEditProduct = [
 
         if (!errors.isEmpty()) {
             const category = await categoryQueries.getCategoryByID(categoryID);
+            const product = await productQueries.getProductByID(productID);
+
+            if (!category | !product) {
+                return res.status(404).render("layout", {
+                    title: "404 Page Not Found",
+                    body: "404",
+                    message: "Category or product not found" 
+                });
+            };
+
             return res.status(400).render("layout", {
                 title: "Edit a Product",
                 body: "editProduct",
@@ -177,6 +188,7 @@ const postEditProduct = [
                     low_stock_count,
                     critical_stock_count
                 },
+                defaultTitle: product.title,
                 title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
                 description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
                 min_sale_price: productValidator.MIN_SALE_PRICE,

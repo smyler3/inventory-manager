@@ -1,6 +1,6 @@
 <a href="/categories/<%= category.id %>/products">Back to category</a>
 <h1><%= title %></h1>
-<p>Fill out fields and enter password to edit "<%= product.title %>" from the "<%= category.title %>" category</p>
+<p>Fill out fields and enter password to edit "<%= defaultTitle %>" from the "<%= category.title %>" category</p>
 <form action="/categories/<%= category.id %>/products/<%= product.id %>/edit" method="POST" id="edit-product-form">
     <p>Required fields are marked with (*)</p>
     

@@ -86,6 +86,7 @@ const getEditCategoryPage = async (req, res) => {
         body: "editCategory",
         categoryID: categoryID,
         category: category,
+        defaultTitle: category.title,
         title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
         description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
     });
@@ -99,6 +100,16 @@ const postEditCategory = [
         const { title, description } = req.body;
 
         if (!errors.isEmpty()) {
+            const category = await categoryQueries.getCategoryByID(categoryID);
+
+            if (!category) {
+                return res.status(404).render("layout", {
+                    title: "404 Page Not Found",
+                    body: "404",
+                    message: "Category not found" 
+                });
+            };
+            
             return res.status(400).render("layout", {
                 title: "Edit a Category",
                 body: "editCategory",
@@ -107,6 +118,7 @@ const postEditCategory = [
                     title, 
                     description
                 },
+                defaultTitle: category.title,
                 title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
                 description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
                 errors: errors.errors,
