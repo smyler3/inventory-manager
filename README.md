@@ -2,8 +2,6 @@
 
 TODO:
 
-- Use 0 placeholder not 0 value for product price/stock fields or clear field on click or remove default
-
 - Make back buttons return with last sort alg still applied in url
 
 - title indicating product to edit changes in top p tag as you are editing a product and you submit an incorretc form
