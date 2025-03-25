@@ -3,6 +3,12 @@
 TODO:
 
 - make everything pretty
+  -- Footer
+  -- Header
+  -- Category Cards
+
+- Add all products page
+
 - Highlight input field on error
 - Focus first invalid field on unsuccesful submit
 

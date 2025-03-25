@@ -17,6 +17,10 @@ app.set("views", path.join(__dirname, "views"));
 app.use(favicon(path.join(__dirname, "public", "favicon.svg")));
 app.use(express.urlencoded({ extended: true }));
 
+// Allow styling
+const assetsPath = path.join(__dirname, "public");
+app.use(express.static(assetsPath));
+
 // Routes
 app.use("/categories", categoryRouter);
 app.use("/categories/:categoryID/products", productRouter);

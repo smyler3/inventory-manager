@@ -1,13 +1,84 @@
-<a href="/categories/<%= category.id %>/products">
-    <div>
-        <h2><%= category.title %></h2>
-        <p><%= category.description %></p>
-        <div class="">
-            <span class="">
-                <p>Products: <%= category.product_count%> </p>
-                <p>Low stock warnings: <%= category.low_warnings %> </p>
-                <p>Critical stock warnings: <%= category.critical_warnings %> </p>
+<a href="/categories/<%= category.id %>/products" class="category-card">
+    <h2 class="title"><%= category.title %></h2>
+    <p class="description"><%= category.description %></p>
+    <p><%= category.product_count%> products</p>
+    <div class="horizontal-container">
+        <span class="warnings-container">
+            <span class="icon-text-container">
+                <img src="/stocked-icon.svg" class="status-icon">
+                <p><%= category.product_count%></p>
             </span>
-        </div>
+            <span class="icon-text-container">
+                <img src="/warning-icon.svg" class="status-icon">
+                <p><%= category.low_warnings %></p>
+            </span>
+            <span class="icon-text-container">
+                <img src="/alert-icon.svg" class="status-icon">
+                <p><%= category.critical_warnings %></p>
+            </span>
+        </span>
+        <span class="buttons">
+            <span class="box"></span>
+            <span class="box"></span>
+        </span>
     </div>
 </a>
+
+<style>
+    .category-card {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        padding: 16px;
+
+        text-decoration: none;
+        color: inherit;
+
+        border-radius: 4px;
+        box-shadow: 0 2px 4px #20202025;
+    }
+
+    .title {
+        font-weight: 600;
+        font-size: 1.6rem;
+    }
+
+    .description {
+        color: #777777;
+        font-size: 1.2rem;
+    }
+
+    .horizontal-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .warnings-container {
+        display: flex;
+        gap: 24px;
+    }
+
+    .icon-text-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+    }
+
+    .status-icon {
+        height: 30px;
+    }
+
+    .buttons {
+        display: flex;
+        gap: 4px;
+    }
+
+    .box {
+        height: 40px;
+        width: 40px;
+        background-color: lightblue;
+    }
+</style>

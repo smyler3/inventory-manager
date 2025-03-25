@@ -6,7 +6,7 @@
 
 <p><%= categories.length %> categories</p>
 <% if (categories.length > 0) { %>
-    <ul>
+    <ul class="category-card-grid">
         <% categories.forEach(category => {%>
             <li><%- include("./partials/categoryCard", { category }) %></li>
         <% }); %>
@@ -14,3 +14,12 @@
 <% } else { %>
     <p>No results for "<%= search %>" found</p>
 <% } %>
+
+<style>
+    .category-card-grid {
+        display: grid;
+        gap: 20px;
+
+        grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+    }
+</style>
