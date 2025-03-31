@@ -4,7 +4,7 @@
         <label for="search" >Search by name</label>
         <div class="form-field-container">
             <input type="search" id="search" name="search" placeholder="Search..." value="<%= search && search %>" required />
-            <button id="searchClear" class="filters-btn <%= search && "show" %>" type="button">Clear</button>
+            <button id="searchClear" class="action-btn <%= search && "show" %>" type="button">Clear</button>
         </div>
     </form>
     
@@ -17,13 +17,13 @@
                     <option value="<%= option.id %>" <%= (Number(sort) === option.id && "selected") %>><%= option.label %></option>
                 <% }) %>
             </select>
-            <button id="sortClear" class="filters-btn <%= sort && "show" %>" type="button">Clear</button>
+            <button id="sortClear" class="action-btn <%= sort && "show" %>" type="button">Clear</button>
         </div>
     </form>
     
     <div class="button-container">
-        <button id="filterSearch" type="button" class="filters-btn">Search</button>
-        <button id="filterClearAll" type="button" class="filters-btn">Clear All</button>
+        <button id="filterSearch" type="button" class="action-btn">Search</button>
+        <button id="filterClearAll" type="button" class="action-btn">Clear All</button>
     </div>
 </div>
 
@@ -92,25 +92,5 @@
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 8px;
-    }
-
-    .button-container {
-        display: flex;
-        gap: 4px;
-    }
-
-    .filters-btn {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        min-height: 40px;
-        min-width: 40px;
-        padding: 8px 16px;
-
-        font-size: 1rem;
-
-        background: #F0F0F0;
-        border: solid 1px #767676;
     }
 </style>

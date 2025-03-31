@@ -1,7 +1,7 @@
 <div class="card">
     <h2 class="card-title"><%= product.title %></h2>
     <p class="card-description"><%= product.description %></p>
-    <p>$<%= product.sale_price%></p>
+    <p class="card-price">$<%= product.sale_price%></p>
     <div class="card-horizontal-container">
         <div class="text-icon-container">
             <p><%= product.stock_count %> in stock</p>
@@ -25,6 +25,10 @@
 </div>
 
 <style>
+    .card-price {
+        font-weight: 600;
+    }
+
     .text-icon-container {
         display: flex;
         align-items: center;

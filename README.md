@@ -1,11 +1,21 @@
 # inventory-manager
 
 TODO:
+Convert errors and context rules to lists with dot styling
+Add more context rules or change validators
 
 - make everything pretty
-  -- Create category form
+
+  - Add max-form length
+  - Errors
+  - Edit category form
+  - Delete category form
+  - Add footer icon
+  - Add logo image
+  - Add favicon
 
 - Add all products page
+- Add home page
 
 - Highlight input field on error
 - Focus first invalid field on unsuccesful submit

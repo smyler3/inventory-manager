@@ -1,6 +1,6 @@
 <a href="/categories" class="back-link"><- Back to categories</a>
 <h1><%= title %></h1>
-<p class="category-description"><%= category.description %></p>
+<p class="page-description"><%= category.description %></p>
 
 <%- include("./partials/warnings", { 
     count_text: category.product_count,
@@ -12,12 +12,14 @@
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
 
-<p><%= products.length %> products</p>
-<ul>
-    <% products.forEach(product => {%>
-        <li><%- include("./partials/productCard", { product: product }) %></li>
-    <% }); %>
-</ul>
+<div class="results-container">
+    <p><%= products.length %> products</p>
+    <ul>
+        <% products.forEach(product => {%>
+            <li><%- include("./partials/productCard", { product: product }) %></li>
+        <% }); %>
+    </ul>
+</div>
 
 <script>
     // Clear button functionality for form
@@ -30,9 +32,4 @@
 </script>
 
 <style>
-    .category-description {
-        color: #777777;
-
-        font-size: 1.4rem;
-    }
 </style>

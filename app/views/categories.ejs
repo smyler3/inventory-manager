@@ -4,23 +4,20 @@
 <a href="/categories/new" class="create-button">Create new category</a>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
-<p class="results-counter"><%= categories.length %> categories</p>
-
-<% if (categories.length > 0) { %>
-    <ul class="category-card-grid">
-        <% categories.forEach(category => {%>
-            <li><%- include("./partials/categoryCard", { category }) %></li>
-        <% }); %>
-    </ul>
-<% } else { %>
-    <p>No results for "<%= search %>" found</p>
-<% } %>
+<div class="results-container">
+    <p class="results-counter"><%= categories.length %> categories</p>
+    <% if (categories.length > 0) { %>
+        <ul class="category-card-grid">
+            <% categories.forEach(category => {%>
+                <li><%- include("./partials/categoryCard", { category }) %></li>
+            <% }); %>
+        </ul>
+    <% } else { %>
+        <p>No results for "<%= search %>" found</p>
+    <% } %>
+</div>
 
 <style>
-    .results-counter {
-        margin-bottom: -30px;
-    }
-
     .category-card-grid {
         display: flex;
         flex-direction: column;
