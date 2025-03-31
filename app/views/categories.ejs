@@ -1,10 +1,11 @@
 
 <h1><%= title %></h1>
 
-<%- include("./partials/filters", { action, search, sort, options }) %>
-<a href="/categories/new">Create new category</a>
+<a href="/categories/new" class="create-button">Create new category</a>
 
-<p><%= categories.length %> categories</p>
+<%- include("./partials/filters", { action, search, sort, options }) %>
+<p class="results-counter"><%= categories.length %> categories</p>
+
 <% if (categories.length > 0) { %>
     <ul class="category-card-grid">
         <% categories.forEach(category => {%>
@@ -16,6 +17,19 @@
 <% } %>
 
 <style>
+    .create-button {
+        align-self: start;
+        padding: 8px 16px;
+
+        background-color: rgb(189, 219, 231);
+        border: 2px solid skyblue;
+        border-radius: 4px;
+    }
+
+    .results-counter {
+        margin-bottom: -30px;
+    }
+
     .category-card-grid {
         display: flex;
         flex-direction: column;
