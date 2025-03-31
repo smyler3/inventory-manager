@@ -1,8 +1,9 @@
 <a href="/categories" class="back-link"><- Back to categories</a>
 <h1><%= title %></h1>
 <p class="category-description"><%= category.description %></p>
-<p><%= category.product_count%> products</p>
+
 <%- include("./partials/warnings", { 
+    count_text: category.product_count,
     no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
     low_warnings: category.low_warnings,
     critical_warnings: category.critical_warnings

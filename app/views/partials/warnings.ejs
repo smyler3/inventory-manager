@@ -1,19 +1,28 @@
-<span class="warnings-container">
-    <span class="icon-text-container">
-        <img src="/stocked-icon.svg" class="status-icon">
-        <p><%= no_warnings %></p>
+<div class="count-warnings-container">
+    <p><%= count_text %> products</p>
+    <span class="warnings-container">
+        <span class="icon-text-container">
+            <img src="/stocked-icon.svg" class="status-icon">
+            <p><%= no_warnings %></p>
+        </span>
+        <span class="icon-text-container">
+            <img src="/warning-icon.svg" class="status-icon">
+            <p><%= low_warnings %></p>
+        </span>
+        <span class="icon-text-container">
+            <img src="/alert-icon.svg" class="status-icon">
+            <p><%= critical_warnings %></p>
+        </span>
     </span>
-    <span class="icon-text-container">
-        <img src="/warning-icon.svg" class="status-icon">
-        <p><%= low_warnings %></p>
-    </span>
-    <span class="icon-text-container">
-        <img src="/alert-icon.svg" class="status-icon">
-        <p><%= critical_warnings %></p>
-    </span>
-</span>
+</div>
 
 <style>
+    .count-warnings-container {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
     .warnings-container {
         display: flex;
         gap: 24px;
@@ -24,9 +33,5 @@
         align-items: center;
         justify-content: center;
         gap: 8px;
-    }
-
-    .status-icon {
-        height: 30px;
     }
 </style>

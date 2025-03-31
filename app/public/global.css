@@ -53,3 +53,42 @@ button {
 .back-link {
     color:#737373;
 }
+
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    padding: 16px;
+
+    text-decoration: none;
+    color: inherit;
+
+    border-radius: 4px;
+    box-shadow: 0 2px 4px #20202025;
+}
+
+.card-title {
+    font-weight: 600;
+    font-size: 1.6rem;
+}
+
+.card-description {
+    color: #777777;
+    font-size: 1.2rem;
+}
+
+.card-horizontal-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status-icon {
+    height: 30px;
+}
+
+.card-buttons {
+    display: flex;
+    gap: 4px;
+}

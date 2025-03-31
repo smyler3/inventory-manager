@@ -1,21 +1,42 @@
-<div>
-    <h2><%= product.title %></h2>
-    <p><%= product.description %></p>
-    <div class="">
-        <span class="">
-            <p>$<%= product.sale_price%></p>
-            <div class="">
-                <p>Stock count: <%= product.stock_count %></p>
-                <% if (product.stock_count <= product.critical_stock_count) { %>
-                    <img src="" alt="critical_stock_icon" />
-                <% } else if (product.stock_count <= product.low_stock_count) { %>
-                    <img src="" alt="low_stock_icon" />
-                <% } %>
-            </div>
+<div class="card">
+    <h2 class="card-title"><%= product.title %></h2>
+    <p class="card-description"><%= product.description %></p>
+    <p>$<%= product.sale_price%></p>
+    <div class="card-horizontal-container">
+        <div class="text-icon-container">
+            <p><%= product.stock_count %> in stock</p>
+            <% if (product.stock_count <= product.critical_stock_count) { %>
+                <img src="/alert-icon.svg" alt="critical_stock_icon" class="status-icon"/>
+            <% } else if (product.stock_count <= product.low_stock_count) { %>
+                <img src="/warning-icon.svg" alt="low_stock_icon" class="status-icon" />
+            <% } else { %>
+                <img src="/stocked-icon.svg" alt="stocked_icon" class="status-icon" />
+            <% } %>
+        </div>
+        <span class="card-buttons">
+            <span class="box"></span>
+            <span class="box"></span>
         </span>
-        <span class="">
+        <!-- <span class="">
             <a href="/categories/<%= category.id %>/products/<%= product.id %>/edit">Edit</a>
             <a href="/categories/<%= category.id %>/products/<%= product.id %>/delete">Delete</a>
-        </span>
+        </span> -->
     </div>
 </div>
+
+<style>
+    .text-icon-container {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .box {
+        height: 40px;
+        width: 40px;
+        background-color: lightblue;
+    }
+    .card-horizontal-container {
+        margin-top: -10px;
+    }
+</style>

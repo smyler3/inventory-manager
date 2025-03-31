@@ -1,14 +1,14 @@
-<a href="/categories/<%= category.id %>/products" class="category-card">
-    <h2 class="title"><%= category.title %></h2>
-    <p class="description"><%= category.description %></p>
-    <p><%= category.product_count %> products</p>
-    <div class="horizontal-container">
+<a href="/categories/<%= category.id %>/products" class="card">
+    <h2 class="card-title"><%= category.title %></h2>
+    <p class="card-description"><%= category.description %></p>
+    <div class="card-horizontal-container">
         <%- include("./warnings", { 
+            count_text: category.product_count,
             no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
             low_warnings: category.low_warnings,
             critical_warnings: category.critical_warnings
         }) %>
-        <span class="buttons">
+        <span class="card-buttons">
             <span class="box"></span>
             <span class="box"></span>
         </span>
@@ -16,41 +16,6 @@
 </a>
 
 <style>
-    .category-card {
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-
-        padding: 16px;
-
-        text-decoration: none;
-        color: inherit;
-
-        border-radius: 4px;
-        box-shadow: 0 2px 4px #20202025;
-    }
-
-    .title {
-        font-weight: 600;
-        font-size: 1.6rem;
-    }
-
-    .description {
-        color: #777777;
-        font-size: 1.2rem;
-    }
-
-    .horizontal-container {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-    }
-
-    .buttons {
-        display: flex;
-        gap: 4px;
-    }
-
     .box {
         height: 40px;
         width: 40px;
