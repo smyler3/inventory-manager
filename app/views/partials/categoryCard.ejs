@@ -1,22 +1,13 @@
 <a href="/categories/<%= category.id %>/products" class="category-card">
     <h2 class="title"><%= category.title %></h2>
     <p class="description"><%= category.description %></p>
-    <p><%= category.product_count%> products</p>
+    <p><%= category.product_count %> products</p>
     <div class="horizontal-container">
-        <span class="warnings-container">
-            <span class="icon-text-container">
-                <img src="/stocked-icon.svg" class="status-icon">
-                <p><%= category.product_count%></p>
-            </span>
-            <span class="icon-text-container">
-                <img src="/warning-icon.svg" class="status-icon">
-                <p><%= category.low_warnings %></p>
-            </span>
-            <span class="icon-text-container">
-                <img src="/alert-icon.svg" class="status-icon">
-                <p><%= category.critical_warnings %></p>
-            </span>
-        </span>
+        <%- include("./warnings", { 
+            no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
+            low_warnings: category.low_warnings,
+            critical_warnings: category.critical_warnings
+        }) %>
         <span class="buttons">
             <span class="box"></span>
             <span class="box"></span>
@@ -53,22 +44,6 @@
         display: flex;
         align-items: center;
         justify-content: space-between;
-    }
-
-    .warnings-container {
-        display: flex;
-        gap: 24px;
-    }
-
-    .icon-text-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-    }
-
-    .status-icon {
-        height: 30px;
     }
 
     .buttons {
