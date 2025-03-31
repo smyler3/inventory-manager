@@ -24,12 +24,19 @@ body {
 }
 
 main {
-    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
 
     width: 100%;
     max-width: 1200px;
+    padding: 80px 20px;
 }
 
 li {
     list-style: none;
+}
+
+button {
+    cursor: pointer;
 }

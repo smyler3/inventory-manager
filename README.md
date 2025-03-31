@@ -3,7 +3,7 @@
 TODO:
 
 - make everything pretty
-  Filters
+  -- categories page
 
 - Add all products page
 
