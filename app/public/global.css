@@ -1,3 +1,9 @@
+/* 
+--------------------------------------------------------------
+GENERAL STYLING
+--------------------------------------------------------------
+*/
+
 * {
     box-sizing: border-box;
     padding: 0;
@@ -48,6 +54,16 @@ a {
     min-width: 40px;
 }
 
+/* 
+GENERAL STYLING END
+*/
+
+/* 
+--------------------------------------------------------------
+SHARED STYLING
+--------------------------------------------------------------
+*/
+
 .create-button {
     align-self: start;
     padding: 8px 16px;
@@ -60,6 +76,42 @@ a {
 .back-link {
     color:#737373;
 }
+
+.button-container {
+    display: flex;
+    gap: 4px;
+}
+
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 40px;
+    min-width: 40px;
+    padding: 8px 16px;
+
+    font-size: 1rem;
+
+    background: #F0F0F0;
+    border: solid 1px #767676;
+}
+
+.results-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* 
+SHARED STYLING END
+*/
+
+/* 
+--------------------------------------------------------------
+CARD STYLING
+--------------------------------------------------------------
+*/
 
 .card {
     display: flex;
@@ -102,20 +154,22 @@ a {
     gap: 4px;
 }
 
+/* 
+CARD STYLING END
+*/
+
+/* 
+--------------------------------------------------------------
+PAGE FORM STYLING
+--------------------------------------------------------------
+*/
+
+
 .page-form {
     display: flex;
     flex-direction: column;
     gap: 40px;
-}
-
-.page-form-field-container {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.page-form-context {
-    
+    max-width: 600px;
 }
 
 .page-form-field-context {
@@ -127,28 +181,28 @@ a {
     margin-top: -28px;
 }
 
-.button-container {
-    display: flex;
-    gap: 4px;
-}
-
-.action-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    min-height: 40px;
-    min-width: 40px;
-    padding: 8px 16px;
-
-    font-size: 1rem;
-
-    background: #F0F0F0;
-    border: solid 1px #767676;
-}
-
-.results-container {
+.page-form-field-container {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
 }
+
+.form-input {
+    padding: 4px 8px;
+
+    width: 100%;
+
+    font-size: 1rem;
+    font-weight: 500;
+
+    overflow-x: hidden;
+}
+
+.invalid-form-input {
+    border: 2px solid red;
+    background-color: pink;
+}
+
+/* 
+PAGE FORM STYLING END
+*/

@@ -6,32 +6,32 @@
     <div class="page-form-field-container">
         <label for="title">Title *</label>
         <p class="page-form-field-context">Max length: <%= title_max_length %></p>
+        <% const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [] %>
         <input
             type="text"
             name="title"
             id="title"
+            class="form-input <%= titleErrors.length > 0 ? 'invalid-form-input' : '' %>"
             maxlength="<%= title_max_length %>"
             value="<%= category.title ? category.title : '' %>"
             required
         >
-        <% if (locals.errors) { %>
-            <%- include("./partials/fieldErrors", { errors: errors, selector: "title" }) %>
-        <% } %>
+        <%- include("./partials/fieldErrors", { errors: titleErrors }) %>
     </div>
 
     <div class="page-form-field-container">
         <label for="description">Description *</label>
         <p class="page-form-field-context">Max length: <%= description_max_length %></p>
+        <% const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [] %>
         <textarea 
             name="description" 
             id="description" 
+            class="form-input <%= descriptionErrors.length > 0 ? 'invalid-form-input' : '' %>"
             maxlength="<%= description_max_length %>" 
             rows="5"
             required
         ><%= category.description ? category.description : '' %></textarea>
-        <% if (locals.errors) { %>
-            <%- include("./partials/fieldErrors", { errors: errors, selector: "description" }) %>
-        <% } %>
+        <%- include("./partials/fieldErrors", { errors: descriptionErrors }) %>
     </div>
 </form>
 

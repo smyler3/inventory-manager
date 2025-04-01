@@ -1,29 +1,65 @@
 <div class="filters-container">
     <form action="<%= action %>" method="GET" class="filter-form">
-        <input type="hidden" name="sort" value="<%= sort && sort %>" />
+        <input 
+            type="hidden" 
+            name="sort" 
+            value="<%= sort && sort %>" 
+        />
         <label for="search" >Search by name</label>
-        <div class="form-field-container">
-            <input type="search" id="search" name="search" placeholder="Search..." value="<%= search && search %>" required />
-            <button id="searchClear" class="action-btn <%= search && "show" %>" type="button">Clear</button>
+        <div class="filter-form-field-container">
+            <input 
+                type="search" 
+                id="search" 
+                name="search"
+                class="form-input"
+                placeholder="Search..." 
+                value="<%= search && search %>" 
+                required 
+            />
+            <button 
+                id="searchClear" 
+                class="action-btn <%= search && "show" %>" 
+                type="button"
+            >Clear</button>
         </div>
     </form>
     
     <form action="<%= action %>" method="GET" class="filter-form">
-        <input type="hidden" name="search" value="<%= search && search %>" />
+        <input 
+            type="hidden" 
+            name="search" 
+            value="<%= search && search %>" 
+        />
         <label for="sort">Sort by</label>
-        <div class="form-field-container">
-            <select id="sort" name="sort">
+        <div class="filter-form-field-container">
+            <select 
+                id="sort" 
+                name="sort"
+                class="form-input"
+            >
                 <% options.forEach(option => { %>
                     <option value="<%= option.id %>" <%= (Number(sort) === option.id && "selected") %>><%= option.label %></option>
                 <% }) %>
             </select>
-            <button id="sortClear" class="action-btn <%= sort && "show" %>" type="button">Clear</button>
+            <button 
+                id="sortClear" 
+                class="action-btn <%= sort && "show" %>" 
+                type="button"
+            >Clear</button>
         </div>
     </form>
     
     <div class="button-container">
-        <button id="filterSearch" type="button" class="action-btn">Search</button>
-        <button id="filterClearAll" type="button" class="action-btn">Clear All</button>
+        <button 
+            id="filterSearch" 
+            type="button" 
+            class="action-btn"
+        >Search</button>
+        <button 
+            id="filterClearAll" 
+            type="button" 
+            class="action-btn"
+        >Clear All</button>
     </div>
 </div>
 
@@ -76,19 +112,7 @@
         gap: 8px;
     }
 
-    .form-field-container > input,
-    .form-field-container > select {
-        padding: 4px 8px;
-
-        max-width: 100%;
-
-        font-size: 1rem;
-        font-weight: 500;
-
-        overflow-x: hidden;
-    }
-
-    .form-field-container {
+    .filter-form-field-container {
         display: grid;
         grid-template-columns: 1fr auto;
         gap: 8px;

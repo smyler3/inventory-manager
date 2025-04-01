@@ -6,8 +6,6 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - Add max-form length
-  - Errors
   - Edit category form
   - Delete category form
   - Add footer icon
