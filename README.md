@@ -6,10 +6,14 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - Delete category form
   - Add footer icon
+  - Style category page (results-list)
+  - Create product page?
+  - Add product page link to productCard
   - Add logo image
   - Add favicon
+  - Style h2 and form context for category edit
+  - Add asterix for delete category form
 
 - Add all products page
 - Add home page

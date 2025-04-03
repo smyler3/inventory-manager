@@ -1,14 +1,22 @@
-<a href="/categories/<%= categoryID %>/products">Back to category</a>
+<a href="/categories/<%= categoryID %>/products" class="back-link"><- Back to category</a>
 <h1><%= title %></h1>
-<form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form">
-    <p>Enter password to delete the "<%= category.title %>" category</p>
+<form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form" class="page-form">
+    <p class="page-form-context">Enter password to delete the "<%= category.title %>" category</p>
     
-    <label for="password">Password</label>
-    <input type="password" name="password" id="password" required>
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "password" }) %>
-    <% } %>
-    
+    <div class="page-form-field-container">
+        <label for="password">Password</label>
+        <% const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [] %>
+        <input 
+            type="password" 
+            name="password" 
+            id="password" 
+            class="form-input <%= passwordErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: passwordErrors }) %>
+    </div>
 </form>
-<a href="/categories">Cancel</a>
-<button type="submit" form="delete-category-form">Delete</button>
+<div class="button-container">
+    <button type="submit" form="delete-category-form" class="action-btn">Delete</button>
+    <a href="/categories/<%= categoryID %>/products" class="action-btn">Cancel</a>
+</div>
