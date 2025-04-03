@@ -1,24 +1,15 @@
-<a href="/categories/<%= category.id %>/products" class="card">
-    <h2 class="card-title"><%= category.title %></h2>
-    <p class="card-description"><%= category.description %></p>
-    <div class="card-horizontal-container">
-        <%- include("./warnings", { 
-            count_text: category.product_count,
-            no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
-            low_warnings: category.low_warnings,
-            critical_warnings: category.critical_warnings
-        }) %>
-        <span class="card-buttons">
-            <span class="box"></span>
-            <span class="box"></span>
-        </span>
-    </div>
-</a>
+<div class="card">
+    <a href="/categories/<%= category.id %>/products" class="card-title">
+        <%= category.title %>
+    </a>
+    <p class="card-description">
+        <%= category.description %>
+    </p>
 
-<style>
-    .box {
-        height: 40px;
-        width: 40px;
-        background-color: lightblue;
-    }
-</style>
+    <%- include("./warnings", { 
+        count_text: category.product_count,
+        no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
+        low_warnings: category.low_warnings,
+        critical_warnings: category.critical_warnings
+    }) %>
+</div>

@@ -1,35 +1,39 @@
 <a href="/categories" class="back-link"><- Back to categories</a>
-<h1><%= title %></h1>
-<p class="page-description"><%= category.description %></p>
+<h1>
+    <%= title %>
+</h1>
+<p class="page-description">
+    <%= category.description %>
+</p>
 
-<%- include("./partials/warnings", { 
+<%- include("./partials/warnings", {
     count_text: category.product_count,
     no_warnings: Number(category.product_count) - (Number(category.low_warnings) + Number(category.critical_warnings)),
     low_warnings: category.low_warnings,
     critical_warnings: category.critical_warnings
 }) %>
-<a href="/categories/<%= categoryID %>/products/new" class="create-button">Create new product</a>
+
+<span class="button-container">
+    <a class="item-action-btn" href="/categories/<%= category.id %>/edit">
+        <img src="/edit-icon.svg" alt="edit-icon" class="item-action-icon" />
+    </a>
+    <a class="item-action-btn" href="/categories/<%= category.id %>/delete">
+        <img src="/delete-icon.svg" alt="delete-icon" class="item-action-icon" />
+    </a>
+    <a href="/categories/<%= categoryID %>/products/new" class="create-button">Create new product</a>
+</span>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
 
 <div class="results-container">
-    <p><%= products.length %> products</p>
+    <p>
+        <%= products.length %> products
+    </p>
     <ul>
         <% products.forEach(product => {%>
-            <li><%- include("./partials/productCard", { product: product }) %></li>
+            <li>
+                <%- include("./partials/productCard", { product: product }) %>
+            </li>
         <% }); %>
     </ul>
 </div>
-
-<script>
-    // Clear button functionality for form
-    document.getElementById("searchClear").addEventListener("click", () => {
-        const url = new URL(window.location);
-
-        url.searchParams.delete("search");
-        window.location.href = url.toString();
-    });
-</script>
-
-<style>
-</style>
