@@ -1,26 +1,23 @@
-
-<h1><%= title %></h1>
+<a href="/categories" class="back-link"><- Back to homepage</a>
+<h1>
+    <%= title %>
+</h1>
 
 <a href="/categories/new" class="create-button">Create new category</a>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
+
 <div class="results-container">
     <p class="results-counter"><%= categories.length %> categories</p>
     <% if (categories.length > 0) { %>
-        <ul class="category-card-grid">
-            <% categories.forEach(category => {%>
-                <li><%- include("./partials/categoryCard", { category }) %></li>
-            <% }); %>
+        <ul class="card-grid">
+            <% categories.forEach(category => { %>
+                <li>
+                    <%- include("./partials/categoryCard", { category }) %>
+                </li>
+            <% }) %>
         </ul>
     <% } else { %>
         <p>No results for "<%= search %>" found</p>
     <% } %>
 </div>
-
-<style>
-    .category-card-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-    }
-</style>

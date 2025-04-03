@@ -7,9 +7,9 @@ Add more context rules or change validators
 - make everything pretty
 
   - Add footer icon
-  - Style category page (results-list)
   - Create product page?
   - Add product page link to productCard
+  - Move status icon on product card
   - Add logo image
   - Add favicon
   - Style h2 and form context for category edit

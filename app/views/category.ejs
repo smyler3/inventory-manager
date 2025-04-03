@@ -26,14 +26,18 @@
 <%- include("./partials/filters", { action, search, sort, options }) %>
 
 <div class="results-container">
-    <p>
+    <p class="results-counter">
         <%= products.length %> products
     </p>
-    <ul>
-        <% products.forEach(product => {%>
-            <li>
-                <%- include("./partials/productCard", { product: product }) %>
-            </li>
-        <% }); %>
-    </ul>
+    <% if (products.length > 0) { %>
+        <ul class="card-grid">
+            <% products.forEach(product => { %>
+                <li>
+                    <%- include("./partials/productCard", { product }) %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No results for "<%= search %>" found</p>
+    <% } %>
 </div>
