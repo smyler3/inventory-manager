@@ -6,7 +6,6 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - Edit category form
   - Delete category form
   - Add footer icon
   - Add logo image
