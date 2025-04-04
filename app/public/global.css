@@ -74,6 +74,8 @@ SHARED STYLING
 }
 
 .back-link {
+    display: flex;
+    align-items: center;
     color:#737373;
 }
 

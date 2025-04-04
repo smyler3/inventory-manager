@@ -6,7 +6,6 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - Add footer icon
   - Create product page?
   - Add product page link to productCard
   - Move status icon on product card
