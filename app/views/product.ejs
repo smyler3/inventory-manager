@@ -1,0 +1,27 @@
+<a href="/categories/<%= category.id %>/products" class="back-link"><- Back to <%= category.title %></a>
+<h1>
+    <%= product.title %>
+</h1>
+<p class="page-description">
+    <%= product.description %>
+</p>
+
+<div class="text-icon-container">
+    <p><%= product.stock_count %> in stock</p>
+    <% if (product.stock_count <= product.critical_stock_count) { %>
+        <img src="/alert-icon.svg" alt="critical_stock_icon" class="status-icon"/>
+    <% } else if (product.stock_count <= product.low_stock_count) { %>
+        <img src="/warning-icon.svg" alt="low_stock_icon" class="status-icon" />
+    <% } else { %>
+        <img src="/stocked-icon.svg" alt="stocked_icon" class="status-icon" />
+    <% } %>
+</div>
+
+<span class="button-container">
+    <a class="item-action-btn" href="/categories/<%= category.id %>/products/<%= product.id %>/edit">
+        <img src="/edit-icon.svg" alt="edit-icon" class="item-action-icon" />
+    </a>
+    <a class="item-action-btn" href="/categories/<%= category.id %>/products/<%= product.id %>/delete">
+        <img src="/delete-icon.svg" alt="delete-icon" class="item-action-icon" />
+    </a>
+</span>

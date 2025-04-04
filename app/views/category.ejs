@@ -33,7 +33,7 @@
         <ul class="card-grid">
             <% products.forEach(product => { %>
                 <li>
-                    <%- include("./partials/productCard", { product }) %>
+                    <%- include("./partials/productCard", { categoryID, product }) %>
                 </li>
             <% }) %>
         </ul>

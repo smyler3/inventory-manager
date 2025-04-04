@@ -269,8 +269,25 @@ const postDeleteProduct = [
     },
 ];  
 
-const getProductByID = (req, res) => {
-    res.send("Product by ID");
+const getProductByID = async (req, res) => {
+    const { categoryID, productID } = req.params;
+    const category = await categoryQueries.getCategoryByID(categoryID);
+    const product = await productQueries.getProductByID(productID);
+
+    if (!category | !product) {
+        return res.status(404).render("layout", {
+            title: "404 Page Not Found",
+            body: "404",
+            message: "Category or product not found" 
+        });
+    };
+
+    res.render("layout", {
+        title: product.title,
+        body: "product",
+        category,
+        product,
+    })
 };
 
 module.exports = {

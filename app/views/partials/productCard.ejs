@@ -1,38 +1,26 @@
-<div class="card">
+<a href="/categories/<%= categoryID %>/products/<%= product.id %>" class="card">
     <h2 class="card-title"><%= product.title %></h2>
     <p class="card-description"><%= product.description %></p>
     <p class="card-price">$<%= product.sale_price%></p>
-    <div class="card-horizontal-container">
-        <div class="text-icon-container">
-            <p><%= product.stock_count %> in stock</p>
-            <% if (product.stock_count <= product.critical_stock_count) { %>
-                <img src="/alert-icon.svg" alt="critical_stock_icon" class="status-icon"/>
-            <% } else if (product.stock_count <= product.low_stock_count) { %>
-                <img src="/warning-icon.svg" alt="low_stock_icon" class="status-icon" />
-            <% } else { %>
-                <img src="/stocked-icon.svg" alt="stocked_icon" class="status-icon" />
-            <% } %>
-        </div>
-        <span class="card-buttons">
-            <span class="box"></span>
-            <span class="box"></span>
-        </span>
-        <!-- <span class="">
-            <a href="/categories/<%= category.id %>/products/<%= product.id %>/edit">Edit</a>
-            <a href="/categories/<%= category.id %>/products/<%= product.id %>/delete">Delete</a>
-        </span> -->
+    <div class="text-icon-container">
+        <p><%= product.stock_count %> in stock</p>
+        <% if (product.stock_count <= product.critical_stock_count) { %>
+            <img src="/alert-icon.svg" alt="critical_stock_icon" class="status-icon"/>
+        <% } else if (product.stock_count <= product.low_stock_count) { %>
+            <img src="/warning-icon.svg" alt="low_stock_icon" class="status-icon" />
+        <% } else { %>
+            <img src="/stocked-icon.svg" alt="stocked_icon" class="status-icon" />
+        <% } %>
     </div>
-</div>
+    <!-- <span class="">
+        <a href="/categories/<%= category.id %>/products/<%= product.id %>/edit">Edit</a>
+        <a href="/categories/<%= category.id %>/products/<%= product.id %>/delete">Delete</a>
+    </span> -->
+</a>
 
 <style>
     .card-price {
         font-weight: 600;
-    }
-
-    .text-icon-container {
-        display: flex;
-        align-items: center;
-        gap: 8px;
     }
 
     .box {
