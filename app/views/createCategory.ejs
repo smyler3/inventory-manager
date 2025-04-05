@@ -5,7 +5,7 @@
     
     <div class="page-form-field-container">
         <label for="title">Title *</label>
-        <p class="page-form-field-context">Max length: <%= title_max_length %></p>
+        <p class="page-form-field-guideline">Max length: <%= title_max_length %></p>
         <% const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [] %>
         <input
             type="text"
@@ -21,7 +21,7 @@
 
     <div class="page-form-field-container">
         <label for="description">Description *</label>
-        <p class="page-form-field-context">Max length: <%= description_max_length %></p>
+        <p class="page-form-field-guideline">Max length: <%= description_max_length %></p>
         <% const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [] %>
         <textarea 
             name="description" 

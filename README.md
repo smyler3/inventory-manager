@@ -6,6 +6,11 @@ Add more context rules or change validators
 
 - make everything pretty
 
+  - Style form field contexts and make sure they are accessible (correct tag and read by screen reader)
+  - Use script tag to get errors for the form fields at the top of the file
+
+  - Homogonise page-forms to be like edit-product
+  - Delete product page
   - Add logo image
   - Add favicon
   - Style h2 and form context for category edit

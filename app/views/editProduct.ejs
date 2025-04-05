@@ -1,109 +1,147 @@
-<a href="/categories/<%= category.id %>/products">Back to category</a>
+<a href="/categories/<%= category.id %>/products" class="back-link"><- Back to category</a>
 <h1><%= title %></h1>
-<p>Fill out fields and enter password to edit "<%= defaultTitle %>" from the "<%= category.title %>" category</p>
-<form action="/categories/<%= category.id %>/products/<%= product.id %>/edit" method="POST" id="edit-product-form">
-    <p>Required fields are marked with (*)</p>
+<h2 class="page-form-context">Fill out fields and enter password to edit "<%= defaultTitle %>" from the "<%= category.title %>" category</h2>
+<form 
+    action="/categories/<%= category.id %>/products/<%= product.id %>/edit" 
+    method="POST" 
+    id="edit-product-form" 
+    class="page-form"
+>
+    <% 
+        const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [];
+        const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [];
+        const salePriceErrors = locals.errors ? errors.filter(x => x.path === "sale_price") : [];
+        const stockCountErrors = locals.errors ? errors.filter(x => x.path === "stock_count") : [];
+        const lowStockCountErrors = locals.errors ? errors.filter(x => x.path === "low_stock_count") : [];
+        const criticalStockCountErrors = locals.errors ? errors.filter(x => x.path === "critical_stock_count") : [];
+        const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [];
+    %>
+
+    <p class="page-form-context">Required fields are marked with (*)</p>
     
-    <label for="title">Title *</label>
-    <p>Max length: <%= title_max_length %></p>
-    <input 
-        type="text" 
-        name="title" 
-        id="title" 
-        max="<%= title_max_length %>"
-        value="<%= product.title ? product.title : '' %>"
-        required
-    >
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "title" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="title" class="page-form-label">Title *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">• Max length of <%= title_max_length %> characters</li>
+        </ul>
+        <input
+            type="text"
+            name="title"
+            id="title"
+            class="form-input <%= titleErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            max="<%= title_max_length %>"
+            value="<%= product.title ? product.title : '' %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: titleErrors }) %>
+    </div>
 
-    <label for="description">Description *</label>
-    <p>Max length: <%= description_max_length %></p>
-    <textarea
-        name="description" 
-        id="description" 
-        rows="5"
-        max="<%= description_max_length %>"
-        required
-    ><%= product.description ? product.description : '' %></textarea>
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "description" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="description" class="page-form-label">Description *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">• Max length of <%= description_max_length %> characters</li>
+        </ul>
+        <textarea
+            name="description"
+            id="description"
+            class="form-input <%= descriptionErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            rows="5"
+            max="<%= description_max_length %>"
+            required
+        ><%= product.description ? product.description : '' %></textarea>
+        <%- include("./partials/fieldErrors", { errors: descriptionErrors }) %>
+    </div>
 
-    <label for="sale_price">Sale Price *</label>
-    <p>Min: <%= min_sale_price %></p>
-    <p>Max: <%= max_sale_price %></p>
-    <input 
-        type="number" 
-        name="sale_price" 
-        id="sale_price" 
-        min="<%= min_sale_price %>"
-        max="<%= max_sale_price %>"
-        step="0.01"
-        value="<%= product.sale_price %>"
-        required
-    >
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "sale_price" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="sale_price" class="page-form-label">Sale Price *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">• Must be between $<%= min_sale_price %> and $<%= max_sale_price %></li>
+        </ul>
+        <input
+            type="number"
+            name="sale_price"
+            id="sale_price"
+            class="form-input <%= salePriceErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            min="<%= min_sale_price %>"
+            max="<%= max_sale_price %>"
+            step="0.01"
+            value="<%= product.sale_price %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: salePriceErrors }) %>
+    </div>
 
-    <label for="stock_count">Stock Count *</label>
-    <p>Min: <%= min_stock_count %></p>
-    <p>Max: <%= max_stock_count %></p>
-    <input 
-        type="number" 
-        name="stock_count" 
-        id="stock_count" 
-        min="<%= min_stock_count %>"
-        max="<%= max_stock_count %>"
-        value="<%= product.stock_count %>"
-        required
-    >
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "stock_count" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="stock_count" class="page-form-label">Stock Count *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">• Must be between <%= min_stock_count %> and <%= max_stock_count %></li>
+        </ul>
+        <input
+            type="number"
+            name="stock_count"
+            id="stock_count"
+            class="form-input <%= stockCountErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            min="<%= min_stock_count %>"
+            max="<%= max_stock_count %>"
+            value="<%= product.stock_count %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: stockCountErrors }) %>
+    </div>
 
-    <label for="low_stock_count">Low Stock Count *</label>
-    <p>A low stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-    <p>Min: <%= min_stock_count %></p>
-    <p>Max: <%= max_stock_count %></p>
-    <input 
-        type="number" 
-        name="low_stock_count" 
-        id="low_stock_count" 
-        min="<%= min_stock_count %>"
-        max="<%= max_stock_count %>"
-        value="<%= product.low_stock_count %>"
-        required
-    >
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "low_stock_count" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="low_stock_count" class="page-form-label">Low Stock Count *</label>
+        <p>A low stock warning will be indicated when product stock reaches this number</p>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">• Must be between <%= min_stock_count %> and <%= max_stock_count %></li>
+        </ul>
+        <input
+            type="number"
+            name="low_stock_count"
+            id="low_stock_count"
+            class="form-input <%= lowStockCountErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            min="<%= min_stock_count %>"
+            max="<%= max_stock_count %>"
+            value="<%= product.low_stock_count %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: lowStockCountErrors }) %>
+    </div>
 
-    <label for="critical_stock_count">Critical Stock Count *</label>
-    <p>A critical stock warning will be indicated when product stock reaches this number</p> <!-- Is this accessible? -->
-    <p>Min: <%= min_stock_count %></p>
-    <p>Max: <%= max_stock_count %></p>
-    <input 
-        type="number" 
-        name="critical_stock_count" 
-        id="critical_stock_count" 
-        min="<%= min_stock_count %>"
-        max="<%= max_stock_count %>"
-        value="<%= product.critical_stock_count %>"
-        required
-    >
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "critical_stock_count" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="critical_stock_count" class="page-form-label">Critical Stock Count *</label>
+        <p>A critical stock warning will be indicated when product stock reaches this number</p>
+        <ul class="page-form-field-guidelines">    
+            <li class="page-form-field-guideline">• Must be between <%= min_stock_count %> and <%= max_stock_count %></li>
+            <li class="page-form-field-guideline">• Must be less than or equal to Low Stock Count</li>
+        </ul>
+        <input
+            type="number"
+            name="critical_stock_count"
+            id="critical_stock_count"
+            class="form-input <%= criticalStockCountErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            min="<%= min_stock_count %>"
+            max="<%= max_stock_count %>"
+            value="<%= product.critical_stock_count %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: criticalStockCountErrors }) %>
+    </div>
 
-    <label for="password">Enter password to continue</label>
-    <input type="password" name="password" id="password" required>
-    <% if (locals.errors) { %>
-        <%- include("./partials/fieldErrors", { errors: errors, selector: "password" }) %>
-    <% } %>
+    <div class="page-form-field-container">
+        <label for="password" class="page-form-label">Enter password to continue</label>
+        <input 
+            type="password" 
+            name="password" 
+            id="password" 
+            class="form-input <%= passwordErrors.length > 0 ? 'invalid-form-input' : '' %>"
+            required
+        >
+        <%- include("./partials/fieldErrors", { errors: passwordErrors }) %>
+    </div>
 </form>
 
-<a href="/categories/<%= category.id %>/products">Cancel</a>
-<button type="submit" form="edit-product-form">Save changes</button>
+<div class="button-container">
+    <button type="submit" form="edit-product-form" class="action-btn">Save changes</button>
+    <a href="/categories/<%= category.id %>/products" class="action-btn">Cancel</a>
+</div>

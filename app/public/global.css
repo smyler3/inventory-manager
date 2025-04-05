@@ -201,7 +201,13 @@ PAGE FORM STYLING
     max-width: 600px;
 }
 
-.page-form-field-context {
+.page-form-field-guidelines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.page-form-field-guideline {
     color: #777777;
 }
 
@@ -214,6 +220,10 @@ PAGE FORM STYLING
     display: flex;
     flex-direction: column;
     gap: 8px;
+}
+
+.page-form-label {
+    font-weight: 600;
 }
 
 .form-input {
