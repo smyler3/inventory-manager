@@ -208,7 +208,12 @@ PAGE FORM STYLING
 }
 
 .page-form-field-guideline {
+    padding-left: 8px;
+
     color: #777777;
+
+    list-style-type: disc;
+    list-style-position: inside;
 }
 
 .page-description,

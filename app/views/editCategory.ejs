@@ -4,14 +4,21 @@
     Fill out fields and enter password to edit the "<%= defaultTitle %>" category
 </h2>
 <form action="/categories/<%= categoryID %>/edit" method="POST" id="edit-category-form" class="page-form">
+    <% 
+        const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [];
+        const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [];
+        const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [];
+    %>
+
     <p class="page-form-context">
         Required fields are marked with (*)
     </p>
 
     <div class="page-form-field-container">
-        <label for="title">Title *</label>
-        <p class="page-form-field-guideline">Max length: 256</p>
-        <% const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [] %>
+        <label for="title" class="page-form-label">Title *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">Max length of <%= title_max_length %> characters</li>
+        </ul>
         <input
             type="text"
             name="title"
@@ -25,9 +32,11 @@
     </div>
 
     <div class="page-form-field-container">
-        <label for="description">Description *</label>
-        <p class="page-form-field-guideline">Max length: 1024</p>
-        <% const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [] %>
+        <label for="description" class="page-form-label">Description *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">Max length of <%= description_max_length %> characters</li>
+        </ul>
+        
         <textarea
             name="description"
             id="description"
@@ -40,8 +49,7 @@
     </div>
 
     <div class="page-form-field-container">
-        <label for="password">Enter password to continue</label>
-        <% const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [] %>
+        <label for="password" class="page-form-label">Enter password to continue</label>
         <input 
             type="password" 
             name="password" 
