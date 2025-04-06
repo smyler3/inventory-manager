@@ -6,7 +6,6 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - Delete product page
   - create product page
   - Remove • from fieldErrors
   - Add logo image
