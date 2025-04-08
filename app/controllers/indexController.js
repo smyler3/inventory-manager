@@ -1,6 +1,7 @@
 const getIndexPage = (req, res) => {
-    res.render("Index", { 
-        title: "Home", 
+    res.render("layout", { 
+        title: "Home",
+        body: "index",
     });
 };
 

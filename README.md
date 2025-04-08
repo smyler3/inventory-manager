@@ -12,7 +12,6 @@ Add more context rules or change validators
   - Add asterix for delete category form
 
 - Add all products page
-- Add home page
 
 - Highlight input field on error
 - Focus first invalid field on unsuccesful submit

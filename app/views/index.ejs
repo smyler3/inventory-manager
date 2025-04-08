@@ -1,9 +1,32 @@
-<html>
-    <head>
-        <title><%= title %></title>
-    </head>
-    <body>
-        <h1><%= title %></h1>
-        <a href="/categories">Get Started</a>
-    </body>
-</html>
+<%
+    const features = [
+        {
+            title: "Customizable Categories & Products",
+            description: "Easily add, edit, and delete categories and products as your inventory needs change.",
+        },
+        {
+            title: "Product Storage by Category",
+            description: "Organize products efficiently by storing them within specific categories for better management.",
+        },
+        {
+            title: "Low & Critical Stock Warnings",
+            description: "Set custom stock thresholds to receive notifications when inventory reaches low or critical levels.",
+        }
+    ];
+
+%>
+
+<h1>Simplify Your Inventory Management with Bits and Bobs</h1>
+<p>Track, organize, and optimize your stock effortlessly.</p>
+<a href="/categories" class="action-btn">Get Started</a>
+
+<ul class="card-grid">
+    <% features.forEach(feature => { %>
+        <li>
+            <%- include('./partials/featureCard.ejs', { feature }) %>
+        </li>
+    <% }) %>
+</ul>
+
+<style>
+</style>
