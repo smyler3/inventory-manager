@@ -4,7 +4,6 @@ TODO:
 
 - make everything pretty
 
-  - search buttons are broken categories and category
   - Add logo image
   - Add favicon
   - 404 page

@@ -13,7 +13,7 @@
                 name="search"
                 class="form-input"
                 placeholder="Search..." 
-                value="<%= search && search %>" 
+                value="<%= search ? search : "" %>" 
                 required 
             />
             <button 
@@ -64,6 +64,19 @@
 </div>
 
 <script>
+    // Search button functionality for form
+    document.getElementById("filterSearch").addEventListener("click", () => {
+        const url = new URL(window.location);
+        const searchField = document.getElementById("search");
+        const searchText = searchField ? searchField.value : null;
+        const sortField = document.getElementById("sort");
+        const sortChoice = sortField ? sortField.value : null;
+
+        searchText && url.searchParams.set("search", searchText);
+        sortChoice && url.searchParams.set("sort", sortChoice);
+        window.location.href = url.toString()
+    });
+
     // Clear button functionality for form
     document.getElementById("filterClearAll").addEventListener("click", () => {
         const url = new URL(window.location);
@@ -73,7 +86,7 @@
         window.location.href = url.toString();
     });
 
-    // Clear button functionality for form
+    // Clear button functionality for search field
     document.getElementById("searchClear").addEventListener("click", () => {
         const url = new URL(window.location);
 
@@ -81,7 +94,7 @@
         window.location.href = url.toString();
     });
 
-    // Clear button functionality for form
+    // Clear button functionality for sort field
     document.getElementById("sortClear").addEventListener("click", () => {
         const url = new URL(window.location);
 
