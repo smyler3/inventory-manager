@@ -63,16 +63,6 @@ GENERAL STYLING END
 SHARED STYLING
 --------------------------------------------------------------
 */
-
-.create-button {
-    align-self: start;
-    padding: 8px 16px;
-
-    background-color: rgb(189, 219, 231);
-    border: 2px solid skyblue;
-    border-radius: 4px;
-}
-
 .back-link {
     display: flex;
     align-items: center;
@@ -130,6 +120,22 @@ SHARED STYLING
 
     background: #F0F0F0;
     border: solid 1px #767676;
+    border-radius: 4px;
+}
+
+.modify-btn {
+    background-color: rgb(189, 219, 231);
+    border: 2px solid skyblue;
+}
+
+.constructive-btn {
+    background-color: rgb(189, 231, 203);
+    border: 2px solid rgb(135, 235, 173);
+}
+
+.destructive-btn {
+    background-color: rgb(231, 189, 189);
+    border-color: rgb(235, 135, 135);
 }
 
 .results-container {

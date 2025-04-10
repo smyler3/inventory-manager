@@ -9,9 +9,6 @@ TODO:
 
 - Make everything pretty:
 
-  - Style destructive buttons red
-  - Re-style creation buttons?
-  - Re-style edit buttons?
   - Add hover, focus, and click styles:
     - Header buttons
     - Action buttons

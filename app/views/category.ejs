@@ -14,13 +14,13 @@
 }) %>
 
 <span class="button-container">
-    <a class="item-action-btn" href="/categories/<%= category.id %>/edit">
+    <a href="/categories/<%= category.id %>/products/new" class="action-btn constructive-btn">Create new product</a>
+    <a class="item-action-btn modify-btn" href="/categories/<%= category.id %>/edit">
         <img src="/edit-icon.svg" alt="edit-icon" class="item-action-icon" />
     </a>
-    <a class="item-action-btn" href="/categories/<%= category.id %>/delete">
+    <a class="item-action-btn destructive-btn" href="/categories/<%= category.id %>/delete">
         <img src="/delete-icon.svg" alt="delete-icon" class="item-action-icon" />
     </a>
-    <a href="/categories/<%= category.id %>/products/new" class="create-button">Create new product</a>
 </span>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
