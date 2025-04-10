@@ -20,7 +20,7 @@
     <a class="item-action-btn" href="/categories/<%= category.id %>/delete">
         <img src="/delete-icon.svg" alt="delete-icon" class="item-action-icon" />
     </a>
-    <a href="/categories/<%= categoryID %>/products/new" class="create-button">Create new product</a>
+    <a href="/categories/<%= category.id %>/products/new" class="create-button">Create new product</a>
 </span>
 
 <%- include("./partials/filters", { action, search, sort, options }) %>
@@ -33,7 +33,7 @@
         <ul class="card-grid">
             <% products.forEach(product => { %>
                 <li>
-                    <%- include("./partials/productCard", { categoryID, product }) %>
+                    <%- include("./partials/productCard", { product }) %>
                 </li>
             <% }) %>
         </ul>

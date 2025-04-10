@@ -4,11 +4,10 @@ TODO:
 
 - make everything pretty
 
+  - search buttons are broken categories and category
   - Add logo image
   - Add favicon
-  - Style h2 and form context for category edit
-  - Add asterix for delete category form
-  - Check if I can use .toLocaleString() on the validator constants rather than each instance
+  - 404 page
 
 - Add all products page
 
@@ -23,6 +22,8 @@ TODO:
 
 - Add more context rules or change validators
 - Combine form field prompts and error prompts
+
+- Check if I can use .toLocaleString() on the validator constants rather than each instance
 
 - Make a secret password for production
 - Remove console.error logs e.g.console.error("Error editing category:", error); for production

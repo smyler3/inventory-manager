@@ -1,4 +1,4 @@
-<a href="/categories/<%= categoryID %>/products/<%= product.id %>" class="card">
+<a href="/categories/<%= product.category_id %>/products/<%= product.id %>" class="card">
     <h2 class="card-title"><%= product.title %></h2>
     <p class="card-description"><%= product.description %></p>
     <p class="card-price">$<%= product.sale_price%></p>
@@ -12,10 +12,6 @@
             <img src="/stocked-icon.svg" alt="stocked_icon" class="status-icon" />
         <% } %>
     </div>
-    <!-- <span class="">
-        <a href="/categories/<%= category.id %>/products/<%= product.id %>/edit">Edit</a>
-        <a href="/categories/<%= category.id %>/products/<%= product.id %>/delete">Delete</a>
-    </span> -->
 </a>
 
 <style>
