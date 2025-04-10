@@ -117,6 +117,7 @@ SHARED STYLING
 }
 
 .action-btn {
+    align-self: start;
     display: flex;
     align-items: center;
     justify-content: center;
