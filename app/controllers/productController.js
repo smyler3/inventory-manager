@@ -4,6 +4,30 @@ const productQueries = require("../db/productQueries");
 const productValidator = require("../validators/productValidators");
 const { PRODUCT_SORT_OPTIONS, applyProductSort, applyProductFilters } = require("../utils/filters");
 
+const getAllProductsPage = async (req, res) => {
+    try {
+        const { sort, search } = req.query;
+        const searchFilter = search ? search.trim() : undefined;
+
+        const rawProducts = await productQueries.getAllProducts();
+        const products = applyProductFilters(rawProducts, searchFilter, sort);
+
+        res.render("layout", {
+            title: "All Products",
+            body: "products",
+            products: products,
+            action: `/products`,
+            search: searchFilter,
+            sort: sort,
+            options: PRODUCT_SORT_OPTIONS,
+        });
+    }
+    catch (error) {
+        console.error(error);
+        res.redirect("/500");
+    }
+}
+
 const getProductsByCategory = async (req, res) => {
     try {
         const { categoryID } = req.params;
@@ -25,7 +49,6 @@ const getProductsByCategory = async (req, res) => {
         res.render("layout", {
             title: category.title,
             body: "category",
-            categoryID: categoryID,
             category: category,
             products: products,
             action: `/categories/${categoryID}/products`,
@@ -291,6 +314,7 @@ const getProductByID = async (req, res) => {
 };
 
 module.exports = {
+    getAllProductsPage,
     getProductsByCategory,
     getCreateProductPage,
     postCreateProduct,

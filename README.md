@@ -9,8 +9,6 @@ TODO:
   - Add favicon
   - 404 page
 
-- Add all products page
-
 - Highlight input field on error
 - Focus first invalid field on unsuccesful submit
 

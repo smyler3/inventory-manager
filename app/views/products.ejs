@@ -1,0 +1,23 @@
+<a href="/" class="back-link"><- Back to home</a>
+<h1>
+    <%= title %>
+</h1>
+
+<%- include("./partials/filters", { action, search, sort, options }) %>
+
+<div class="results-container">
+    <p class="results-counter">
+        <%= products.length %> products
+    </p>
+    <% if (products.length > 0) { %>
+        <ul class="card-grid">
+            <% products.forEach(product => { %>
+                <li>
+                    <%- include("./partials/productCard", { product }) %>
+                </li>
+            <% }) %>
+        </ul>
+    <% } else { %>
+        <p>No results for "<%= search %>" found</p>
+    <% } %>
+</div>
