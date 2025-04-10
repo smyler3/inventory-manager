@@ -1,12 +1,19 @@
 <a href="/categories" class="back-link"><- Back to categories</a>
 <h1><%= title %></h1>
 <form action="/categories/new" method="POST" id="create-category-form" class="page-form">
+    <% 
+        const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [];
+        const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [];
+    %>
+
     <p class="page-form-context">Required fields are marked with (*)</p>
-    
+
     <div class="page-form-field-container">
-        <label for="title">Title *</label>
-        <p class="page-form-field-context">Max length: <%= title_max_length %></p>
-        <% const titleErrors = locals.errors ? errors.filter(x => x.path === "title") : [] %>
+        <label for="title" class="page-form-label">Title *</label>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">Max length of <%= title_max_length %> characters</li>
+        </ul>
+        
         <input
             type="text"
             name="title"
@@ -21,8 +28,10 @@
 
     <div class="page-form-field-container">
         <label for="description">Description *</label>
-        <p class="page-form-field-context">Max length: <%= description_max_length %></p>
-        <% const descriptionErrors = locals.errors ? errors.filter(x => x.path === "description") : [] %>
+        <ul class="page-form-field-guidelines">
+            <li class="page-form-field-guideline">Max length of <%= description_max_length %> characters</li>
+        </ul>
+        
         <textarea 
             name="description" 
             id="description" 

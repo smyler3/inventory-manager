@@ -6,6 +6,8 @@ Add more context rules or change validators
 
 - make everything pretty
 
+  - create product page
+  - Remove • from fieldErrors
   - Add logo image
   - Add favicon
   - Style h2 and form context for category edit
@@ -15,6 +17,8 @@ Add more context rules or change validators
 
 - Highlight input field on error
 - Focus first invalid field on unsuccesful submit
+
+- Style form field contexts and make sure they are accessible (correct tag and read by screen reader)
 
 - Prevent users searching " " and it appearing in the search query param in the url???
 

@@ -1,11 +1,14 @@
 <a href="/categories/<%= categoryID %>/products" class="back-link"><- Back to category</a>
 <h1><%= title %></h1>
 <form action="/categories/<%= categoryID %>/delete" method="POST" id="delete-category-form" class="page-form">
+    <% 
+        const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [];
+    %>
+    
     <p class="page-form-context">Enter password to delete the "<%= category.title %>" category</p>
     
     <div class="page-form-field-container">
-        <label for="password">Password</label>
-        <% const passwordErrors = locals.errors ? errors.filter(x => x.path === "password") : [] %>
+        <label for="password" class="page-form-label">Password</label>
         <input 
             type="password" 
             name="password" 
