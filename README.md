@@ -6,12 +6,12 @@ Add more context rules or change validators
 
 - make everything pretty
 
-  - create product page
-  - Remove • from fieldErrors
+  - Remove • from fieldErrors and add left padding
   - Add logo image
   - Add favicon
   - Style h2 and form context for category edit
   - Add asterix for delete category form
+  - Check if I can use .toLocaleString() on the validator constants rather than each instance
 
 - Add all products page
 

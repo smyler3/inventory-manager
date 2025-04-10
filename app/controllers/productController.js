@@ -56,12 +56,12 @@ const getCreateProductPage = async(req, res) => {
         body: "createProduct",
         categoryID: categoryID,
         product: {},
-        title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
-        description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
-        min_sale_price: productValidator.MIN_SALE_PRICE,
-        max_sale_price: productValidator.MAX_SALE_PRICE,
-        min_stock_count: productValidator.MIN_STOCK_COUNT,
-        max_stock_count: productValidator.MAX_STOCK_COUNT,
+        title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH.toLocaleString(), 
+        description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+        min_sale_price: productValidator.MIN_SALE_PRICE.toLocaleString(),
+        max_sale_price: productValidator.MAX_SALE_PRICE.toLocaleString(),
+        min_stock_count: productValidator.MIN_STOCK_COUNT.toLocaleString(),
+        max_stock_count: productValidator.MAX_STOCK_COUNT.toLocaleString(),
     });
 };
 
@@ -92,12 +92,12 @@ const postCreateProduct = [
                     low_stock_count,
                     critical_stock_count,
                 },
-                title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
-                description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
-                min_sale_price: productValidator.MIN_SALE_PRICE,
-                max_sale_price: productValidator.MAX_SALE_PRICE,
-                min_stock_count: productValidator.MIN_STOCK_COUNT,
-                max_stock_count: productValidator.MAX_STOCK_COUNT,
+                title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH.toLocaleString(), 
+                description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+                min_sale_price: productValidator.MIN_SALE_PRICE.toLocaleString(),
+                max_sale_price: productValidator.MAX_SALE_PRICE.toLocaleString(),
+                min_stock_count: productValidator.MIN_STOCK_COUNT.toLocaleString(),
+                max_stock_count: productValidator.MAX_STOCK_COUNT.toLocaleString(),
                 errors: errors.errors,
             });
         }
@@ -140,12 +140,12 @@ const getEditProductPage = async (req, res) => {
         category: category,
         product: product,
         defaultTitle: product.title,
-        title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
-        description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
-        min_sale_price: productValidator.MIN_SALE_PRICE,
-        max_sale_price: productValidator.MAX_SALE_PRICE,
-        min_stock_count: productValidator.MIN_STOCK_COUNT,
-        max_stock_count: productValidator.MAX_STOCK_COUNT,
+        title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH.toLocaleString(), 
+        description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+        min_sale_price: productValidator.MIN_SALE_PRICE.toLocaleString(),
+        max_sale_price: productValidator.MAX_SALE_PRICE.toLocaleString(),
+        min_stock_count: productValidator.MIN_STOCK_COUNT.toLocaleString(),
+        max_stock_count: productValidator.MAX_STOCK_COUNT.toLocaleString(),
     });
 }; 
 
@@ -189,12 +189,12 @@ const postEditProduct = [
                     critical_stock_count
                 },
                 defaultTitle: product.title,
-                title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH, 
-                description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH, 
-                min_sale_price: productValidator.MIN_SALE_PRICE,
-                max_sale_price: productValidator.MAX_SALE_PRICE,
-                min_stock_count: productValidator.MIN_STOCK_COUNT,
-                max_stock_count: productValidator.MAX_STOCK_COUNT,
+                title_max_length: productValidator.PRODUCT_TITLE_MAX_LENGTH.toLocaleString(), 
+                description_max_length: productValidator.PRODUCT_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+                min_sale_price: productValidator.MIN_SALE_PRICE.toLocaleString(),
+                max_sale_price: productValidator.MAX_SALE_PRICE.toLocaleString(),
+                min_stock_count: productValidator.MIN_STOCK_COUNT.toLocaleString(),
+                max_stock_count: productValidator.MAX_STOCK_COUNT.toLocaleString(),
                 errors: errors.errors,
             })
         };
