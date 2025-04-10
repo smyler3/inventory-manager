@@ -70,6 +70,8 @@ const validateCreateProduct = [
         )}`),
 
     body("critical_stock_count")
+        .customSanitizer((value) => Number(value))
+
         .isInt({ min: MIN_STOCK_COUNT, max: MAX_STOCK_COUNT })
         .withMessage(`Critical Stock Count ${errorMessages.BOUND_ERROR(
             MIN_STOCK_COUNT, 

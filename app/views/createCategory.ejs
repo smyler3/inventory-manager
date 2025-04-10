@@ -48,3 +48,9 @@
     <button type="submit" form="create-category-form" class="action-btn">Create new category</button>
     <a href="/categories" class="action-btn">Cancel</a>
 </div>
+
+<script>
+    const firstInvalidField = document.querySelector(".invalid-form-input");
+    
+    firstInvalidField && firstInvalidField.focus();
+</script>

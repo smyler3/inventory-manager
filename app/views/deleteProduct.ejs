@@ -29,3 +29,9 @@
     <button type="submit" form="delete-product-form" class="action-btn">Delete</button>
     <a href="/categories/<%= category.id %>/products" class="action-btn">Cancel</a>
 </div>
+
+<script>
+    const firstInvalidField = document.querySelector(".invalid-form-input");
+    
+    firstInvalidField && firstInvalidField.focus();
+</script>
