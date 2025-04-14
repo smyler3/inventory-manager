@@ -10,17 +10,19 @@ TODO:
 - Make everything pretty:
 
   - Add hover, focus, and click styles:
-    - Header buttons
     - Action buttons
     - GitHub Button
     - Cards
     - Back links
     - Form fields (valid and invalid)
   - Redo home page (it's arguably the most important page)
+  - Max width on header content
 
 - Accessability:
 
   - Style form field contexts and make sure they are accessible (correct tag and read by screen reader)
+  - Add aria labels to all links
+  - Add titles to buttons?
 
 - Deployment:
 

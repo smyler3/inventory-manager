@@ -5,10 +5,10 @@
     <nav>
         <ul class="links-list">
             <li>
-                <a href="/categories">Categories</a>
+                <a href="/categories" class="nav-link">Categories</a>
             </li>
             <li>
-                <a href="/products">Products</a>
+                <a href="/products" class="nav-link">Products</a>
             </li>
         </ul>
     </nav>
@@ -32,7 +32,19 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        
+        border-bottom: 2px solid #00000000;
     }
+    .logo-container:hover {
+        border-color: black;
+    }
+    .logo-container:focus {
+        border-color: black;
+    }
+    .logo-container:active {
+        border-color: white;
+    }
+
 
     .logo-img {
         height: 34px
@@ -52,11 +64,21 @@
 
         font-size: 1.2rem;
         font-weight: 450;
-        text-decoration: underline;
     }
 
-    a {
+    .nav-link {
         text-decoration: none;
         color: inherit;
+
+        border-bottom: 2px solid #00000000;
+    }
+    .nav-link:hover {
+        border-color: black;
+    }
+    .nav-link:focus {
+        border-color: black;
+    }
+    .nav-link:active {
+        border-color: white;
     }
 </style>
