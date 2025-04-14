@@ -52,5 +52,9 @@
 <script>
     const firstInvalidField = document.querySelector(".invalid-form-input");
     
-    firstInvalidField && firstInvalidField.focus();
+    if (firstInvalidField) {
+        firstInvalidField.focus();
+        firstInvalidField.setSelectionRange(firstInvalidField.value.length, firstInvalidField.value.length);
+        console.log(firstInvalidField.value.length);
+    } 
 </script>
