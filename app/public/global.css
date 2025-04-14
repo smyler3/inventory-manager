@@ -66,9 +66,24 @@ SHARED STYLING
 --------------------------------------------------------------
 */
 .back-link {
+    align-self: start;
     display: flex;
     align-items: center;
+    justify-self: start;
+
     color:#737373;
+    text-decoration: none;
+
+    border-bottom: 2px solid #00000000;
+}
+.back-link:hover {
+    color:#b3b3b3;
+}
+.back-link:focus {
+    color:#b3b3b3;
+}
+.back-link:active {
+    color:#575757;
 }
 
 .card-grid {

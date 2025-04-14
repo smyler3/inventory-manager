@@ -11,9 +11,7 @@ TODO:
 
   - Add hover, focus, and click styles:
     - Action buttons
-    - GitHub Button
     - Cards
-    - Back links
     - Form fields (valid and invalid)
   - Redo home page (it's arguably the most important page)
   - Max width on header content
