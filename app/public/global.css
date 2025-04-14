@@ -220,8 +220,16 @@ CARD STYLING
     text-decoration: none;
     color: inherit;
 
+    background-color: white;
     border-radius: 4px;
     box-shadow: 0 2px 4px #20202025;
+}
+.card:hover,
+.card:focus {
+    box-shadow: 0 2px 12px #20202075;
+}
+.card:active {
+    background-color: #f1f1f1;
 }
 
 .card-title {
@@ -307,3 +315,9 @@ PAGE FORM STYLING
 /* 
 PAGE FORM STYLING END
 */
+
+@media screen and (prefers-reduced-motion: no-preference) {
+    .card {
+        transition: box-shadow 0.5s;
+    }
+}

@@ -10,7 +10,6 @@ TODO:
 - Make everything pretty:
 
   - Add hover, focus, and click styles:
-    - Cards
     - Form fields (valid and invalid)
   - Redo home page (it's arguably the most important page)
   - Max width on header content
