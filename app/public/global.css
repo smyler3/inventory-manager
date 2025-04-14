@@ -76,9 +76,7 @@ SHARED STYLING
 
     border-bottom: 2px solid #00000000;
 }
-.back-link:hover {
-    color:#b3b3b3;
-}
+.back-link:hover,
 .back-link:focus {
     color:#b3b3b3;
 }
@@ -133,26 +131,61 @@ SHARED STYLING
     min-width: 40px;
     padding: 8px 16px;
 
+    color: inherit;
     font-size: 1rem;
+    text-decoration: none;
 
-    background: #F0F0F0;
-    border: solid 1px #767676;
+    background-color: #F0F0F0;
+    border: solid 2px #d8d8d8;
     border-radius: 4px;
+}
+.action-btn:hover,
+.action-btn:focus {
+    background-color: #d8d8d8;
+}
+.action-btn:active {
+    background-color: #adadad;
+    border-color: #adadad;
 }
 
 .modify-btn {
     background-color: rgb(189, 219, 231);
-    border: 2px solid skyblue;
+    border-color: skyblue;
 }
+.modify-btn:hover,
+.modify-btn:focus {
+    background-color: skyblue;
+}
+.modify-btn:active {
+    background-color: rgb(77, 186, 230);
+    border-color: rgb(77, 186, 230);
+}
+
 
 .constructive-btn {
     background-color: rgb(189, 231, 203);
-    border: 2px solid rgb(135, 235, 173);
+    border-color: rgb(135, 235, 173);
+}
+.constructive-btn:hover,
+.constructive-btn:focus {
+    background-color: rgb(137, 233, 169);
+}
+.constructive-btn:active {
+    background-color: rgb(39, 218, 99);
+    border-color: rgb(39, 218, 99);
 }
 
 .destructive-btn {
     background-color: rgb(231, 189, 189);
     border-color: rgb(235, 135, 135);
+}
+.destructive-btn:hover,
+.destructive-btn:focus {
+    background-color: rgb(235, 135, 135);
+}
+.destructive-btn:active {
+    background-color: rgb(228, 95, 95);
+    border-color: rgb(228, 95, 95);
 }
 
 .results-container {
