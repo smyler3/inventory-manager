@@ -66,8 +66,7 @@
     <a href="/categories/<%= categoryID %>/products" class="action-btn">Cancel</a>
 </div>
 
+<script src="/js/formFields.js"></script>
 <script>
-    const firstInvalidField = document.querySelector(".invalid-form-input");
-    
-    firstInvalidField && firstInvalidField.focus();
+    focusErrors();
 </script>

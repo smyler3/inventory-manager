@@ -49,12 +49,7 @@
     <a href="/categories" class="action-btn">Cancel</a>
 </div>
 
+<script src="/js/formFields.js"></script>
 <script>
-    const firstInvalidField = document.querySelector(".invalid-form-input");
-    
-    if (firstInvalidField) {
-        firstInvalidField.focus();
-        firstInvalidField.setSelectionRange(firstInvalidField.value.length, firstInvalidField.value.length);
-        console.log(firstInvalidField.value.length);
-    } 
+    focusErrors();
 </script>
