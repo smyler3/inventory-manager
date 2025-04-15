@@ -9,9 +9,9 @@ TODO:
 - Make everything pretty:
 
   - Redo home page (it's arguably the most important page)
-  - Max width on header content
   - Remove DRY text-decoration none statements
   - Width different when scrollbar present
+  - Constants for colours, sizes, etc
 
 - Accessability:
 

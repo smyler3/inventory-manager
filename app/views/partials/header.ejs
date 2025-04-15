@@ -1,31 +1,42 @@
 <header>
-    <a href="/" class="logo-container">
-        <img src="/logo.svg" alt="" class="logo-img">
-    </a>
-    <nav>
-        <ul class="links-list">
-            <li>
-                <a href="/categories" class="nav-link">Categories</a>
-            </li>
-            <li>
-                <a href="/products" class="nav-link">Products</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="header-content-wrapper">
+        <a href="/" class="logo-container">
+            <img src="/logo.svg" alt="" class="logo-img">
+        </a>
+        <nav>
+            <ul class="links-list">
+                <li>
+                    <a href="/categories" class="nav-link">Categories</a>
+                </li>
+                <li>
+                    <a href="/products" class="nav-link">Products</a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 </header>
 
 <style>
     header {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        width: 100%;
+
+        background-color: rgb(67, 170, 255);
+        box-shadow: 0 4px 4px #00000025;
+    }
+
+    .header-content-wrapper {
         display: flex;
         flex-wrap: wrap;
         align-items: end;
         gap: 24px;
 
         width: 100%;
-        padding: 20px 40px;
-
-        background-color: rgb(67, 170, 255);
-        box-shadow: 0 4px 4px #00000025;
+        max-width: 1200px;
+        padding: 20px;
     }
 
     .logo-container {
