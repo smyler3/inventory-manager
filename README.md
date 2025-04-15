@@ -4,8 +4,6 @@ TODO:
 
 - Fix errors:
 
-  - Check if I can use .toLocaleString() on the validator constants rather than each instance
-  - .tolocalestring breaks textarea max
   - Add more context rules or change validators -> Combine form field prompts and error prompts
 
 - Make everything pretty:

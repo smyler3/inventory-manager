@@ -32,8 +32,8 @@ const getCreateCategoryPage = (req, res) => {
         title: "Create A Category",
         body: "createCategory",
         category: {},
-        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH.toLocaleString(), 
-        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
     });
 };
 
@@ -51,8 +51,8 @@ const postCreateCategory = [
                     title, 
                     description,
                 },
-                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH.toLocaleString(), 
-                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH.toLocaleString(), 
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH, 
                 errors: errors.errors,
             });
         };
@@ -87,8 +87,8 @@ const getEditCategoryPage = async (req, res) => {
         categoryID: categoryID,
         category: category,
         defaultTitle: category.title,
-        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH.toLocaleString(), 
-        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH.toLocaleString(),
+        title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+        description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
     });
 };
 
@@ -119,8 +119,8 @@ const postEditCategory = [
                     description
                 },
                 defaultTitle: category.title,
-                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH.toLocaleString(), 
-                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH.toLocaleString(),
+                title_max_length: categoryValidator.CATEGORY_TITLE_MAX_LENGTH, 
+                description_max_length: categoryValidator.CATEGORY_DESCRIPTION_MAX_LENGTH,
                 errors: errors.errors,
             });
         };

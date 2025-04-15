@@ -17,7 +17,7 @@
     <div class="page-form-field-container">
         <label for="title" class="page-form-label">Title *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= title_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= title_max_length.toLocaleString() %> characters</li>
         </ul>
         <input
             type="text"
@@ -34,7 +34,7 @@
     <div class="page-form-field-container">
         <label for="description" class="page-form-label">Description *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= description_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= description_max_length.toLocaleString() %> characters</li>
         </ul>
         
         <textarea

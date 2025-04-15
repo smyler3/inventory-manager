@@ -11,7 +11,7 @@
     <div class="page-form-field-container">
         <label for="title" class="page-form-label">Title *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= title_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= title_max_length.toLocaleString() %> characters</li>
         </ul>
         
         <input
@@ -19,7 +19,7 @@
             name="title"
             id="title"
             class="form-input <%= titleErrors.length > 0 ? 'invalid-form-input' : '' %>"
-            maxlength="<%= title_max_length %>"
+            maxlength="<%= parseInt(title_max_length) %>"
             value="<%= category.title ? category.title : '' %>"
             required
         >
@@ -29,14 +29,14 @@
     <div class="page-form-field-container">
         <label for="description">Description *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= description_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= description_max_length.toLocaleString() %> characters</li>
         </ul>
         
         <textarea 
             name="description" 
             id="description" 
             class="form-input <%= descriptionErrors.length > 0 ? 'invalid-form-input' : '' %>"
-            maxlength="<%= description_max_length %>" 
+            maxlength="<%= parseInt(description_max_length) %>" 
             rows="5"
             required
         ><%= category.description ? category.description : '' %></textarea>

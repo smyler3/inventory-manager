@@ -21,7 +21,7 @@
     <div class="page-form-field-container">
         <label for="title" class="page-form-label">Title *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= title_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= title_max_length.toLocaleString() %> characters</li>
         </ul>
         <input
             type="text"
@@ -38,7 +38,7 @@
     <div class="page-form-field-container">
         <label for="description" class="page-form-label">Description *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Max length of <%= description_max_length %> characters</li>
+            <li class="page-form-field-guideline">Max length of <%= description_max_length.toLocaleString() %> characters</li>
         </ul>
         <textarea
             name="description"
@@ -54,7 +54,7 @@
     <div class="page-form-field-container">
         <label for="sale_price" class="page-form-label">Sale Price *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Must be between $<%= min_sale_price %> and $<%= max_sale_price %></li>
+            <li class="page-form-field-guideline">Must be between $<%= min_sale_price.toLocaleString() %> and $<%= max_sale_price.toLocaleString() %></li>
         </ul>
         <input
             type="number"
@@ -73,7 +73,7 @@
     <div class="page-form-field-container">
         <label for="stock_count" class="page-form-label">Stock Count *</label>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Must be between <%= min_stock_count %> and <%= max_stock_count %> units</li>
+            <li class="page-form-field-guideline">Must be between <%= min_stock_count.toLocaleString() %> and <%= max_stock_count.toLocaleString() %> units</li>
         </ul>
         <input
             type="number"
@@ -92,7 +92,7 @@
         <label for="low_stock_count" class="page-form-label">Low Stock Count *</label>
         <p>A low stock warning will be indicated when product stock reaches this number</p>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Must be between <%= min_stock_count %> and <%= max_stock_count %> units</li>
+            <li class="page-form-field-guideline">Must be between <%= min_stock_count.toLocaleString() %> and <%= max_stock_count.toLocaleString() %> units</li>
         </ul>
         <input
             type="number"
@@ -111,7 +111,7 @@
         <label for="critical_stock_count" class="page-form-label">Critical Stock Count *</label>
         <p>A critical stock warning will be indicated when product stock reaches this number</p>
         <ul class="page-form-field-guidelines">
-            <li class="page-form-field-guideline">Must be between <%= min_stock_count %> and <%= max_stock_count %> units</li>
+            <li class="page-form-field-guideline">Must be between <%= min_stock_count.toLocaleString() %> and <%= max_stock_count.toLocaleString() %> units</li>
             <li class="page-form-field-guideline">Must be less than or equal to Low Stock Count</li>
         </ul>
         <input
