@@ -1,26 +1,53 @@
 <%
     const features = [
         {
-            title: "Customizable Categories & Products",
+            img: "/pencil-hero.svg",
+            title: "Custom Setup",
             description: "Easily add, edit, and delete categories and products as your inventory needs change.",
+            points: [
+                "Flexible editing",
+                "Easy organization",
+                "Scales with needs"
+            ]
         },
         {
-            title: "Product Storage by Category",
+            img: "/box-hero.svg",
+            title: "Category Storage",
             description: "Organize products efficiently by storing them within specific categories for better management.",
+            points: [
+                "Clear structure",
+                "Faster browsing",
+                "Better control"
+            ]
         },
         {
-            title: "Low & Critical Stock Warnings",
+            img: "/warn-hero.svg",
+            title: "Stock Alerts",
             description: "Set custom stock thresholds to receive notifications when inventory reaches low or critical levels.",
+            points: [
+                "Custom limits",
+                "Real-time warnings",
+                "Prevent shortages"
+            ]
+        },
+        {
+            img: "/search-hero.svg",
+            title: "Quick Search",
+            description: "Find products instantly using search filters like name, category, or stock status.",
+            points: [
+                "Fast filtering",
+                "Multi-field search",
+                "Time-saving"
+            ]
         }
     ];
-
 %>
 
-<h1>Simplify Your Inventory Management with Bits and Bobs</h1>
-<p>Track, organize, and optimize your stock effortlessly.</p>
-<a href="/categories" class="action-btn">Get Started</a>
+<h1 class="hero-header">Simplify Your Inventory Management with <strong class="hero-strong">Bits & Bobs</strong></h1>
+<p class="hero-sub-header">Track, organize, and optimize your stock effortlessly.</p>
+<a href="/categories" class="action-btn hero-btn">Get Started</a>
 
-<ul class="card-grid">
+<ul class="feature-card-grid">
     <% features.forEach(feature => { %>
         <li>
             <%- include('./partials/featureCard.ejs', { feature }) %>
@@ -29,4 +56,42 @@
 </ul>
 
 <style>
+    .hero-header {
+        font-size: 50px;
+    }
+
+    .hero-sub-header {
+        color: #2e2e2e;
+        font-weight: 600;
+        font-size: 1.8rem;
+    }
+
+    .hero-strong {
+        color: #43aaff;
+    }
+
+    .hero-btn {
+        color: white;
+
+        background-color: rgb(150, 73, 221);
+        border-color: blueviolet;
+    }
+    .hero-btn:hover,
+    .hero-btn:focus {
+        background-color: rgb(167, 103, 226);
+    }
+    .hero-btn:active {
+        background-color: rgb(119, 17, 214);
+        border-color: rgb(105, 23, 182);
+    }
+
+    .feature-card-grid {
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 60px;
+
+        max-width: 1000px;
+    }
 </style>

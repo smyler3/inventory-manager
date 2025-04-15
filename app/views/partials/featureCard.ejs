@@ -1,33 +1,65 @@
-<div class="card feature-card">
-    <img src="/checkmark-icon.svg" alt="Checkmark icon" />
-    <span class="feature-card-text">
-        <p class="feature-title"><%= feature.title %></p>
-        <p class="feature-description"><%= feature.description %></p>
-    </span>
+<div class="feature-card">
+    <img src=<%= feature.img %> alt="Checkmark icon" class="feature-icon" />
+    <p class="feature-title"><%= feature.title %></p>
+    <p class="feature-description"><%= feature.description %></p>
+    <ul class="feature-point-list">
+        <% feature.points.forEach(point => { %>
+            <li class="feature-point">
+                <img src="/checkmark-icon.svg" alt="Checkmark icon" class="checkmark" />
+                <p><%= point %></p>
+            </li>
+        <% }) %>
+    </ul>
 </div>
 
 <style>
     .feature-card {
-        flex-direction: row;
-        align-items: center;
-
-        max-width: 600px;
-    }
-
-    .feature-card-text {
         display: flex;
         flex-direction: column;
-        justify-content: center;
-        align-items: start;
-        gap: 8px;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+
+        max-width: 400px;
+        height: 100%;
+        padding: 40px;
+
+        text-align: center;
+
+        background-color: white;
+        border-radius: 20px;
+        box-shadow: 0 4px 8px #00000025;
+    }
+
+    .feature-icon {
+        height: 40px;
     }
 
     .feature-title {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
         font-weight: 600;
     }
 
     .feature-description {
-        font-size: 1rem;
+        color: #2e2e2e;
+    }
+
+    .feature-point-list {
+        align-self: start;
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+    .checkmark {
+        height: 16px;
+    }
+
+    .feature-point {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        font-weight: 550;
     }
 </style>

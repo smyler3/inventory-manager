@@ -110,10 +110,13 @@ SHARED STYLING
     height: 40px;
     width: 40px;
     padding: 10px;
-
-    background-color: rgb(236, 235, 235);
-    border: 2px solid rgb(190, 190, 190);
+    
+    border-bottom: 2px solid rgb(190, 190, 190);
     border-radius: 4px;
+    box-shadow: 0 2px 2px #00000050;
+}
+.item-action-btn:active {
+    box-shadow: 0 1px 2px #00000050;
 }
 
 .item-action-icon {
@@ -136,56 +139,63 @@ SHARED STYLING
     text-decoration: none;
 
     background-color: #F0F0F0;
-    border: solid 2px #d8d8d8;
+    border-bottom: 2px solid #d8d8d8;
     border-radius: 4px;
+    box-shadow: 0 2px 2px #00000050;
 }
 .action-btn:hover,
 .action-btn:focus {
-    background-color: #d8d8d8;
+    background-color: rgb(237, 240, 243);
 }
 .action-btn:active {
-    background-color: #adadad;
+    background-color: #d8d8d8;
     border-color: #adadad;
+    box-shadow: 0 1px 2px #00000050;
 }
 
 .modify-btn {
-    background-color: rgb(189, 219, 231);
-    border-color: skyblue;
+    color: white;
+
+    background-color: rgb(59, 104, 252);
+    border-color: rgb(53, 91, 218);
 }
 .modify-btn:hover,
 .modify-btn:focus {
-    background-color: skyblue;
+    background-color: rgb(89, 127, 252);
 }
 .modify-btn:active {
-    background-color: rgb(77, 186, 230);
-    border-color: rgb(77, 186, 230);
+    background-color: rgb(52, 92, 221);
+    border-color: rgb(44, 76, 182);
 }
 
-
 .constructive-btn {
-    background-color: rgb(189, 231, 203);
-    border-color: rgb(135, 235, 173);
+    color: white;
+    
+    background-color: rgb(37, 216, 126);
+    border-color: rgb(22, 151, 71);
 }
 .constructive-btn:hover,
 .constructive-btn:focus {
-    background-color: rgb(137, 233, 169);
+    background-color: rgb(118, 219, 169);
 }
 .constructive-btn:active {
-    background-color: rgb(39, 218, 99);
-    border-color: rgb(39, 218, 99);
+    background-color: rgb(26, 151, 88);
+    border-color: rgb(19, 124, 59);
 }
 
 .destructive-btn {
-    background-color: rgb(231, 189, 189);
-    border-color: rgb(235, 135, 135);
+    color: white;
+
+    background-color: rgb(218, 45, 45);
+    border-color: rgb(172, 34, 34);
 }
 .destructive-btn:hover,
 .destructive-btn:focus {
-    background-color: rgb(235, 135, 135);
+    background-color: rgb(219, 70, 70);
 }
 .destructive-btn:active {
-    background-color: rgb(228, 95, 95);
-    border-color: rgb(228, 95, 95);
+    background-color: rgb(184, 37, 37);
+    border-color: rgb(126, 24, 24);
 }
 
 .results-container {
