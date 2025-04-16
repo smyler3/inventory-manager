@@ -8,16 +8,7 @@ TODO:
 
 - Make everything pretty:
 
-  - Redo home page (it's arguably the most important page)
-  - Remove DRY text-decoration none statements
-  - Width different when scrollbar present
   - Constants for colours, sizes, etc
-
-- Accessability:
-
-  - Style form field contexts and make sure they are accessible (correct tag and read by screen reader)
-  - Add aria labels to all links
-  - Add titles to buttons?
 
 - Deployment:
 

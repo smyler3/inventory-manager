@@ -1,3 +1,23 @@
+:root {
+    --invis: #00000000;
+    --white: #ffffff;
+    --grey-050: #F0F0F0;
+    --grey-100: #fafafa;
+    --grey-200: #d8d8d8;
+    --grey-300: #adadad;
+    --grey-400: #777777;
+    --grey-500: #575757;
+    --grey-600: #202020;
+    --grey-600-25:#20202025;
+    --grey-600-75:#20202075;
+    --black: #000000;
+    --black-25: #00000025;
+    --black-50: #00000050;
+    
+    
+}
+
+
 /* 
 --------------------------------------------------------------
 GENERAL STYLING
@@ -26,9 +46,9 @@ body {
     justify-items: center;
 
     min-height: 100vh;
-    color: #202020;
+    color: var(--grey-600);
 
-    background-color: #FAFAFA;
+    background-color: var(--grey-100);
 }
 
 main {
@@ -71,17 +91,15 @@ SHARED STYLING
     align-items: center;
     justify-self: start;
 
-    color:#737373;
+    color:var(--grey-400);
     text-decoration: none;
-
-    border-bottom: 2px solid #00000000;
 }
 .back-link:hover,
 .back-link:focus {
-    color:#b3b3b3;
+    color: var(--grey-300);
 }
 .back-link:active {
-    color:#575757;
+    color: var(--grey-500);
 }
 
 .card-grid {
@@ -111,12 +129,12 @@ SHARED STYLING
     width: 40px;
     padding: 10px;
     
-    border-bottom: 2px solid rgb(190, 190, 190);
+    border-bottom: 2px solid var(--invis);
     border-radius: 4px;
-    box-shadow: 0 2px 2px #00000050;
+    box-shadow: 0 2px 2px var(--black-50);
 }
 .item-action-btn:active {
-    box-shadow: 0 1px 2px #00000050;
+    box-shadow: 0 1px 2px var(--black-50);
 }
 
 .item-action-icon {
@@ -138,23 +156,23 @@ SHARED STYLING
     font-size: 1rem;
     text-decoration: none;
 
-    background-color: #F0F0F0;
-    border-bottom: 2px solid #d8d8d8;
+    background-color: var(--grey-050);
+    border-bottom: 2px solid var(--grey-200);
     border-radius: 4px;
-    box-shadow: 0 2px 2px #00000050;
+    box-shadow: 0 2px 2px var(--black-50);
 }
 .action-btn:hover,
 .action-btn:focus {
     background-color: rgb(237, 240, 243);
 }
 .action-btn:active {
-    background-color: #d8d8d8;
-    border-color: #adadad;
-    box-shadow: 0 1px 2px #00000050;
+    background-color: var(--grey-200);
+    border-color: var(--grey-300);
+    box-shadow: 0 1px 2px var(--black-50);
 }
 
 .modify-btn {
-    color: white;
+    color: var(--white);
 
     background-color: rgb(59, 104, 252);
     border-color: rgb(53, 91, 218);
@@ -169,7 +187,7 @@ SHARED STYLING
 }
 
 .constructive-btn {
-    color: white;
+    color: var(--white);
     
     background-color: rgb(37, 216, 126);
     border-color: rgb(22, 151, 71);
@@ -184,7 +202,7 @@ SHARED STYLING
 }
 
 .destructive-btn {
-    color: white;
+    color: var(--white);
 
     background-color: rgb(218, 45, 45);
     border-color: rgb(172, 34, 34);
@@ -202,6 +220,8 @@ SHARED STYLING
     display: flex;
     flex-direction: column;
     gap: 12px;
+
+    margin-top: 60px;
 }
 
 .text-icon-container {
@@ -230,16 +250,16 @@ CARD STYLING
     text-decoration: none;
     color: inherit;
 
-    background-color: white;
+    background-color: var(--white);
     border-radius: 4px;
-    box-shadow: 0 2px 4px #20202025;
+    box-shadow: 0 2px 4px var(--grey-600-25);
 }
 .card:hover,
 .card:focus {
-    box-shadow: 0 2px 12px #20202075;
+    box-shadow: 0 2px 12px var(--grey-600-75);
 }
 .card:active {
-    background-color: #f1f1f1;
+    background-color: var(--grey-100);
 }
 
 .card-title {
@@ -250,7 +270,7 @@ CARD STYLING
 .card-description,
 .page-form-context,
 .page-description {
-    color: #777777;
+    color: var(--grey-400);
     font-size: 1.2rem;
 }
 
@@ -285,7 +305,7 @@ PAGE FORM STYLING
 .page-form-field-guideline {
     padding-left: 8px;
 
-    color: #777777;
+    color: var(--grey-400);
 
     list-style-type: disc;
     list-style-position: inside;
@@ -314,8 +334,8 @@ PAGE FORM STYLING
     font-size: 1rem;
     font-weight: 500;
 
-    background-color: white;
-    border: 2px solid #c7c7c7;
+    background-color: var(--white);
+    border: 2px solid  var(--grey-200);
     border-radius: 4px;
 
     overflow-x: hidden;
