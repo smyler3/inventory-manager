@@ -21,12 +21,22 @@
     --red-500: #7e1818;
     --red-1000: #ff0000;
 
-    --blue-050: #43aaff;    /* hero text */
-    --blue-100: #597ffc;    /* hover/focus */
-    --blue-200: #3b68fc;    /* base background */
-    --blue-300: #355bda;    /* active background */
-    --blue-400: #2c4cb6;    /* active border */
-    --blue-500: #0046c9;    /* base border */
+    --blue-050: #43aaff;
+    --blue-100: #597ffc;
+    --blue-200: #3b68fc;
+    --blue-300: #355bda;
+    --blue-400: #2c4cb6;
+    --blue-500: #0046c9;
+
+    --green-050: #76dba9;
+    --green-100: #25d87e;
+    --green-200: #169747;
+    --green-300: #137c3b;
+
+    --purple-050: #a767e2;
+    --purple-100: #9649dd;
+    --purple-200: #7711d6;
+    --purple-300: #6917b6;
 }
 
 
@@ -201,16 +211,16 @@ SHARED STYLING
 .constructive-btn {
     color: var(--white);
     
-    background-color: rgb(37, 216, 126);
-    border-color: rgb(22, 151, 71);
+    background-color: var(--green-100);
+    border-color: var(--green-200);
 }
 .constructive-btn:hover,
 .constructive-btn:focus {
-    background-color: rgb(118, 219, 169);
+    background-color: var(--green-050);
 }
 .constructive-btn:active {
-    background-color: rgb(26, 151, 88);
-    border-color: rgb(19, 124, 59);
+    background-color: var(--green-200);
+    border-color: var(--green-300);
 }
 
 .destructive-btn {

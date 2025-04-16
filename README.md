@@ -2,9 +2,7 @@
 
 TODO:
 
-- Make everything pretty:
-  -- green
-  -- purple
+-fix cards
 
 - Add more context rules or change validators -> Combine form field prompts and error prompts
 
