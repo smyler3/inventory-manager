@@ -14,7 +14,12 @@
     --black-25: #00000025;
     --black-50: #00000050;
     
-    
+    --red-100: #ffecef;
+    --red-200: #db4646;
+    --red-300: #da2d2d;
+    --red-400: #b82525;
+    --red-500: #7e1818;
+    --red-1000: #ff0000;
 }
 
 
@@ -204,16 +209,16 @@ SHARED STYLING
 .destructive-btn {
     color: var(--white);
 
-    background-color: rgb(218, 45, 45);
-    border-color: rgb(172, 34, 34);
+    background-color: var(--red-300);
+    border-color: var(--red-400);
 }
 .destructive-btn:hover,
 .destructive-btn:focus {
-    background-color: rgb(219, 70, 70);
+    background-color: var(--red-200);
 }
 .destructive-btn:active {
-    background-color: rgb(184, 37, 37);
-    border-color: rgb(126, 24, 24);
+    background-color: var(--red-400);
+    border-color: var(--red-500);
 }
 
 .results-container {
@@ -345,12 +350,12 @@ PAGE FORM STYLING
 }
 
 .invalid-form-input {
-    border-color: rgb(255, 0, 0);
-    background-color: rgb(255, 236, 239);
+    border-color: var(--red-1000);
+    background-color: var(--red-100);
 }
 .invalid-form-input:hover,
 .invalid-form-input:focus {
-    border-color: rgb(255, 0, 0);
+    border-color: var(--red-1000);
 }
 
 /* 
