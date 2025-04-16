@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 CREATE TABLE IF NOT EXISTS products (
     id INTEGER PRIMARY KEY GENERATED ALWAYS AS IDENTITY,
-    category_id INTEGER REFERENCES categories(id),
+    category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE,
     title VARCHAR ( 256 ) NOT NULL UNIQUE,
     description VARCHAR ( 1024 ) NOT NULL,
     sale_price DECIMAL NOT NULL CHECK (sale_price >= 0 AND sale_price <= 1000000),

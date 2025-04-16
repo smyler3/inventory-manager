@@ -1,5 +1,6 @@
 const pool = require("./pool.js");
 const categoryCache = require("./categoryCache.js");
+const productCache = require("./productCache.js");
 
 async function createCategory(title, description) {
     const SQL = `
@@ -30,6 +31,7 @@ async function deleteCategory(id) {
 
     await pool.query(SQL, [id]);
     categoryCache.clearCategoryCache();
+    productCache.clearProductCache();
 };
 
 async function getAllCategories(search) {

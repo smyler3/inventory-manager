@@ -17,7 +17,9 @@
                 </li>
             <% }) %>
         </ul>
-    <% } else { %>
+    <% } else if (search) { %>
         <p>No results for "<%= search %>" found</p>
+    <% } else { %>
+        <p>Add a category to get started</p>
     <% } %>
 </div>

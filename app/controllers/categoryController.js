@@ -175,7 +175,7 @@ const postDeleteCategory = [
 
         try {
             await categoryQueries.deleteCategory(categoryID);
-            res.status(204).redirect(`/categories/${categoryID}/products`);
+            res.status(204).redirect(`/categories`);
         }
         catch (error) {
             console.error("Error deleting category:", error);
