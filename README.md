@@ -2,13 +2,11 @@
 
 TODO:
 
-- Fix errors:
-
-  - Add more context rules or change validators -> Combine form field prompts and error prompts
-
 - Make everything pretty:
+  -- green
+  -- purple
 
-  - Constants for colours, sizes, etc
+- Add more context rules or change validators -> Combine form field prompts and error prompts
 
 - Deployment:
 

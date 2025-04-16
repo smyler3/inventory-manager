@@ -1,8 +1,8 @@
 :root {
     --invis: #00000000;
     --white: #ffffff;
-    --grey-050: #F0F0F0;
     --grey-100: #fafafa;
+    --grey-150: #F0F0F0;
     --grey-200: #d8d8d8;
     --grey-300: #adadad;
     --grey-400: #777777;
@@ -20,6 +20,13 @@
     --red-400: #b82525;
     --red-500: #7e1818;
     --red-1000: #ff0000;
+
+    --blue-050: #43aaff;    /* hero text */
+    --blue-100: #597ffc;    /* hover/focus */
+    --blue-200: #3b68fc;    /* base background */
+    --blue-300: #355bda;    /* active background */
+    --blue-400: #2c4cb6;    /* active border */
+    --blue-500: #0046c9;    /* base border */
 }
 
 
@@ -161,14 +168,14 @@ SHARED STYLING
     font-size: 1rem;
     text-decoration: none;
 
-    background-color: var(--grey-050);
+    background-color: var(--grey-150);
     border-bottom: 2px solid var(--grey-200);
     border-radius: 4px;
     box-shadow: 0 2px 2px var(--black-50);
 }
 .action-btn:hover,
 .action-btn:focus {
-    background-color: rgb(237, 240, 243);
+    background-color: var(--grey-100);
 }
 .action-btn:active {
     background-color: var(--grey-200);
@@ -179,16 +186,16 @@ SHARED STYLING
 .modify-btn {
     color: var(--white);
 
-    background-color: rgb(59, 104, 252);
-    border-color: rgb(53, 91, 218);
+    background-color: var(--blue-200);
+    border-color: var(--blue-300);
 }
 .modify-btn:hover,
 .modify-btn:focus {
-    background-color: rgb(89, 127, 252);
+    background-color: var(--blue-100);
 }
 .modify-btn:active {
-    background-color: rgb(52, 92, 221);
-    border-color: rgb(44, 76, 182);
+    background-color: var(--blue-300);
+    border-color: var(--blue-400);
 }
 
 .constructive-btn {
@@ -346,7 +353,7 @@ PAGE FORM STYLING
     overflow-x: hidden;
 }
 .form-input:focus {
-    outline: 2px solid #0046c9;
+    outline: 2px solid var(--blue-500);
 }
 
 .invalid-form-input {
