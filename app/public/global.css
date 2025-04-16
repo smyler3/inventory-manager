@@ -127,7 +127,7 @@ SHARED STYLING
 .card-grid {
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 40px;
 }
 
 .spaced-horizontal-container {
@@ -273,15 +273,17 @@ CARD STYLING
     color: inherit;
 
     background-color: var(--white);
+    border-bottom: 2px solid var(--grey-150);
     border-radius: 4px;
-    box-shadow: 0 2px 4px var(--grey-600-25);
+    box-shadow: 0 4px 8px var(--grey-600-25);
 }
 .card:hover,
 .card:focus {
-    box-shadow: 0 2px 12px var(--grey-600-75);
+    border-color: var(--blue-050);
 }
 .card:active {
     background-color: var(--grey-100);
+    box-shadow: 0 2px 4px var(--grey-600-75);
 }
 
 .card-title {
@@ -378,9 +380,3 @@ PAGE FORM STYLING
 /* 
 PAGE FORM STYLING END
 */
-
-@media screen and (prefers-reduced-motion: no-preference) {
-    .card {
-        transition: box-shadow 0.5s;
-    }
-}
