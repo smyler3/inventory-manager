@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "node --watch .",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node ./app/db/populateDB.js"
+    "seed": "node ./app/db/populateDB.js",
+    "start": "node ."
   },
   "keywords": [],
   "author": "",
