@@ -1,10 +1,9 @@
 TODO:
 
-- add firewall through digitalocean?
-- hide root user behind a password?
-- create third user for postgres? or even fourth for logging in?
-- set up db
 - connect db to app with secrets
+- hide root user behind a password?
+- add firewall through digitalocean?
+- create fourth for logging in?
 - check rate limiting doesn't prevent normal use of the site
   -- maybe there's a better way to serve the assets?
 
