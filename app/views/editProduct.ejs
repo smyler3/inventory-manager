@@ -1,4 +1,4 @@
-<a href="/categories/<%= category.id %>/products" class="back-link"><- Back to category</a>
+<a href="/categories/<%= category.id %>/products/<%= product.id %>" class="back-link"><- Back to "<%= product.title %>"</a>
 <h1><%= title %></h1>
 <h2 class="page-form-context">Fill out fields and enter password to edit "<%= defaultTitle %>" from the "<%= category.title %>" category</h2>
 <form 
@@ -143,7 +143,7 @@
 
 <div class="button-container">
     <button type="submit" form="edit-product-form" class="action-btn modify-btn">Save changes</button>
-    <a href="/categories/<%= category.id %>/products" class="action-btn">Cancel</a>
+    <a href="/categories/<%= category.id %>/products/<%= product.id %>" class="action-btn">Cancel</a>
 </div>
 
 <script src="/js/formFields.js"></script>
