@@ -1,5 +1,6 @@
 const pool = require("./pool");
 const productCache = require("./productCache");
+const categoryCache = require("./categoryCache");
 
 async function createProduct(
     categoryID,
@@ -25,6 +26,7 @@ async function createProduct(
         critical_stock_count
     ]);
     productCache.clearProductCache();
+    categoryCache.clearCategoryCache();
 };
 
 async function deleteProduct(id) {
@@ -35,6 +37,7 @@ async function deleteProduct(id) {
 
     await pool.query(SQL, [id]);
     productCache.clearProductCache();
+    categoryCache.clearCategoryCache();
 };
 
 async function editProduct(
