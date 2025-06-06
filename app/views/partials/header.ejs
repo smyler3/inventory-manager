@@ -41,17 +41,15 @@
 
     .logo-container {
         display: flex;
-        align-items: center;
+        align-items: end;
         justify-content: center;
-        
-        border-bottom: 2px solid var(--invis);
     }
     .logo-container:hover,
     .logo-container:focus {
-        border-color: black;
+        opacity: 60%;
     }
     .logo-container:active {
-        border-color: var(--white);
+        opacity: 90%;
     }
 
     .logo-img {
@@ -86,5 +84,15 @@
     }
     .nav-link:active {
         border-color: var(--white);
+    }
+
+    @media screen and (max-width: 600px) {
+        .header-content-wrapper {
+            flex-direction: column;
+            align-items: start;
+            gap: 8px;
+
+            padding: 12px 20px;
+        }
     }
 </style>
