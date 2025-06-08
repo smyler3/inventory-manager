@@ -1,6 +1,6 @@
 const EMPTY_ERROR = "can not be empty";
-const ALPHA_ERROR = "must only contain alphabet letters";
-const ALPHANUMERIC_ERROR = "must only contain alphabet letters, numbers, and punctuation";
+const ALPHA_ERROR = "must only contain letters";
+const ALPHANUMERIC_ERROR = "must only contain letters, numbers, and punctuation";
 const UNIQUE_ERROR = "already in use";
 const PASSWORD_ERROR = "is incorrect";
 const LENGTH_ERROR = (min_length, max_length) => {
