@@ -22,6 +22,7 @@
         <label for="title" class="page-form-label">Title *</label>
         <ul class="page-form-field-guidelines">
             <li class="page-form-field-guideline">Max length of <%= title_max_length.toLocaleString() %> characters</li>
+            <li class="page-form-field-guideline">Must only contain letters</li>
         </ul>
         <input
             type="text"
@@ -39,6 +40,7 @@
         <label for="description" class="page-form-label">Description *</label>
         <ul class="page-form-field-guidelines">
             <li class="page-form-field-guideline">Max length of <%= description_max_length.toLocaleString() %> characters</li>
+            <li class="page-form-field-guideline">Must only contain letters, numbers, and punctuation</li>
         </ul>
         <textarea
             name="description"
