@@ -10,7 +10,7 @@ const MIN_SALE_PRICE = 0;
 const MAX_SALE_PRICE = 1000000;
 const MIN_STOCK_COUNT = 0;
 const MAX_STOCK_COUNT = 1000000;
-const CORRECT_PASSWORD = "test";
+const CORRECT_PASSWORD = process.env.SECRET_KEY;
 
 const validateCreateProduct = [
     body("title")
